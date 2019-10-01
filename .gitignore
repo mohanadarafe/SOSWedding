@@ -34,3 +34,9 @@ output.json
 #NDK
 obj/
 .externalNativeBuild
+
+SOSWedding/*
+app/app.iml
+*.iml
+
+app/google-services.json
