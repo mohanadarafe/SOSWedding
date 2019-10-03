@@ -18,4 +18,5 @@ public class LoginActivity extends AppCompatActivity {
                     .commitNow();
         }
     }
+
 }
