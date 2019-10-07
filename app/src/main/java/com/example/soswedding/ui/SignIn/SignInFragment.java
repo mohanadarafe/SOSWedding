@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.speech.RecognizerIntent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.soswedding.R;
 import com.example.soswedding.ui.forgotPassword.ForgotPasswordFragment;
+import com.example.soswedding.ui.register.RegisterFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -127,7 +129,18 @@ public class SignInFragment extends Fragment {
     }
 
     public void onSignUpClicked(View view){
-        //TODO: transfer to signUp page here
+        //TODO: transfer to registerFragment page here
+        Fragment fragment = null;
+        try {
+            fragment = RegisterFragment.newInstance();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
     }
 
     public void onForgotPasswordClicked(View view){
@@ -140,7 +153,6 @@ public class SignInFragment extends Fragment {
         }
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, fragment)
-                .commit();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
     }
 }
