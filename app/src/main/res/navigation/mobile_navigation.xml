@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_profile">
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.soswedding.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_all_requests"
+        android:name="com.example.soswedding.ui.all_requests.AllRequestsFragment"
+
+        android:label="@string/title_all_requests"
+        tools:layout="@layout/fragment_all_requests" />
+
+    <fragment
+        android:id="@+id/navigation_my_requests"
+        android:name="com.example.soswedding.ui.offers.OffersFragment"
+        android:label="@string/title_offers"
+        tools:layout="@layout/fragment_offers" />
+</navigation>
