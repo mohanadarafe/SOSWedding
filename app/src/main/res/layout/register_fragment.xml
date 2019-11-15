@@ -110,7 +110,8 @@
             android:background="@android:color/transparent"
             android:text="Already have an account? Sign in"
             android:textAllCaps="false"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:visibility="visible" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
