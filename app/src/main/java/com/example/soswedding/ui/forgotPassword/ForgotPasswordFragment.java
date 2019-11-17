@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.soswedding.R;
 import com.example.soswedding.ui.SignIn.SignInFragment;
-import com.example.soswedding.ui.SignIn.SignInViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -92,7 +91,7 @@ public class ForgotPasswordFragment extends Fragment {
         }
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, fragment)
+        fragmentManager.beginTransaction().replace(R.id.signUpContainer, fragment)
                 .commit();
 
     }
