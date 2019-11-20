@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@android:color/white"
-            tools:text="<3 Couple's Name <3 " />
+            tools:text="Couple's Name" />
 
         <TextView
             android:id="@+id/textView10"
