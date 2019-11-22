@@ -57,7 +57,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         } catch (Exception e) {
             e.printStackTrace();
         }
-        manager.beginTransaction().replace(R.id.homeMenuContainer, fragment).commit();
+        manager.beginTransaction().replace(R.id.homeMenuContainer, fragment).addToBackStack(null).commit();
     }
     // Provide a suitable constructor (depends on the kind of dataset)
     public RequestAdapter(Context context, Activity activity, List<Request> requestsList) {
