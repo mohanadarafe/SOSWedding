@@ -1,7 +1,6 @@
 package com.example.soswedding.ui.register;
 
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
@@ -13,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.soswedding.R;
 import com.example.soswedding.ui.SignIn.SignInFragment;
@@ -77,7 +74,7 @@ public class RegisterFragment extends Fragment
             }
             // Insert the fragment by replacing any existing fragment
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.container, fragment)
+            fragmentManager.beginTransaction().replace(R.id.signUpContainer, fragment)
                     .commit();
 
         }

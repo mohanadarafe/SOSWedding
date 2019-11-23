@@ -2,13 +2,13 @@ package com.example.soswedding.ui.SignIn;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.speech.RecognizerIntent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
 
+import com.example.soswedding.MainMenu;
 import com.example.soswedding.R;
 import com.example.soswedding.ui.forgotPassword.ForgotPasswordFragment;
 import com.example.soswedding.ui.register.RegisterFragment;
@@ -106,20 +107,22 @@ public class SignInFragment extends Fragment {
     }
 
     private void verifyLogIn(String email, String password){
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(getActivity() , new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    logIn();
-                } else {
-                    popUp("Invalid Email or Password. Please try again.");
-                }
-            }
-        });
+        logIn();
+//        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(getActivity() , new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                if(task.isSuccessful()){
+//                    logIn();
+//                } else {
+//                    popUp("Invalid Email or Password. Please try again.");
+//                }
+//            }
+//        });
     }
 
     public void logIn(){
-        popUp("Logging is working :3");
+        Intent i = new Intent(getContext(), MainMenu.class);
+        startActivity(i);
         //TODO:  redirect to which page then ? :3 Also, remove the Toast above.
     }
 
@@ -139,7 +142,7 @@ public class SignInFragment extends Fragment {
 
         //Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.signUpContainer, fragment).commit();
 
     }
 
@@ -153,6 +156,6 @@ public class SignInFragment extends Fragment {
         }
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.signUpContainer, fragment).commit();
     }
 }
