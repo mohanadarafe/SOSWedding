@@ -37,10 +37,15 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
         View root = inflater.inflate(R.layout.fragment_all_requests, container, false);
         setUpViewModel();
         updateRequestList();
+        initComponents();
         initRecyclerView(root);
-        requestsList  = allRequestViewModel.getMockupList();
 
         return root;
+    }
+
+    private void initComponents() {
+
+        requestsList  = allRequestViewModel.getMockupList();
     }
 
     private void updateRequestList() {
@@ -65,14 +70,14 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
 
                 Fragment fragment = new RequestFragment();
                 RequestFragment.newInstance(requestsList.get(position));
-                getFragmentManager().beginTransaction().replace(R.id.homeMenuContainer, fragment).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
 
     }
 
     private void initRequestRvAdapter() {
 
 
-        mAdapter = new RequestAdapter(getActivity().getApplicationContext(),getActivity(), allRequestViewModel.getMockupList(), this);
+        mAdapter = new RequestAdapter(getActivity().getApplicationContext(),getActivity(), requestsList, this);
         requestsRv.setAdapter(mAdapter);
     }
 

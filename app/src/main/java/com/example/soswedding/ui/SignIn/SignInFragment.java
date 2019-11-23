@@ -17,11 +17,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
-
-import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.MainMenu;
 import com.example.soswedding.R;
-import com.example.soswedding.service.RequestsService;
 import com.example.soswedding.ui.forgotPassword.ForgotPasswordFragment;
 import com.example.soswedding.ui.register.RegisterFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -48,12 +45,6 @@ public class SignInFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.sign_in_fragment, container, false);
-        RequestsService.getRequestsOfUser(getContext(), new VolleyCallback() {
-            @Override
-            public void onSuccess(String result) {
-                SignInFragment.this.onSuccess(result);
-            }
-        });
         initializeVariables(rootView);
         setupOnClickEvents();
         return rootView;
@@ -64,10 +55,6 @@ public class SignInFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(SignInViewModel.class);
         // TODO: Use the ViewModel
-    }
-
-    public void onSuccess(String str){
-        popUp(str);
     }
 
     private void initializeVariables(View rootView) {
