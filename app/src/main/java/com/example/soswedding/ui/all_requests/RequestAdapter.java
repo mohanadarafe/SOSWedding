@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import android.widget.TextView;
 
+import com.example.soswedding.Interface.RecyclerViewClickListener;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
 import com.example.soswedding.ui.Request.RequestFragment;
@@ -26,14 +27,16 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     public static  Context context;
     public static Activity myActivity;
     private List<Request> requestsList;
+    private static RecyclerViewClickListener itemListener;
 
 
-    public static class RequestViewHolder extends RecyclerView.ViewHolder {
+    public static class RequestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // each data item is just a string in this case
         public TextView title;
         public TextView description;
         public TextView type;
         public Button seeMoreBtn;
+        public String uId;
 
         public RequestViewHolder(View itemView) {
             super(itemView);
@@ -41,29 +44,22 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
             description = itemView.findViewById(R.id.descriptionTv);
             type = itemView.findViewById(R.id.typeTv);
             seeMoreBtn = itemView.findViewById(R.id.seeMoreBtn);
-            seeMoreBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onRequestClick();
-                }
-            });
+
+            seeMoreBtn.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            itemListener.recyclerViewListClicked(view, this.getLayoutPosition());
         }
     }
-    public static void onRequestClick() {
-        FragmentManager manager = ((AppCompatActivity) myActivity).getSupportFragmentManager();
-        Fragment fragment = null;
-        try {
-            fragment = RequestFragment.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        manager.beginTransaction().replace(R.id.homeMenuContainer, fragment).commit();
-    }
+
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RequestAdapter(Context context, Activity activity, List<Request> requestsList) {
+    public RequestAdapter(Context context, Activity activity, List<Request> requestsList, RecyclerViewClickListener itemListener) {
         this.context = context;
         this.myActivity = activity;
         this.requestsList = requestsList;
+        this.itemListener = itemListener;
     }
 
     @NonNull

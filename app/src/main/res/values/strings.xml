@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SOSWedding</string>
-    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="title_activity_main_menu">SOSWedding</string>
     <string name="title_profile">Profile</string>
     <string name="title_offers">Offers</string>
     <string name="title_all_requests">All Requests</string>

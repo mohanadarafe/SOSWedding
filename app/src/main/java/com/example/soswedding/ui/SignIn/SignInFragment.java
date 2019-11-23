@@ -17,7 +17,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
-
 import com.example.soswedding.MainMenu;
 import com.example.soswedding.R;
 import com.example.soswedding.ui.forgotPassword.ForgotPasswordFragment;
@@ -107,17 +106,16 @@ public class SignInFragment extends Fragment {
     }
 
     private void verifyLogIn(String email, String password){
-        logIn();
-//        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(getActivity() , new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                if(task.isSuccessful()){
-//                    logIn();
-//                } else {
-//                    popUp("Invalid Email or Password. Please try again.");
-//                }
-//            }
-//        });
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(getActivity() , new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    logIn();
+                } else {
+                    popUp("Invalid Email or Password. Please try again.");
+                }
+            }
+        });
     }
 
     public void logIn(){
