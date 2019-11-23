@@ -6,6 +6,16 @@ public class Request {
     private String description;
     private String type;
 
+    public String getuID() {
+        return uID;
+    }
+
+    public void setuID(String uID) {
+        this.uID = uID;
+    }
+
+    private String uID;
+
     public Request(String title, String description, String type){
         this.title = title;
         this.description = description;

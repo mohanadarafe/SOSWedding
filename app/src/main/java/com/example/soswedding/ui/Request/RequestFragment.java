@@ -13,12 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.soswedding.R;
+import com.example.soswedding.model.Request;
 
 public class RequestFragment extends Fragment {
+    private Request request;
 
     private RequestViewModel mViewModel;
 
-    public static RequestFragment newInstance() {
+    public static RequestFragment newInstance(Request request) {
         return new RequestFragment();
     }
 
