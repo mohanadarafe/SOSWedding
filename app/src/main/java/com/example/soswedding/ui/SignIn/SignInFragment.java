@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -16,17 +17,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.soswedding.Interface.VolleyCallback;
+import com.example.soswedding.model.Singleton;
+
 import androidx.fragment.app.FragmentManager;
 import com.example.soswedding.MainMenu;
 import com.example.soswedding.R;
+import com.example.soswedding.service.UserServiceImpl;
 import com.example.soswedding.ui.forgotPassword.ForgotPasswordFragment;
 import com.example.soswedding.ui.register.RegisterFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignInFragment extends Fragment {
+
 
     private SignInViewModel mViewModel;
     private EditText emailInput;
@@ -119,9 +126,25 @@ public class SignInFragment extends Fragment {
     }
 
     public void logIn(){
-        Intent i = new Intent(getContext(), MainMenu.class);
-        startActivity(i);
-        //TODO:  redirect to which page then ? :3 Also, remove the Toast above.
+
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uuid = user.getUid();
+        String userInfo = UserServiceImpl.getByUuid(getContext(),uuid,new VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+                createUser(result);
+                Intent i = new Intent(getContext(), MainMenu.class);
+                startActivity(i);
+            }
+        });
+
+    }
+    public void createUser(String user)
+    {
+        Singleton.getInstance();
+        mViewModel.getUserInfo(user);
+        popUp(Singleton.getInstance().getFirstName());
     }
 
     public void popUp(String message){
