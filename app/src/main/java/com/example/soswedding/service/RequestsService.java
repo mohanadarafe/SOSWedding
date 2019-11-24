@@ -37,7 +37,7 @@ public class RequestsService {
     }
 
     public static void getRequestsOfUser(Context context, final VolleyCallback callback){
-        String url = "https://soswedding.herokuapp.com/request/user/8";
+        String url = "https://soswedding.herokuapp.com/request/user/1";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
