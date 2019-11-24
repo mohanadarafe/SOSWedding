@@ -36,12 +36,11 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         public TextView description;
         public TextView type;
         public Button seeMoreBtn;
-        public String uId;
 
         public RequestViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.titleTv);
-            description = itemView.findViewById(R.id.descriptionTv);
+            description = itemView.findViewById(R.id.requestDescriptionTv);
             type = itemView.findViewById(R.id.typeTv);
             seeMoreBtn = itemView.findViewById(R.id.seeMoreBtn);
 
@@ -54,7 +53,6 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
     public RequestAdapter(Context context, Activity activity, List<Request> requestsList, RecyclerViewClickListener itemListener) {
         this.context = context;
         this.myActivity = activity;
@@ -74,6 +72,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     @Override
     public void onBindViewHolder(RequestViewHolder holder, int position) {
 
+        holder.description.setText(requestsList.get(position).getDescription());
+        holder.type.setText(requestsList.get(position).getType());
     }
 
     @Override
