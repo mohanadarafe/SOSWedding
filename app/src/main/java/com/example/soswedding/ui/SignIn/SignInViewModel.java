@@ -17,7 +17,7 @@ public class SignInViewModel extends ViewModel {
     public void getUserInfo(String result) {
         try {
             JSONObject obj = new JSONObject(result);
-            Singleton.getInstance().setId(obj.getDouble("id"));
+            Singleton.getInstance().setId(obj.getLong("id"));
             Singleton.getInstance().setUuid(obj.getString("uuid"));
             Singleton.getInstance().setFirstName(obj.getString("firstName"));
             Singleton.getInstance().setLastName(obj.getString("lastName"));

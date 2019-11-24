@@ -82,7 +82,7 @@ public class RequestFragment extends Fragment {
             public void onClick(View view) {
                 String str = bidAmountEt.getText().toString();
                 if(str.length()>0)
-                mViewModel.postBid(str);
+                mViewModel.postBidModel(getContext(),str, request.getId());
                 else {
                     Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You did not enter anything",Toast.LENGTH_SHORT);
                     toast.show();
