@@ -35,6 +35,7 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
         // each data item is just a string in this case
         public TextView title;
         public TextView name;
+        public TextView price; //double or float?
         public TextView description;
         public TextView type;
         public Button seeMoreBtn;
@@ -42,7 +43,8 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
         public OffersViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.titleTv);
-            //name = itemView.findViewById(R.id.nameTv); //legal?
+            name = itemView.findViewById(R.id.nameTv);
+            price = itemView.findViewById(R.id.priceTv);
             description = itemView.findViewById(R.id.descriptionTv);
             type = itemView.findViewById(R.id.typeTv);
             seeMoreBtn = itemView.findViewById(R.id.seeMoreBtn);

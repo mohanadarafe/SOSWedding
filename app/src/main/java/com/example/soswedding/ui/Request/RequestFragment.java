@@ -12,9 +12,10 @@ import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
 
 public class RequestFragment extends Fragment {
+    //Never used!?
     private Request request;
-
     private RequestViewModel mViewModel;
+    //
 
     public static RequestFragment newInstance(Request request) {
         return new RequestFragment();

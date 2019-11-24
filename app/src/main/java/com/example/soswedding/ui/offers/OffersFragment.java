@@ -16,7 +16,7 @@ import com.example.soswedding.model.Offer;
 
 public class OffersFragment extends Fragment {
 
-    private Offer offer;
+    private Offer offer; //never used?!
     private OffersViewModel mViewModel;
     public static OffersFragment newInstance(Offer offer)  { return new OffersFragment(); }
 
