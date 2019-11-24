@@ -14,31 +14,31 @@ import com.example.soswedding.model.Singleton;
 public class RequestsService {
 
 
-    static String result;
+    static String getAllRequestsResult;
 
-    public void getAllRequests(Context context){
-        String url = "";
+    public static String getAllRequests(Context context,final VolleyCallback callback){
+        String url = "https://soswedding.herokuapp.com/request";
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // got the response
-
+                        callback.onSuccess(response);
+                        getAllRequestsResult = response;
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                //On error do something
             }
         });
         queue.add(stringRequest);
-
+        return getAllRequestsResult;
     }
 
-    public static void getRequestsOfUser(Context context, final VolleyCallback callback){
-        String url = "https://soswedding.herokuapp.com/request/user/1";
+    public static void getRequestsOfUser(Context context, double userId, final VolleyCallback callback){
+        int temp = (int)userId;
+        String url = "https://soswedding.herokuapp.com/request/user/"+temp;
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

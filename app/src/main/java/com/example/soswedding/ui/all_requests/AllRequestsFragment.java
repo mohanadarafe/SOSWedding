@@ -23,6 +23,7 @@ import com.example.soswedding.Interface.RecyclerViewClickListener;
 import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
+import com.example.soswedding.model.Singleton;
 import com.example.soswedding.service.RequestsService;
 import com.example.soswedding.ui.Request.RequestFragment;
 import com.example.soswedding.ui.SignIn.SignInFragment;
@@ -52,16 +53,33 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
 
     private void initComponents(View root) {
         requestsRv = root.findViewById(R.id.requestsRv);
-        RequestsService.getRequestsOfUser(getContext(), new VolleyCallback() {
-            @Override
-            public void onSuccess(String result) {
-                onSuccessReceivedList(result);
-            }
-        });
+        if(Singleton.getInstance().getType().equalsIgnoreCase(("COUPLE"))){
+            RequestsService.getRequestsOfUser(getContext(),Singleton.getInstance().getId(),
+                    new VolleyCallback() {
+                        @Override
+                        public void onSuccess(String result) {
+                            onSuccessReceivedList(result);
+                        }
+            });
+        }else {
+            RequestsService.getAllRequests(getContext(), new VolleyCallback() {
+                @Override
+                public void onSuccess(String result) {
+                    onSuccessReceivedList(result);
+                }
+            });
+        }
+
     }
 
     private void onSuccessReceivedList(String result) {
-        requestsList = allRequestViewModel.getRequestsObject(result);
+        String userType = Singleton.getInstance().getType();
+        if(userType.equalsIgnoreCase("COUPLE")) {
+            requestsList = allRequestViewModel.getRequestsObjectForCouple(result);
+        }
+        else {
+            requestsList = allRequestViewModel.getRequestsObject(result);
+        }
         initRecyclerView();
     }
 

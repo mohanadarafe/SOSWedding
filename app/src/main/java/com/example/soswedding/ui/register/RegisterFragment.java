@@ -2,6 +2,7 @@ package com.example.soswedding.ui.register;
 
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,16 +13,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
+import com.example.soswedding.MainMenu;
 import com.example.soswedding.R;
 import com.example.soswedding.ui.SignIn.SignInFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterFragment extends Fragment
 {
-
-
+    private EditText name;
+    private EditText email;
+    private EditText password;
+    private RadioButton coupleRadioBtn;
+    private RadioButton providerRadioBtn;
     private Button signUpBtn;
     private Button signInBtn;
+    private FirebaseAuth mAuth;
 
 
     public static RegisterFragment newInstance (){
@@ -38,8 +51,15 @@ public class RegisterFragment extends Fragment
     }
 
     private void initializeVariables(View rootView) {
-        signInBtn   = rootView.findViewById(R.id.signInBtn);
-        signUpBtn = rootView.findViewById(R.id.signUpBtn);
+        mAuth            = FirebaseAuth.getInstance();
+        name             = rootView.findViewById(R.id.nameInput);
+        email            = rootView.findViewById(R.id.emailInput);
+        password         = rootView.findViewById(R.id.passwordInput);
+        coupleRadioBtn   = rootView.findViewById(R.id.radioButton);
+        providerRadioBtn = rootView.findViewById(R.id.radioButton2);
+        signInBtn        = rootView.findViewById(R.id.signInBtn);
+        signUpBtn        = rootView.findViewById(R.id.signUpBtn);
+
     }
 
     private void setupOnClickEvents() {
@@ -51,9 +71,34 @@ public class RegisterFragment extends Fragment
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //onSignUpClicked();
+                onSignUpClicked();
             }
         });
+    }
+    private void onSignUpClicked(){
+        //TODO: store the name and last name
+
+        if(email.length()>0 && password.length()>0){
+            mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT);
+                        toast.show();
+                        Intent i = new Intent(getContext(), MainMenu.class);
+                        startActivity(i);
+                    }
+                    else {
+                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Invalid Email or Password. Please try again.", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                }
+            });
+        }
+        else {
+            Toast toast_2 = Toast.makeText(getActivity().getApplicationContext(), "Please Fill up the username and password fields before.",Toast.LENGTH_SHORT);
+            toast_2.show();
+        }
     }
 
     private void setupSignInOnClickEvent() {
