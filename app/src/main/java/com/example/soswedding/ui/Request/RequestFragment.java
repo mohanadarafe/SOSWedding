@@ -14,11 +14,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
+import com.example.soswedding.model.Singleton;
+import com.example.soswedding.service.RequestsService;
 
 public class RequestFragment extends Fragment {
     public Request request;
@@ -31,6 +35,7 @@ public class RequestFragment extends Fragment {
     public TextView titleTv;
     public Button bidBtn;
     public EditText bidAmountEt;
+    private LinearLayout providerBid;
 
     private RequestViewModel mViewModel;
 
@@ -58,6 +63,7 @@ public class RequestFragment extends Fragment {
         bidBtn = root.findViewById(R.id.bidBtn);
         bidAmountEt = root.findViewById(R.id.bidAmountEt);
         titleTv = root.findViewById(R.id.requestTitle);
+        providerBid = root.findViewById(R.id.providerBid);
         fillComponent();
     }
     public void fillComponent(){
@@ -68,6 +74,9 @@ public class RequestFragment extends Fragment {
         budgetTv.setText("Budget: " +request.getBudget());
         addressTv.setText("Address:  "+request.getAddress());
         titleTv.setText(request.getTitle());
+        if(Singleton.getInstance().getType().equalsIgnoreCase(("COUPLE")))
+            providerBid.setVisibility(View.GONE);
+        else
         bidBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +89,8 @@ public class RequestFragment extends Fragment {
                 }
             }
         });
+
+
 
     }
     @Override

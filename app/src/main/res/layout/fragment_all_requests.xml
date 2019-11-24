@@ -10,7 +10,7 @@
         android:id="@+id/searchBarLl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:background="#C70000"
         android:orientation="horizontal"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
