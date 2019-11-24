@@ -8,16 +8,17 @@ public class Request implements Serializable {
     private String description;
     private String type;
     private String address;
+    private double budget;
 
-    public String getBudget() {
+    public double getBudget() {
         return budget;
     }
 
-    public void setBudget(String budget) {
+    public void setBudget(double budget) {
         this.budget = budget;
     }
 
-    private String budget;
+
 
     public String getAddress() {
         return address;
@@ -38,7 +39,7 @@ public class Request implements Serializable {
 
     private String uID;
 
-    public Request(String title, String description, String type, String address, String budget){
+    public Request(String title, String description, String type, String address, double budget){
         this.title = title;
         this.description = description;
         this.type = type;

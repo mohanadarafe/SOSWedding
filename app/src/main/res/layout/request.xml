@@ -10,6 +10,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="@android:color/darker_gray"
         app:cardBackgroundColor="@android:color/transparent">
 
         <RelativeLayout
@@ -33,11 +34,12 @@
                         android:id="@+id/titleTv"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_weight="2"
                         android:maxLines="1"
                         android:paddingBottom="20dp"
                         android:text="Title"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                        android:textColor="@android:color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="20dp" />
 
                     <Button
@@ -46,7 +48,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:gravity="center|right"
+                        android:gravity="right|center_vertical"
                         android:maxLines="1"
                         android:minWidth="0dip"
                         android:minHeight="0dip"
