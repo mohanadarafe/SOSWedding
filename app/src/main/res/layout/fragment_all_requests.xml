@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#434343">
+    android:background="@android:color/white">
 
     <LinearLayout
         android:id="@+id/searchBarLl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
@@ -34,7 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:text="Search" />
+            android:text="Search"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/RefineBtn"
@@ -43,7 +44,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:text="Refine"
-            android:textColor="@android:color/holo_red_light" />
+            android:textColor="@android:color/darker_gray" />
 
     </LinearLayout>
 
@@ -51,22 +52,23 @@
         android:id="@+id/requestsRv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchBarLl" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/createRequestBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
+        android:focusable="true"
+        android:outlineAmbientShadowColor="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        android:focusable="true" />
+        app:rippleColor="@color/red"
+        app:srcCompat="@android:drawable/ic_menu_add" />
 </androidx.constraintlayout.widget.ConstraintLayout>

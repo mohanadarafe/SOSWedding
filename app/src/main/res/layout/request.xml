@@ -10,6 +10,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="@android:color/darker_gray"
         app:cardBackgroundColor="@android:color/transparent">
 
         <RelativeLayout
@@ -37,7 +38,7 @@
                         android:paddingBottom="20dp"
                         android:text="Title"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                        android:textColor="@android:color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="20dp" />
 
                     <Button

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +26,10 @@ import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
 import com.example.soswedding.service.RequestsService;
+import com.example.soswedding.ui.CreateRequest.CreateRequestFragment;
 import com.example.soswedding.ui.Request.RequestFragment;
 import com.example.soswedding.ui.SignIn.SignInFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
 
@@ -40,6 +43,7 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
     private RecyclerView requestsRv;
     RequestAdapter mAdapter;
     private List<Request> requestsList;
+    private FloatingActionButton createRequestBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,6 +74,14 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
             });
         }
 
+        createRequestBtn = root.findViewById(R.id.createRequestBtn);
+        createRequestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new CreateRequestFragment();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
+            }
+        });
     }
 
     private void onSuccessReceivedList(String result) {

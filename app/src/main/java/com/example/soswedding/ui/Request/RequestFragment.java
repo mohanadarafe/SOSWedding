@@ -28,6 +28,7 @@ public class RequestFragment extends Fragment {
     public TextView descriptionTv;
     public TextView addressTv;
     public TextView coupleNameTv;
+    public TextView titleTv;
     public Button bidBtn;
     public EditText bidAmountEt;
 
@@ -56,14 +57,17 @@ public class RequestFragment extends Fragment {
         coupleNameTv = root.findViewById(R.id.coupleNameTv);
         bidBtn = root.findViewById(R.id.bidBtn);
         bidAmountEt = root.findViewById(R.id.bidAmountEt);
+        titleTv = root.findViewById(R.id.requestTitle);
         fillComponent();
     }
     public void fillComponent(){
         Log.e("My App", "Request: " + request.getAddress() + "\"");
-        typeTv.setText(request.getType());
-        descriptionTv.setText(request.getDescription());
-        budgetTv.setText(request.getBudget());
-        addressTv.setText(request.getAddress());
+
+        typeTv.setText("Type: "+request.getType());
+        descriptionTv.setText("Description: " + request.getDescription());
+        budgetTv.setText("Budget: " +request.getBudget());
+        addressTv.setText("Address:  "+request.getAddress());
+        titleTv.setText(request.getTitle());
         bidBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
