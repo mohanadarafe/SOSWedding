@@ -17,6 +17,7 @@ public class RequestFragment extends Fragment {
     private RequestViewModel mViewModel;
     //
 
+    //We need the singleton that carries the user information
     public static RequestFragment newInstance(Request request) {
         return new RequestFragment();
     }
@@ -24,7 +25,8 @@ public class RequestFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.request_fragment, container, false);
+        // TODO: Check which Type of User is it.
+        return inflater.inflate(R.layout.request_provider_fragment, container, false);
     }
 
     @Override

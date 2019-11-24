@@ -2,7 +2,6 @@ package com.example.soswedding.ui.offers;
 
 import androidx.lifecycle.ViewModelProviders;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,12 +17,15 @@ public class OffersFragment extends Fragment {
 
     private Offer offer; //never used?!
     private OffersViewModel mViewModel;
+
+    //We need the singleton that carries the user information
     public static OffersFragment newInstance(Offer offer)  { return new OffersFragment(); }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.request_fragment, container, false);
+        // TODO: Check which Type of User is it.
+        return inflater.inflate(R.layout.offer_couple_fragment, container, false);
     }
 
     @Override
