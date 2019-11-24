@@ -10,6 +10,6 @@ public class Singleton {
             if (INSTANCE == null) {
                 INSTANCE = new User();
             }
-            return(INSTANCE);
+            return(INSTANCE); //
         }
 }
