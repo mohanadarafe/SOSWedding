@@ -1,7 +1,7 @@
 package com.example.soswedding.model;
 
  public class User {
-     private double id;
+     private long id;
      private String uuid;
 
      private String firstName;
@@ -53,7 +53,7 @@ package com.example.soswedding.model;
 
 
 
-     public User(double id, String uuid, String firstName, String lastName, String email, String phoneNumber) {
+     public User(long id, String uuid, String firstName, String lastName, String email, String phoneNumber) {
          this.id = id;
          this.uuid = uuid;
          this.firstName = firstName;
@@ -63,11 +63,11 @@ package com.example.soswedding.model;
          this.type  ="";
          companyName = " ;";
      }
-     public double getId() {
+     public long getId() {
          return id;
      }
 
-     public void setId(double id) {
+     public void setId(long id) {
          this.id = id;
      }
 
