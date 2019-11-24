@@ -62,7 +62,7 @@ public class AllRequestsViewModel extends ViewModel {
                     String address = obj.getString("address");
                     String description = obj.getString("description");
                     String type = obj.getString("serviceType");
-                    String budget = obj.getString("budget");
+                    double budget = Double.parseDouble(obj.getString("budget"));
                     Request rq = new Request("no title", description, type, address, budget);
                     requests.add(rq);
                 }
