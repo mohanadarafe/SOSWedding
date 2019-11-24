@@ -1,17 +1,13 @@
 package com.example.soswedding.ui.Request;
 
 import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
 
