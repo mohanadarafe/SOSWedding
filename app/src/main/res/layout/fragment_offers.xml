@@ -5,16 +5,58 @@
     android:layout_height="match_parent"
     android:background="#434343">
 
-    <TextView
-        android:id="@+id/text_offers"
+    <LinearLayout
+        android:id="@+id/searchBarL2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:background="@android:color/darker_gray"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/offersRv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Looking for something?"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="Search" />
+
+        <Button
+            android:id="@+id/RefineBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="Refine"
+            android:textColor="@android:color/holo_red_light" />
+
+    </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/offersRv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchBarL2" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

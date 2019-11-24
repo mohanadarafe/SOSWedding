@@ -1,5 +1,12 @@
 package com.example.soswedding.ui.offers;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.soswedding.Interface.RecyclerViewClickListener;
+import com.example.soswedding.model.Request;
+import com.example.soswedding.ui.Request.RequestFragment;
+
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+
+
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.soswedding.R;
