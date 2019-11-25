@@ -118,7 +118,7 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
         fragment.setArguments(bundle);
         RequestFragment.newInstance(requestsList.get(position));
         getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
-
+//just to pus
     }
 
     private void initRequestRvAdapter() {
