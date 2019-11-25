@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
@@ -50,9 +51,10 @@ public class CreateRequestFragment extends Fragment {
         titleEditText = root.findViewById(R.id.titleEt);
         addressEditText = root.findViewById(R.id.addressEt);
         descriptionEditText = root.findViewById(R.id.descriptionEt);
-        budgetEditText = root.findViewById(R.id.budgetTv);
-        postRequestBtn = root.findViewById(R.id.createRequestBtn);
+        budgetEditText = root.findViewById(R.id.budgetEditText);
+        postRequestBtn = root.findViewById(R.id.createRequestPageBtn);
         postRequestBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 onPostRqClicked();
@@ -68,13 +70,24 @@ public class CreateRequestFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void onPostRqClicked() {
+
         String title = titleEditText.getText().toString();
         String description = descriptionEditText.getText().toString();
-        String type = typeSpinner.getTransitionName();
+        String type = typeSpinner.getSelectedItem().toString();
         String address = addressEditText.getText().toString();
-        Double budget = Double.parseDouble(addressEditText.getText().toString());
-        Request request = new Request(title, description, type, address, budget);
-        mViewModel.createRequest(request);
+        Double budget = Double.parseDouble(budgetEditText.getText().toString());
+        if(type.length() > 0 &&
+                title.length() > 0 &&
+                address.length() > 0 &&
+                description.length() > 0 &&
+                budget > 0){
+            Request request = new Request(title, description, type, address, budget);
+            mViewModel.createRequest(getContext(), request);
+        }
+        else {
+            Toast toast = Toast.makeText(getActivity().getApplicationContext(),"Please fill all fields and try again!",Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     @Override
