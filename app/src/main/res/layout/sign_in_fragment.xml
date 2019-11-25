@@ -53,7 +53,7 @@
             android:id="@+id/loginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#CC1E1D"
+            android:background="@drawable/button_smooth_border"
             android:text="Login"
             android:textColor="#F1FAEE" />
 

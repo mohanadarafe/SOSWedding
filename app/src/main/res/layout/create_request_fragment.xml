@@ -110,7 +110,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/budgetEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -119,10 +119,11 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/createRequestBtn"
+                    android:id="@+id/createRequestPageBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dip"
+                    android:background="@drawable/button_smooth_border"
                     android:text="Post it!" />
 
             </LinearLayout>

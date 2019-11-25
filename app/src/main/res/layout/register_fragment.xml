@@ -8,110 +8,112 @@
     android:background="#E53E3E"
     tools:context=".ui.register.RegisterFragment" >
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/appLogo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="50dp"
-            android:contentDescription="logo of the app"
-            android:src="@drawable/logo" />
-
-        <EditText
-            android:id="@+id/nameInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Full Name"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:textColor="#F1FAEE"
-            android:textColorHint="#F1FAEE" />
-
-        <EditText
-            android:id="@+id/emailInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:importantForAutofill="no"
-            android:inputType="textEmailAddress"
-            android:textColor="#F1FAEE"
-            android:textColorHint="#F1FAEE" />
-
-        <EditText
-        android:id="@+id/passwordInput"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="#F1FAEE"
-        android:textColorHint="#F1FAEE" />
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/passwordInput2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:ems="10"
-            android:hint="Confirm Password"
-            android:inputType="textPassword"
-            android:textColor="#F1FAEE"
-            android:textColorHint="#F1FAEE" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="73dp"
-            android:layout_marginBottom="50dp">
+            <ImageView
+                android:id="@+id/appLogo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="50dp"
+                android:contentDescription="logo of the app"
+                android:src="@drawable/logo" />
 
-            <RadioButton
-                android:id="@+id/radioButton"
+            <EditText
+                android:id="@+id/emailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Email"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
                 android:textColor="#F1FAEE"
-                android:text="I am getting married"/>
+                android:textColorHint="#F1FAEE" />
 
-
-            <RadioButton
-                android:id="@+id/radioButton2"
+            <EditText
+                android:id="@+id/nameInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Full Name"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
                 android:textColor="#F1FAEE"
-                android:text="I provide wedding services" />
-        </RadioGroup>
+                android:textColorHint="#F1FAEE" />
 
-        <Button
-            android:id="@+id/signUpBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#CC1E1D"
-            android:text="SignUp"
-            android:layout_marginBottom="50dp"
-            android:textColor="#F1FAEE" />
+            <EditText
+                android:id="@+id/passwordInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="#F1FAEE"
+                android:textColorHint="#F1FAEE" />
 
-        <Button
-            android:id="@+id/signInBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text="Already have an account? Sign in"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:visibility="visible" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/passwordInput2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:textColor="#F1FAEE"
+                android:textColorHint="#F1FAEE" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:layout_marginBottom="50dp">
+
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text="I am getting married"
+                    android:textColor="#F1FAEE" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text="I provide wedding services"
+                    android:textColor="#F1FAEE" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/signUpBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/button_smooth_border"
+                android:text="SignUp"
+                android:textColor="#F1FAEE" />
+
+            <Button
+                android:id="@+id/signInBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Already have an account? Sign in"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:visibility="visible" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
