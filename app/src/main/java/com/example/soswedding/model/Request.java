@@ -29,7 +29,6 @@ public class Request implements Serializable {
     }
 
 
-
     public String getAddress() {
         return address;
     }
@@ -49,7 +48,8 @@ public class Request implements Serializable {
 
     private String uID;
 
-    public Request(String title, String description, String type, String address, double budget){
+    public Request(long id, String title, String description, String type, String address, double budget){
+        this.id     =id;
         this.title = title;
         this.description = description;
         this.type = type;

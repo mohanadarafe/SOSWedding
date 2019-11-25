@@ -39,7 +39,8 @@ public class AllRequestsViewModel extends ViewModel {
                 String type = obj.getString("serviceType");
                 double budget = Double.parseDouble(obj.getString("budget"));
                 String title = obj.getString("title");
-                Request rq = new Request(title, description, type, address, budget);
+                long id       = obj.getLong("id");
+                Request rq = new Request(id,title, description, type, address, budget);
                 requests.add(rq);
             }
             return requests;
@@ -62,9 +63,10 @@ public class AllRequestsViewModel extends ViewModel {
                     String address = obj.getString("address");
                     String description = obj.getString("description");
                     String type = obj.getString("serviceType");
-                    String title = obj.getString("title");
+                    String title  = obj.getString("title");
                     double budget = Double.parseDouble(obj.getString("budget"));
-                    Request rq = new Request(title, description, type, address, budget);
+                    long id       = obj.getLong("id");
+                    Request rq = new Request(id,title, description, type, address, budget);
                     requests.add(rq);
                 }
             }
