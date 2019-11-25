@@ -57,7 +57,9 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
 
     private void initComponents(View root) {
         requestsRv = root.findViewById(R.id.requestsRv);
+        createRequestBtn = root.findViewById(R.id.createRequestBtn);
         if(Singleton.getInstance().getType().equalsIgnoreCase(("COUPLE"))){
+            createRequestBtn.setVisibility(View.VISIBLE);
             RequestsService.getRequestsOfUser(getContext(),Singleton.getInstance().getId(),
                     new VolleyCallback() {
                         @Override

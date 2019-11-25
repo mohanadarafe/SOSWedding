@@ -56,6 +56,13 @@ public class Request implements Serializable {
         this.budget = budget;
         this.address = address;
     }
+    public Request(String title, String description, String type, String address, double budget){
+        this.title = title;
+        this.description = description;
+        this.type = type;
+        this.budget = budget;
+        this.address = address;
+    }
     public String getTitle() {
         return title;
     }
