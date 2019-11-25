@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.offers;
+package com.example.soswedding.ui.Offer;
 
 import androidx.lifecycle.ViewModelProviders;
 
@@ -34,12 +34,5 @@ public class OffersFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(OffersViewModel.class);
         // TODO: Use the ViewModel
     }
-    /*
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_offers, container, false);
-
-        return root;
-    }*/
 }

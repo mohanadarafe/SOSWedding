@@ -12,8 +12,7 @@ import android.widget.TextView;
 import com.example.soswedding.Interface.RecyclerViewClickListener;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
-import com.example.soswedding.model.Request;
-import com.example.soswedding.ui.Request.RequestFragment;
+
 
 
 import java.util.List;
@@ -34,8 +33,8 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     public static class OffersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
         public TextView title;
-        public TextView name;
-        public TextView price; //double or float?
+//        public TextView name;
+//        public TextView price; //double or float?
         public TextView description;
         public TextView type;
         public Button seeMoreBtn;
@@ -43,8 +42,8 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
         public OffersViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.titleTv);
-            name = itemView.findViewById(R.id.nameTv);
-            price = itemView.findViewById(R.id.priceTv);
+//            name = itemView.findViewById(R.id.nameTv);
+//            price = itemView.findViewById(R.id.priceTv);
             description = itemView.findViewById(R.id.descriptionTv);
             type = itemView.findViewById(R.id.typeTv);
             seeMoreBtn = itemView.findViewById(R.id.seeMoreBtn);
@@ -69,7 +68,7 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     @Override
     public OffersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.request, null);
+        View view = inflater.inflate(R.layout.offer, null);
         OffersViewHolder holder = new OffersViewHolder(view);
         return holder;
     }

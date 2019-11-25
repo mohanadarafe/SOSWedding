@@ -2,25 +2,16 @@ package com.example.soswedding.model;
 
 public class Offer {
 
-    private String name;
     private String title;
     private String description;
-    private double price; // not sure for the type
+    private String type; // not sure for the type
     private String uID;
 
-    public Offer(String name, String title, String description, double price) {
-        this.name = name;
+    public Offer(String title, String description, String type) {
+
         this.title = title;
         this.description = description;
-        this.price = price;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.type = type;
     }
 
     public String getTitle() {
@@ -39,12 +30,12 @@ public class Offer {
         this.description = description;
     }
 
-    public double getPrice() {
-        return price;
+    public String getType() {
+        return type;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getuID() {

@@ -19,8 +19,8 @@
         tools:layout="@layout/fragment_all_requests" />
 
     <fragment
-        android:id="@+id/navigation_offers"
-        android:name="com.example.soswedding.ui.offers.OffersFragment"
-        android:label="@string/title_offers"
-        tools:layout="@layout/fragment_offers" />
+        android:id="@+id/navigation_all_offers"
+        android:name="com.example.soswedding.ui.all_offers.AllOffersFragment"
+        android:label="@string/title_all_offers"
+        tools:layout="@layout/fragment_all_offers" />
 </navigation>
