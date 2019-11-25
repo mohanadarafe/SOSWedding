@@ -1,6 +1,12 @@
 package com.example.soswedding.ui.all_requests;
 
+import android.util.Log;
+
 import com.example.soswedding.model.Request;
+import com.example.soswedding.model.Singleton;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +28,53 @@ public class AllRequestsViewModel extends ViewModel {
         return mText;
     }
 
-    public List<Request> getMockupList() {
-        Request rq = new Request("test", "test", "test");
-        List<Request> list = new ArrayList<>();
-        for(int i =0; i < 15; i++)
-            list.add(rq);
-        return list;
+    public List<Request> getRequestsObject(String result) {
+        try {
+            ArrayList<Request> requests = new ArrayList<>();
+            JSONArray requestsObjectArr = new JSONArray(result);
+            for(int i = 0; i < requestsObjectArr.length(); i++){
+                JSONObject obj = requestsObjectArr.getJSONObject(i);
+                String address = obj.getString("address");
+                String description = obj.getString("description");
+                String type = obj.getString("serviceType");
+                double budget = Double.parseDouble(obj.getString("budget"));
+                String title = obj.getString("title");
+                long id       = obj.getLong("id");
+                Request rq = new Request(id,title, description, type, address, budget);
+                requests.add(rq);
+            }
+            return requests;
+
+        } catch (Throwable t) {
+            Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
+        }
+        return null;
+    }
+
+
+    public List<Request> getRequestsObjectForCouple(String result) {
+        try {
+            ArrayList<Request> requests = new ArrayList<>();
+            JSONArray requestsObjectArr = new JSONArray(result);
+            double userId = Singleton.getInstance().getId();
+            for(int i = 0; i < requestsObjectArr.length(); i++){
+                JSONObject obj = requestsObjectArr.getJSONObject(i);
+                if(userId == obj.getDouble("userId")){
+                    String address = obj.getString("address");
+                    String description = obj.getString("description");
+                    String type = obj.getString("serviceType");
+                    String title  = obj.getString("title");
+                    double budget = Double.parseDouble(obj.getString("budget"));
+                    long id       = obj.getLong("id");
+                    Request rq = new Request(id,title, description, type, address, budget);
+                    requests.add(rq);
+                }
+            }
+            return requests;
+        } catch (Throwable t) {
+            Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
+        }
+        return null;
     }
 
 }

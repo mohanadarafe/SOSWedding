@@ -6,12 +6,22 @@ public class Offer {
     private String description;
     private String type; // not sure for the type
     private String uID;
+    private double budget;
 
-    public Offer(String title, String description, String type) {
+    public Offer(String title, String description, String type, double budget) {
 
         this.title = title;
         this.description = description;
         this.type = type;
+        this.budget = budget;
+    }
+
+    public double getBudget() {
+        return budget;
+    }
+
+    public void setBudget(double budget) {
+        this.budget = budget;
     }
 
     public String getTitle() {

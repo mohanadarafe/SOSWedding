@@ -76,6 +76,12 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     @Override
     public void onBindViewHolder(OffersViewHolder holder, int position) {
 
+        // needs to be changed to be appropriate
+
+        holder.title.setText(offersList.get(position).getTitle());
+        holder.description.setText(offersList.get(position).getDescription());
+        holder.type.setText("Type:"+offersList.get(position).getType());
+
     }
 
     @Override

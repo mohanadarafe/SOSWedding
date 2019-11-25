@@ -6,22 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import android.widget.TextView;
-
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.soswedding.Interface.RecyclerViewClickListener;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
-import com.example.soswedding.ui.Request.RequestFragment;
-
 
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestViewHolder> {
     public static  Context context;
@@ -36,15 +28,13 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         public TextView description;
         public TextView type;
         public Button seeMoreBtn;
-        public String uId;
 
         public RequestViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.titleTv);
-            description = itemView.findViewById(R.id.descriptionTv);
+            description = itemView.findViewById(R.id.requestDescriptionTv);
             type = itemView.findViewById(R.id.typeTv);
             seeMoreBtn = itemView.findViewById(R.id.seeMoreBtn);
-
             seeMoreBtn.setOnClickListener(this);
         }
 
@@ -54,7 +44,6 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
     public RequestAdapter(Context context, Activity activity, List<Request> requestsList, RecyclerViewClickListener itemListener) {
         this.context = context;
         this.myActivity = activity;
@@ -74,6 +63,9 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     @Override
     public void onBindViewHolder(RequestViewHolder holder, int position) {
 
+        holder.title.setText(requestsList.get(position).getTitle());
+        holder.description.setText(requestsList.get(position).getDescription());
+        holder.type.setText("Type: " +requestsList.get(position).getType());
     }
 
     @Override
