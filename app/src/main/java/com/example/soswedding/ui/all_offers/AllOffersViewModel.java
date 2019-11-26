@@ -24,7 +24,7 @@ public class AllOffersViewModel extends ViewModel {
     }
 
     public List<Offer> getMockupList() {
-        Offer of = new Offer("test","test","test",10);
+        Offer of = new Offer("test","PENDING","testMessage",11, 100);
         List<Offer> list = new ArrayList<>();
         for(int i =0; i < 15; i++)
             list.add(of);

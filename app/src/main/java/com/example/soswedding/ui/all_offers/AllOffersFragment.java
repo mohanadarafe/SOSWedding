@@ -25,7 +25,7 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
     private AllOffersViewModel allOffersViewModel;
     private RecyclerView offersRv;
     OffersAdapter mAdapter;
-    private List<Offer> offerList;
+    private List<Offer> offersList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
 
     private void initComponents() {
 
-        offerList = allOffersViewModel.getMockupList();
+        offersList = allOffersViewModel.getMockupList();
     }
 
     private void updateOfferList() {
@@ -64,13 +64,17 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
     @Override
     public void recyclerViewListClicked(View v, int position) {
 
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("offer", offersList.get(position));
         Fragment fragment = new OffersFragment();
-        OffersFragment.newInstance(offerList.get(position));
+        fragment.setArguments(bundle);
+        OffersFragment.newInstance(offersList.get(position));
         getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
 
     }
+
         private void initOfferRvAdapter() {
-            mAdapter = new OffersAdapter(getActivity().getApplicationContext(),getActivity(), offerList, this);
+            mAdapter = new OffersAdapter(getActivity().getApplicationContext(),getActivity(), offersList, this);
             offersRv.setAdapter(mAdapter);
         }
 
