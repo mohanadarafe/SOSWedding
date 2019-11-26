@@ -45,31 +45,36 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
 
     private void initComponent() {
 
-        offersList = allOffersViewModel.getMockupList();
+        //offersList = allOffersViewModel.getMockupList();
     }
 
     private void initComponents(View root) {
         offersRv = root.findViewById(R.id.offersRv);
-            RequestsService.getRequestsOfUser(getContext(),Singleton.getInstance().getId(), //BidService!? depends on Abi
-                    new VolleyCallback() {
-                        @Override
-                        public void onSuccess(String result) {
-                            onSuccessReceivedList(result);
-                        }
-                    });
+        if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER"))){
+            BidService.getOffersOfUser(getContext(), Singleton.getInstance().getUuid(),
+            new VolleyCallback(){
+                @Override
+                public void onSuccess(String result){
+                    onSuccessReceivedList(result);
+                }
+            });
+        }
+        else{}
     }
 
     private void onSuccessReceivedList(String result) {
         String userType = Singleton.getInstance().getType();
         if(userType.equalsIgnoreCase("COUPLE")) {
             //TODO: Call the method to retrieve a list of offers - Couples perspective
-            //offersList = allOffersViewModel.getRequestsObjectForCouple(result);
-            offersList = allOffersViewModel.getMockupList();
+            offersList = allOffersViewModel.getOffersObjectForCouple(result);
+            //offersList = allOffersViewModel.getMockupList();
         }
         else {
             //TODO: Call the method to retrieve a list of offers - Providers perspective
-            //offersList = allOffersViewModel.getRequestsObject(result);
-            offersList = allOffersViewModel.getMockupList();
+            offersList = allOffersViewModel.getOffersObject(result);
+           // offersList = allOffersViewModel.getMockupList();
+
+
         }
         initRecyclerView();
     }

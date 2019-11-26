@@ -30,10 +30,10 @@ public class OffersFragment extends Fragment {
     public TextView titleTv;
     public TextView status;
     public Button acceptOfferBtn;
-    public Button DenyOfferBtn;
+    public Button declineOfferBtn;
     public TextView bidAmountEt;
     private LinearLayout coupleBidResponse;
-    private OffersViewModel mViewModel;
+    private OfferViewModel mViewModel;
 
     //We need the singleton that carries the user information
     public static OffersFragment newInstance(Offer offer)  { return new OffersFragment(); }
@@ -54,7 +54,7 @@ public class OffersFragment extends Fragment {
         status = root.findViewById(R.id.statusDetailTv);
         providerName = root.findViewById(R.id.providerNameTv);
         acceptOfferBtn = root.findViewById(R.id.acceptOfferBtn);
-        DenyOfferBtn = root.findViewById(R.id.DenyOfferBtn);
+        declineOfferBtn = root.findViewById(R.id.DenyOfferBtn);
         bidAmountEt = root.findViewById(R.id.bidAmountTv);
         titleTv = root.findViewById(R.id.offerTitle);
         coupleBidResponse = root.findViewById(R.id.coupleBidResponseTv);
@@ -66,13 +66,13 @@ public class OffersFragment extends Fragment {
         descriptionTv.setText("Description: " + offer.getMessage());
         bidAmountEt.setText("Bid Amount: " +offer.getAmount());
         status.setText("Status: " + offer.getStatus());
-        providerName.setText("Provider's Name: " + offer.getCompanyName());
-        titleTv.setText(offer.getTitle());
+        providerName.setText("Provider's Name: TEST");
+        titleTv.setText("Request Name: TEST");
         if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER")))
             coupleBidResponse.setVisibility(View.GONE);
         else {
 
-            coupleBidResponse.setOnClickListener(new View.OnClickListener() {
+            acceptOfferBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String acceptedAmount = String.valueOf(offer.getAmount());
@@ -86,7 +86,21 @@ public class OffersFragment extends Fragment {
                 }
             });
 
-            //TODO: Connect second button [ DenyOfferBtn ] with its corresponding method
+            acceptOfferBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String acceptedAmount = String.valueOf(offer.getAmount());
+                    if (acceptedAmount != null)
+                        mViewModel.declineBidModel(getContext(), acceptedAmount, offer.getId());
+                        //TODO: On success, display Message or update Bid Status on page
+                    else {
+                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "You did not enter anything", Toast.LENGTH_SHORT);
+                        toast.show(); //TODO: is this method displaying the error?
+                    }
+                }
+            });
+
+
             // from the backend, See Above
         }
 
@@ -96,7 +110,7 @@ public class OffersFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(OffersViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(OfferViewModel.class);
     }
 
 }
