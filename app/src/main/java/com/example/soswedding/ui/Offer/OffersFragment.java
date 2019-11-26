@@ -72,19 +72,19 @@ public class OffersFragment extends Fragment {
         if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER")))
             coupleBidResponse.setVisibility(View.GONE);
         else {
-            /*
-            bidBtn.setOnClickListener(new View.OnClickListener() {
+
+            coupleBidResponse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String str = bidAmountEt.getText().toString();
-                    if (str.length() > 0)
-                        mViewModel.postBidModel(getContext(), str, request.getId());
+                    if (str.length() > 0);
+                        //mViewModel.postBidModel(getContext(), str, request.getId());
                     else {
                         Toast toast = Toast.makeText(getActivity().getApplicationContext(), "You did not enter anything", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 }
-            }); */
+            });
         }
 
 
