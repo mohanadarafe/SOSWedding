@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.soswedding.Interface.RecyclerViewClickListener;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
+import com.example.soswedding.model.Singleton;
+import com.example.soswedding.service.BidService;
 import com.example.soswedding.ui.Offer.OffersFragment;
 import com.example.soswedding.ui.all_offers.AllOffersViewModel;
 import com.example.soswedding.ui.all_offers.OffersAdapter;
@@ -32,15 +34,18 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
         View root = inflater.inflate(R.layout.fragment_all_offers, container, false);
         setUpViewModel();
         updateOfferList();
-        initComponents();
+        initComponents(root);
         initRecyclerView(root);
 
         return root;
 }
 
-    private void initComponents() {
+    private void initComponents(View root) {
 
-        offerList = allOffersViewModel.getMockupList();
+        offersRv = root.findViewById(R.id.offersRv);
+
+
+
     }
 
     private void updateOfferList() {

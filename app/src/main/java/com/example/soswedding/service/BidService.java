@@ -12,6 +12,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.soswedding.Interface.VolleyCallback;
+import com.example.soswedding.model.Offer;
 import com.example.soswedding.model.Singleton;
 
 import org.json.JSONException;
@@ -60,6 +61,12 @@ public class BidService {
     {
         e.printStackTrace();
     }
+}
+
+public static String getAllOffer(Context context, final VolleyCallback callback){
+        //String url = "https://soswedding.herokuapp.com//request/{id}/bid";
+        Request queue = Volley.newRequestQueue(context);
+        StringRequest stringRequest = new StringRequest(Offer.Method.GET, url)
 
 }
 }
