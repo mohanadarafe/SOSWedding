@@ -6,6 +6,7 @@ import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -17,64 +18,72 @@ import androidx.lifecycle.ViewModel;
 
 public class AllRequestsViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
 
-    public AllRequestsViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is all request fragment");
+    public List<Request> getDisplayableRequests(String result){
+        String userType = Singleton.getInstance().getType();
+        if(userType.equalsIgnoreCase("COUPLE")) {
+            return getListOfRequestsForCoupleUserOnly(result);
+        }
+        else {
+            return getListOfAllRequests(result);
+        }
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public List<Request> getListOfAllRequests(String result) {
+        try{
+            return getRequestListFromJSONResponse(result);
+        } catch (Throwable t) {
+            Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
+        }
+        return null;
+    }
+    public List<Request> getRequestListFromJSONResponse(String result) throws JSONException {
+        ArrayList<Request> requests = new ArrayList<>();
+        JSONArray requestsObjectArr = new JSONArray(result);
+        for(int i = 0; i < requestsObjectArr.length(); i++){
+            JSONObject requestJSONObject = requestsObjectArr.getJSONObject(i);
+            Request requestFromJSONObject = getRequestObjectFromJSONObject(requestJSONObject);
+            requests.add(requestFromJSONObject);
+        }
+        return requests;
     }
 
-    public List<Request> getRequestsObject(String result) {
+    private Request getRequestObjectFromJSONObject(JSONObject requestJSONObject) throws JSONException {
+        String address = requestJSONObject.getString("address");
+        String description = requestJSONObject.getString("description");
+        String type = requestJSONObject.getString("serviceType");
+        double budget = Double.parseDouble(requestJSONObject.getString("budget"));
+        String title = requestJSONObject.getString("title");
+        long id       = requestJSONObject.getLong("id");
+
+        return new Request(id, title, description, type, address, budget);
+    }
+
+
+    public List<Request> getListOfRequestsForCoupleUserOnly(String result) {
         try {
-            ArrayList<Request> requests = new ArrayList<>();
-            JSONArray requestsObjectArr = new JSONArray(result);
-            for(int i = 0; i < requestsObjectArr.length(); i++){
-                JSONObject obj = requestsObjectArr.getJSONObject(i);
-                String address = obj.getString("address");
-                String description = obj.getString("description");
-                String type = obj.getString("serviceType");
-                double budget = Double.parseDouble(obj.getString("budget"));
-                String title = obj.getString("title");
-                long id       = obj.getLong("id");
-                Request rq = new Request(id,title, description, type, address, budget);
+            return getRequestListFromCoupleOnlyFromJSONResponse(result);
+        } catch (Throwable t) {
+            Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
+        }
+        return null;
+    }
+    public List<Request> getRequestListFromCoupleOnlyFromJSONResponse(String result) throws JSONException {
+        ArrayList<Request> requests = new ArrayList<>();
+        JSONArray requestsObjectArr = new JSONArray(result);
+        for(int i = 0; i < requestsObjectArr.length(); i++){
+            JSONObject requestJSONObject = requestsObjectArr.getJSONObject(i);
+            if(isRequestFromUser(requestJSONObject)){
+                Request rq = getRequestObjectFromJSONObject(requestJSONObject);
                 requests.add(rq);
             }
-            return requests;
-
-        } catch (Throwable t) {
-            Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
         }
-        return null;
+        return requests;
+    }
+    public boolean isRequestFromUser(JSONObject obj) throws JSONException {
+        double userId = Singleton.getInstance().getId();
+        return userId == obj.getDouble("userId");
     }
 
-
-    public List<Request> getRequestsObjectForCouple(String result) {
-        try {
-            ArrayList<Request> requests = new ArrayList<>();
-            JSONArray requestsObjectArr = new JSONArray(result);
-            double userId = Singleton.getInstance().getId();
-            for(int i = 0; i < requestsObjectArr.length(); i++){
-                JSONObject obj = requestsObjectArr.getJSONObject(i);
-                if(userId == obj.getDouble("userId")){
-                    String address = obj.getString("address");
-                    String description = obj.getString("description");
-                    String type = obj.getString("serviceType");
-                    String title  = obj.getString("title");
-                    double budget = Double.parseDouble(obj.getString("budget"));
-                    long id       = obj.getLong("id");
-                    Request rq = new Request(id,title, description, type, address, budget);
-                    requests.add(rq);
-                }
-            }
-            return requests;
-        } catch (Throwable t) {
-            Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
-        }
-        return null;
-    }
 
 }

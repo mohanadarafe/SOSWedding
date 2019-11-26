@@ -1,21 +1,12 @@
 package com.example.soswedding.ui.all_requests;
 
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,13 +19,8 @@ import com.example.soswedding.model.Singleton;
 import com.example.soswedding.service.RequestsService;
 import com.example.soswedding.ui.CreateRequest.CreateRequestFragment;
 import com.example.soswedding.ui.Request.RequestFragment;
-import com.example.soswedding.ui.SignIn.SignInFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.json.JSONObject;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AllRequestsFragment extends Fragment implements RecyclerViewClickListener {
@@ -89,13 +75,7 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
     }
 
     private void onSuccessReceivedList(String result) {
-        String userType = Singleton.getInstance().getType();
-        if(userType.equalsIgnoreCase("COUPLE")) {
-            requestsList = allRequestViewModel.getRequestsObjectForCouple(result);
-        }
-        else {
-            requestsList = allRequestViewModel.getRequestsObject(result);
-        }
+        requestsList = allRequestViewModel.getDisplayableRequests(result);
         initRecyclerView();
     }
 
@@ -124,7 +104,6 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
     }
 
     private void initRequestRvAdapter() {
-
         mAdapter = new RequestAdapter(getActivity().getApplicationContext(),getActivity(), requestsList, this);
         requestsRv.setAdapter(mAdapter);
     }
