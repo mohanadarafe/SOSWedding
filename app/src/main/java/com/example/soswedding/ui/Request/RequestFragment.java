@@ -36,7 +36,6 @@ public class RequestFragment extends Fragment {
     public Button bidBtn;
     public EditText bidAmountEt;
     private LinearLayout providerBid;
-
     private RequestViewModel mViewModel;
 
     public static RequestFragment newInstance(Request rq) {

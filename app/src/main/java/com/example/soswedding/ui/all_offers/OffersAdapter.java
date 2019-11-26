@@ -33,19 +33,19 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     public static class OffersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
         public TextView title;
-//        public TextView name;
-//        public TextView price; //double or float?
+        public TextView status;
         public TextView description;
         public TextView type;
+        public TextView currentBid;
         public Button seeMoreBtn;
 
         public OffersViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.titleTv);
-//            name = itemView.findViewById(R.id.nameTv);
-//            price = itemView.findViewById(R.id.priceTv);
             description = itemView.findViewById(R.id.descriptionTv);
+            currentBid = itemView.findViewById(R.id.currentBidTv);
             type = itemView.findViewById(R.id.typeTv);
+            status = itemView.findViewById(R.id.statusTv);
             seeMoreBtn = itemView.findViewById(R.id.seeMoreBtn);
 
             seeMoreBtn.setOnClickListener(this);
@@ -77,11 +77,10 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     public void onBindViewHolder(OffersViewHolder holder, int position) {
 
         // needs to be changed to be appropriate
-
         holder.title.setText(offersList.get(position).getTitle());
-        holder.description.setText(offersList.get(position).getDescription());
-        holder.type.setText("Type:"+offersList.get(position).getType());
-
+        holder.description.setText("Description: " + offersList.get(position).getMessage());
+        holder.currentBid.setText("Current Bid: $ "+String.valueOf(offersList.get(position).getAmount()));
+        holder.status.setText("Bid Status: "+offersList.get(position).getStatus());
     }
 
     @Override

@@ -63,10 +63,10 @@ public class BidService {
     }
 }
 
-public static String getAllOffer(Context context, final VolleyCallback callback){
-        //String url = "https://soswedding.herokuapp.com//request/{id}/bid";
-        Request queue = Volley.newRequestQueue(context);
-        StringRequest stringRequest = new StringRequest(Offer.Method.GET, url)
-
-}
+//public static String getAllOffer(Context context, final VolleyCallback callback){
+//        //String url = "https://soswedding.herokuapp.com//request/{id}/bid";
+////        Request queue = Volley.newRequestQueue(context);
+////        StringRequest stringRequest = new StringRequest(Offer.Method.GET, url)
+//
+//}
 }

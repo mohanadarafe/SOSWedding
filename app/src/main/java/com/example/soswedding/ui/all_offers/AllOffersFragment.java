@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.soswedding.Interface.RecyclerViewClickListener;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
-import com.example.soswedding.model.Singleton;
-import com.example.soswedding.service.BidService;
 import com.example.soswedding.ui.Offer.OffersFragment;
 import com.example.soswedding.ui.all_offers.AllOffersViewModel;
 import com.example.soswedding.ui.all_offers.OffersAdapter;
@@ -27,25 +25,22 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
     private AllOffersViewModel allOffersViewModel;
     private RecyclerView offersRv;
     OffersAdapter mAdapter;
-    private List<Offer> offerList;
+    private List<Offer> offersList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_all_offers, container, false);
         setUpViewModel();
         updateOfferList();
-        initComponents(root);
+        initComponents();
         initRecyclerView(root);
 
         return root;
 }
 
-    private void initComponents(View root) {
+    private void initComponents() {
 
-        offersRv = root.findViewById(R.id.offersRv);
-
-
-
+        offersList = allOffersViewModel.getMockupList();
     }
 
     private void updateOfferList() {
@@ -69,13 +64,17 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
     @Override
     public void recyclerViewListClicked(View v, int position) {
 
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("offer", offersList.get(position));
         Fragment fragment = new OffersFragment();
-        OffersFragment.newInstance(offerList.get(position));
+        fragment.setArguments(bundle);
+        OffersFragment.newInstance(offersList.get(position));
         getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
 
     }
+
         private void initOfferRvAdapter() {
-            mAdapter = new OffersAdapter(getActivity().getApplicationContext(),getActivity(), offerList, this);
+            mAdapter = new OffersAdapter(getActivity().getApplicationContext(),getActivity(), offersList, this);
             offersRv.setAdapter(mAdapter);
         }
 
