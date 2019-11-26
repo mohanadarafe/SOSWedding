@@ -63,13 +63,6 @@ public class BidService {
     }
 }
 
-public static String getAllOffer(Context context, final VolleyCallback callback){
-        //String url = "https://soswedding.herokuapp.com//request/{id}/bid";
-        Request queue = Volley.newRequestQueue(context);
-        StringRequest stringRequest = new StringRequest(Offer.Method.GET, url)
-
-}
-
     public static void acceptBid(Context context, final String amount, final long requestID, final long bidId, final VolleyCallback callback) {
         String url = "https://soswedding.herokuapp.com/request/"+ requestID+"/bid/"+bidId+"/accept";
 //        RequestQueue requestQueue = Volley.newRequestQueue(context);
