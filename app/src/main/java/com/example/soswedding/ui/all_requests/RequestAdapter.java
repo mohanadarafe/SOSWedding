@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +25,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
 
     public static class RequestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // each data item is just a string in this case
+        public ImageView logo;
         public TextView title;
         public TextView description;
         public TextView type;
@@ -35,6 +37,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
             description = itemView.findViewById(R.id.requestDescriptionTv);
             type = itemView.findViewById(R.id.typeTv);
             seeMoreBtn = itemView.findViewById(R.id.seeMoreBtn);
+            logo = itemView.findViewById(R.id.serviceLogo);
             seeMoreBtn.setOnClickListener(this);
         }
 
@@ -66,6 +69,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         holder.title.setText(requestsList.get(position).getTitle());
         holder.description.setText(requestsList.get(position).getDescription());
         holder.type.setText("Type: " +requestsList.get(position).getType());
+        holder.logo.setImageResource(R.drawable.alcohol_service);
     }
 
     @Override
