@@ -41,7 +41,6 @@ public class OffersFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        // TODO: Check which Type of User is it.
 
         View root = inflater.inflate(R.layout.offer_fragment, container, false);
         Bundle bundle = getArguments();
@@ -67,7 +66,7 @@ public class OffersFragment extends Fragment {
         descriptionTv.setText("Description: " + offer.getMessage());
         bidAmountEt.setText("Bid Amount: " +offer.getAmount());
         status.setText("Status: " + offer.getStatus());
-        providerName.setText("Provider's Name: " + Singleton.getInstance().getCompanyName());
+        providerName.setText("Provider's Name: " + offer.getCompanyName());
         titleTv.setText(offer.getTitle());
         if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER")))
             coupleBidResponse.setVisibility(View.GONE);
@@ -76,15 +75,19 @@ public class OffersFragment extends Fragment {
             coupleBidResponse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String str = bidAmountEt.getText().toString();
-                    if (str.length() > 0)
-                        mViewModel.acceptBidModel(getContext(), str, offer.getRequestId(),offer.getId());
+                    String acceptedAmount = String.valueOf(offer.getAmount());
+                    if (acceptedAmount != null)
+                        mViewModel.acceptBidModel(getContext(), acceptedAmount, offer.getRequestId(),offer.getId());
+                        //TODO: On success, display Message or update Bid Status on page
                     else {
                         Toast toast = Toast.makeText(getActivity().getApplicationContext(), "You did not enter anything", Toast.LENGTH_SHORT);
-                        toast.show();
+                        toast.show(); //TODO: is this method displaying the error?
                     }
                 }
             });
+
+            //TODO: Connect second button [ DenyOfferBtn ] with its corresponding method
+            // from the backend, See Above
         }
 
 
@@ -94,7 +97,6 @@ public class OffersFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(OffersViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 }

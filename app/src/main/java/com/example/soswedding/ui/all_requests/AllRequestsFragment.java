@@ -67,6 +67,8 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
                             onSuccessReceivedList(result);
                         }
             });
+
+            //TODO : line 81 to line 88 should be here no!?... A.J.U.U
         }else {
             RequestsService.getAllRequests(getContext(), new VolleyCallback() {
                 @Override

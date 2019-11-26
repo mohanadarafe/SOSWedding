@@ -7,24 +7,35 @@ public class Offer implements Serializable {
     private String title;
     private String status;
     private String message;
+    private String companyName;
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
     private long id;
     private long requestId;
     private double amount;
 
-
-    public Offer(String title, String status, String message, long id, long requestId, double amount) {
+    public Offer(String title, String status, String message, String companyName, long requestId, double amount) {
         this.title = title;
         this.status = status;
         this.message = message;
-        this.id = id;
+        this.companyName = companyName;
         this.requestId = requestId;
         this.amount = amount;
     }
 
-    public Offer(String title, String status, String message, long requestId, double amount) {
+    public Offer(String title, String status, String message, String companyName, long id, long requestId, double amount) {
         this.title = title;
         this.status = status;
         this.message = message;
+        this.companyName = companyName;
+        this.id = id;
         this.requestId = requestId;
         this.amount = amount;
     }
