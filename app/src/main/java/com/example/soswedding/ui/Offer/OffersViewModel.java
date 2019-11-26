@@ -12,7 +12,6 @@ import static com.example.soswedding.service.BidService.postBid;
 
 public class OffersViewModel extends ViewModel {
 
-    // TODO: Implement the ViewModel
     public OffersViewModel() {
 
     }
