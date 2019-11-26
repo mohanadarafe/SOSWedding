@@ -77,8 +77,8 @@ public class OffersFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     String str = bidAmountEt.getText().toString();
-                    if (str.length() > 0);
-                        //mViewModel.postBidModel(getContext(), str, request.getId());
+                    if (str.length() > 0)
+                        mViewModel.acceptBidModel(getContext(), str, offer.getRequestId(),offer.getId());
                     else {
                         Toast toast = Toast.makeText(getActivity().getApplicationContext(), "You did not enter anything", Toast.LENGTH_SHORT);
                         toast.show();

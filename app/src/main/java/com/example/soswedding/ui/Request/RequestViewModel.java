@@ -18,7 +18,7 @@ public class RequestViewModel extends ViewModel {
 
     }
     public void postBidModel(Context context,String amount,long requestID){
-        double userID = Singleton.getInstance().getId();
+        double userID = Singleton.getInstance().getId(); //never used...
         postBid(context,amount,requestID, new VolleyCallback() {
             @Override
             public void onSuccess(String result) {

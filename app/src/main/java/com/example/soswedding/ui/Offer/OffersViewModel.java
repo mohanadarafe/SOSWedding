@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.model.Singleton;
 
-import static com.example.soswedding.service.BidService.postBid;
+import static com.example.soswedding.service.BidService.acceptBid;
 
 public class OffersViewModel extends ViewModel {
 
@@ -17,4 +17,12 @@ public class OffersViewModel extends ViewModel {
 
     }
 
+    public void acceptBidModel(Context context,String amount,long requestID, long bidId){
+        acceptBid(context, amount, requestID, bidId, new VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+                Log.e("My App", "SUCCESS!");
+            }
+        });
+    }
 }
