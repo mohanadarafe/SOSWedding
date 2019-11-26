@@ -1,58 +1,121 @@
 package com.example.soswedding.model;
 
-public class Offer {
+import java.io.Serializable;
 
-    private String title;
-    private String description;
-    private String type; // not sure for the type
-    private String uID;
-    private double budget;
+public class Offer implements Serializable {
 
-    public Offer(String title, String description, String type, double budget) {
+    private long id;
+    private double amount;
+    private String message;
+    private String status;
+    private String providerUuid;
+    private String coupleUuid;
+    private long requestId;
+    //private String companyName;
+    // private String title;
 
-        this.title = title;
-        this.description = description;
-        this.type = type;
-        this.budget = budget;
+    public Offer(Double amount, String message, String status, String providerUuid, String coupleUuid, Long requestId) {
+        this.amount = amount;
+        this.message = message;
+        this.status = status;
+        this.providerUuid = providerUuid;
+        this.coupleUuid = coupleUuid;
+        this.requestId = requestId;
     }
 
-    public double getBudget() {
-        return budget;
+
+    public Offer(Long id, Double amount, String message, String status, String providerUuid, String coupleUuid, Long requestId) {
+        this.id = id;
+        this.amount = amount;
+        this.message = message;
+        this.status = status;
+        this.providerUuid = providerUuid;
+        this.coupleUuid = coupleUuid;
+        this.requestId = requestId;
     }
 
-    public void setBudget(double budget) {
-        this.budget = budget;
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
+
+    public String getStatus() {
+        return status;
     }
 
-    public String getTitle() {
-        return title;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getMessage() {
+        return message;
     }
 
-    public String getDescription() {
-        return description;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public long getId() {
+        return id;
     }
 
-    public String getType() {
-        return type;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public long getRequestId() {
+        return requestId;
     }
 
-    public String getuID() {
-        return uID;
+    public void setRequestId(long requestId) {
+        this.requestId = requestId;
     }
 
-    public void setuID(String uID) {
-        this.uID = uID;
+    public double getAmount() {
+        return amount;
     }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public String getProviderUuid() {
+        return providerUuid;
+    }
+
+    public void setProviderUuid(String providerUuid) {
+        this.providerUuid = providerUuid;
+    }
+
+    public String getCoupleUuid() {
+        return coupleUuid;
+    }
+
+    public void setCoupleUuid(String coupleUuid) {
+        this.coupleUuid = coupleUuid;
+    }
+
+    public void setRequestId(Long requestId) {
+        this.requestId = requestId;
+    }
+
+    /*public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }*/
+
 }
