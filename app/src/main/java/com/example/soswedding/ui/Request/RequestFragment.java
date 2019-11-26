@@ -26,7 +26,6 @@ import com.example.soswedding.service.RequestsService;
 
 public class RequestFragment extends Fragment {
     public Request request;
-
     public TextView typeTv;
     public TextView budgetTv;
     public TextView descriptionTv;
@@ -48,7 +47,7 @@ public class RequestFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.request_fragment, container, false);
         Bundle bundle = getArguments();
-        request= (Request) bundle.getSerializable("request");
+        request = (Request) bundle.getSerializable("request");
         initComponent(root);
         return root;
     }

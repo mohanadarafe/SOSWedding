@@ -4,38 +4,43 @@ import java.io.Serializable;
 
 public class Offer implements Serializable {
 
-    private String title;
-    private String status;
-    private String message;
     private long id;
-    private long requestId;
     private double amount;
+    private String message;
+    private String status;
+    private String providerUuid;
+    private String coupleUuid;
+    private long requestId;
+    //private String companyName;
+    // private String title;
 
-
-    public Offer(String title, String status, String message, long id, long requestId, double amount) {
-        this.title = title;
-        this.status = status;
+    public Offer(Double amount, String message, String status, String providerUuid, String coupleUuid, Long requestId) {
+        this.amount = amount;
         this.message = message;
+        this.status = status;
+        this.providerUuid = providerUuid;
+        this.coupleUuid = coupleUuid;
+        this.requestId = requestId;
+    }
+
+
+    public Offer(Long id, Double amount, String message, String status, String providerUuid, String coupleUuid, Long requestId) {
         this.id = id;
-        this.requestId = requestId;
         this.amount = amount;
-    }
-
-    public Offer(String title, String status, String message, long requestId, double amount) {
-        this.title = title;
-        this.status = status;
         this.message = message;
+        this.status = status;
+        this.providerUuid = providerUuid;
+        this.coupleUuid = coupleUuid;
         this.requestId = requestId;
-        this.amount = amount;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
 
     public String getStatus() {
         return status;
@@ -76,4 +81,41 @@ public class Offer implements Serializable {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public String getProviderUuid() {
+        return providerUuid;
+    }
+
+    public void setProviderUuid(String providerUuid) {
+        this.providerUuid = providerUuid;
+    }
+
+    public String getCoupleUuid() {
+        return coupleUuid;
+    }
+
+    public void setCoupleUuid(String coupleUuid) {
+        this.coupleUuid = coupleUuid;
+    }
+
+    public void setRequestId(Long requestId) {
+        this.requestId = requestId;
+    }
+
+    /*public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }*/
+
 }

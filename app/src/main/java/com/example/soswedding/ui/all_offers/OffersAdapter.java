@@ -77,7 +77,7 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     public void onBindViewHolder(OffersViewHolder holder, int position) {
 
         // needs to be changed to be appropriate
-        holder.title.setText(offersList.get(position).getTitle());
+        holder.title.setText("TEST_TITLE");
         holder.description.setText("Description: " + offersList.get(position).getMessage());
         holder.currentBid.setText("Current Bid: $ "+String.valueOf(offersList.get(position).getAmount()));
         holder.status.setText("Bid Status: "+offersList.get(position).getStatus());

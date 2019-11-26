@@ -12,8 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.soswedding.Interface.RecyclerViewClickListener;
+import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
+import com.example.soswedding.model.Singleton;
+import com.example.soswedding.model.User;
+import com.example.soswedding.service.RequestsService;
+import com.example.soswedding.service.BidService;
+import com.example.soswedding.ui.CreateRequest.CreateRequestFragment;
 import com.example.soswedding.ui.Offer.OffersFragment;
 import com.example.soswedding.ui.all_offers.AllOffersViewModel;
 import com.example.soswedding.ui.all_offers.OffersAdapter;
@@ -32,15 +38,45 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
         View root = inflater.inflate(R.layout.fragment_all_offers, container, false);
         setUpViewModel();
         updateOfferList();
-        initComponents();
-        initRecyclerView(root);
-
+        initComponents(root);
+        //initComponent();
         return root;
 }
 
-    private void initComponents() {
+    private void initComponent() {
 
-        offersList = allOffersViewModel.getMockupList();
+        //offersList = allOffersViewModel.getMockupList();
+    }
+
+    private void initComponents(View root) {
+        offersRv = root.findViewById(R.id.offersRv);
+        if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER"))){
+            BidService.getOffersOfUser(getContext(), Singleton.getInstance().getUuid(),
+            new VolleyCallback(){
+                @Override
+                public void onSuccess(String result){
+                    onSuccessReceivedList(result);
+                }
+            });
+        }
+        else{}
+    }
+
+    private void onSuccessReceivedList(String result) {
+        String userType = Singleton.getInstance().getType();
+        if(userType.equalsIgnoreCase("COUPLE")) {
+            //TODO: Call the method to retrieve a list of offers - Couples perspective
+            offersList = allOffersViewModel.getOffersObjectForCouple(result);
+            //offersList = allOffersViewModel.getMockupList();
+        }
+        else {
+            //TODO: Call the method to retrieve a list of offers - Providers perspective
+            offersList = allOffersViewModel.getOffersObject(result);
+           // offersList = allOffersViewModel.getMockupList();
+
+
+        }
+        initRecyclerView();
     }
 
     private void updateOfferList() {
@@ -53,8 +89,7 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
     }
 
 
-    private void initRecyclerView(View root){
-        offersRv = root.findViewById(R.id.offersRv);
+    private void initRecyclerView(){
         offersRv.setHasFixedSize(true);
         offersRv.getRecycledViewPool().setMaxRecycledViews(0, 0);
         offersRv.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
