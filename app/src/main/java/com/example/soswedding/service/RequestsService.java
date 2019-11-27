@@ -23,7 +23,6 @@ import java.util.Map;
 
 public class RequestsService {
 
-
     static String getAllRequestsResult;
 
     public static void postRequest(Context context, com.example.soswedding.model.Request rq) {
@@ -34,7 +33,7 @@ public class RequestsService {
             jsonBody.put("title", rq.getTitle());
             jsonBody.put("description", rq.getDescription());
             jsonBody.put("serviceType", rq.getType());
-            jsonBody.put("userId", Singleton.getInstance().getId());
+            jsonBody.put("coupleUuid", Singleton.getInstance().getUuid());
             jsonBody.put("budget", rq.getBudget());
             jsonBody.put("address", rq.getAddress());
 
@@ -85,9 +84,8 @@ public class RequestsService {
         return getAllRequestsResult;
     }
 
-    public static void getRequestsOfUser(Context context, double userId, final VolleyCallback callback){
-        int temp = (int)userId;
-        String url = "https://soswedding.herokuapp.com/request/user/"+temp;
+    public static void getRequestsOfUser(Context context, String userUuid, final VolleyCallback callback){
+        String url = "https://soswedding.herokuapp.com/request/user/"+userUuid;
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

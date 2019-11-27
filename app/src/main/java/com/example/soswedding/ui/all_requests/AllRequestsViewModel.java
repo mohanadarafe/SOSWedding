@@ -55,8 +55,7 @@ public class AllRequestsViewModel extends ViewModel {
         double budget = Double.parseDouble(requestJSONObject.getString("budget"));
         String title = requestJSONObject.getString("title");
         long id       = requestJSONObject.getLong("id");
-
-        return new Request(id, title, description, type, address, budget);
+        return new Request(id, title, description, type, address, budget,Singleton.getInstance().getUuid());
     }
 
 
@@ -81,8 +80,8 @@ public class AllRequestsViewModel extends ViewModel {
         return requests;
     }
     public boolean isRequestFromUser(JSONObject obj) throws JSONException {
-        double userId = Singleton.getInstance().getId();
-        return userId == obj.getDouble("userId");
+        String userUid = Singleton.getInstance().getUuid();
+        return userUid.equalsIgnoreCase(obj.getString("coupleUuid"));
     }
 
 }

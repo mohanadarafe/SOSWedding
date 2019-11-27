@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
+import com.example.soswedding.model.Singleton;
 
 public class CreateRequestFragment extends Fragment {
 
@@ -81,7 +82,7 @@ public class CreateRequestFragment extends Fragment {
                 address.length() > 0 &&
                 description.length() > 0 &&
                 budget > 0){
-            Request request = new Request(title, description, type, address, budget);
+            Request request = new Request(title, description, type, address, budget, Singleton.getInstance().getUuid());
             mViewModel.createRequest(getContext(), request);
         }
         else {
