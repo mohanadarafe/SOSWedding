@@ -12,6 +12,8 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class AllRequestsVmTests {
 
@@ -33,7 +35,24 @@ public class AllRequestsVmTests {
         assertEquals(rq.get(0).getDescription(), "test");
 
     }
+    @Test
+    public void getDisplayableRequestsTestCouple(){
 
+    }
+    @Test
+    public void getDisplayableRequestsTestProvider(){
+
+    }
+    @Test
+    public void isUserACoupleFalse(){
+        Boolean result = viewModel.isUserACouple("PROVIDER");
+        assertFalse(result);
+    }
+    @Test
+    public void isUserACoupleTrue(){
+        Boolean result = viewModel.isUserACouple("COUPLE");
+        assertTrue(result);
+    }
     public String mockJsonRequest(){
         JSONArray array = new JSONArray();
         JSONObject item = new JSONObject();
