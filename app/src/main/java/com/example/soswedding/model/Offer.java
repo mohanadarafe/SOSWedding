@@ -24,7 +24,7 @@ public class Offer implements Serializable {
     }
 
 
-    public Offer(Long id, Double amount, String message, String status, String providerUuid, String coupleUuid, Long requestId) {
+    public Offer(long id, Double amount, String message, String status, String providerUuid, String coupleUuid, Long requestId) {
         this.id = id;
         this.amount = amount;
         this.message = message;

@@ -19,8 +19,8 @@ public class OffersViewModel extends ViewModel {
 
     }
 
-    public void acceptBidModel(Context context,String amount,long requestID, long bidId) {
-        acceptBid(context, amount, requestID, bidId, new VolleyCallback() {
+    public void acceptBidModel(Context context,long requestID, long bidId) {
+        acceptBid(context, requestID, bidId, new VolleyCallback() {
             @Override
             public void onSuccess(String result) {
                 Log.e("My App", "SUCCESS!");
@@ -29,8 +29,8 @@ public class OffersViewModel extends ViewModel {
 
     }
 
-public void declineBidModel(Context context,String amount, long bidId){
-    declineBid(context, amount, bidId, new VolleyCallback() {
+public void declineBidModel(Context context, long bidId){
+    declineBid(context, bidId, new VolleyCallback() {
         @Override
         public void onSuccess(String result) {
             Log.e("My App", "SUCCESS!");

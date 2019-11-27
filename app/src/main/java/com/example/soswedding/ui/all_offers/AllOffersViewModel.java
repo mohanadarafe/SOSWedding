@@ -43,15 +43,18 @@ public class AllOffersViewModel extends ViewModel {
             JSONArray offersObjectArr = new JSONArray(result);
             for(int i = 0; i < offersObjectArr.length(); i++){
                 JSONObject obj = offersObjectArr.getJSONObject(i);
-                long id = obj.getLong("id");
-                double amount = obj.getDouble("amount");
-                String message = obj.getString("message");
-                String status = obj.getString("status");
-                String providerUuid = obj.getString("providerUuid");
-                String coupleUuid = obj.getString("coupleUuid");
-                long requestId = obj.getLong("requestId");
-                Offer of = new Offer(id,amount,message,status,providerUuid, coupleUuid, requestId);
-                offers.add(of);
+                if(Singleton.getInstance().getUuid().equalsIgnoreCase(obj.getString("providerUuid"))){
+                    long id = obj.getLong("id");
+                    double amount = obj.getDouble("amount");
+                    String message = obj.getString("message");
+                    String status = obj.getString("status");
+                    String providerUuid = obj.getString("providerUuid");
+                    String coupleUuid = obj.getString("coupleUuid");
+                    long requestId = obj.getLong("requestId");
+                    Offer of = new Offer(id,amount,message,status,providerUuid, coupleUuid, requestId);
+                    offers.add(of);
+                }
+
             }
             return offers;
 
@@ -65,18 +68,17 @@ public class AllOffersViewModel extends ViewModel {
          try {
         ArrayList<Offer> offers = new ArrayList<>();
         JSONArray offerObjectArr = new JSONArray(result);
-        double userId = Singleton.getInstance().getId();
+        String userUuid = Singleton.getInstance().getUuid();
         for(int i = 0; i < offerObjectArr.length(); i++){
             JSONObject obj = offerObjectArr.getJSONObject(i);
-            if( userId == obj.getDouble("userId")){
-            long id = obj.getLong("id");
+            if( userUuid.equalsIgnoreCase(obj.getString("coupleUuid"))){
             double amount = obj.getDouble("amount");
             String message = obj.getString("message");
             String status = obj.getString("status");
             String providerUuid = obj.getString("providerUuid");
             String coupleUuid = obj.getString("coupleUuid");
             long requestId = obj.getLong("requestId");
-            Offer of = new Offer(id,amount,message,status,providerUuid, coupleUuid, requestId);
+            Offer of = new Offer(amount,message,status,providerUuid, coupleUuid, requestId);
             offers.add(of);
         }}
         return offers;
