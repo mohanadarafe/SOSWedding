@@ -58,6 +58,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         //        public Button seeMoreBtn;
         private TextView budget;
 
+
         public RequestViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.titleTv);
