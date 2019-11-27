@@ -5,8 +5,7 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E53E3E"
-    tools:context=".ui.SignIn.SignInFragment" >
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -27,27 +26,34 @@
             android:contentDescription="logo of the app"
             android:src="@drawable/logo" />
 
-        <EditText
-            android:id="@+id/emailInput"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:importantForAutofill="no"
-            android:inputType="textEmailAddress"
-            android:textColor="#F1FAEE"
-            android:textColorHint="#F1FAEE" />
+            android:layout_marginBottom="10dip"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/passwordInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textColor="#F1FAEE"
-            android:textColorHint="#F1FAEE" />
+            <EditText
+                android:id="@+id/emailInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Email"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:textColor="#F1FAEE"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <EditText
+                android:id="@+id/passwordInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="#F1FAEE"
+                android:textColorHint="@android:color/darker_gray" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/loginBtn"
@@ -75,7 +81,8 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:text="Forgot my password?"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray" />
 
     </LinearLayout>
 

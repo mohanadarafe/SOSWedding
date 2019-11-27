@@ -85,5 +85,4 @@ public class AllRequestsViewModel extends ViewModel {
         return userId == obj.getDouble("userId");
     }
 
-
 }

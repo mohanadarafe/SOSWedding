@@ -5,12 +5,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.soswedding.Interface.RecyclerViewClickListener;
+
+import com.example.soswedding.Interface.OnItemClickListener;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
 
@@ -20,34 +20,9 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     public static  Context context;
     public static Activity myActivity;
     private List<Request> requestsList;
-    private static RecyclerViewClickListener itemListener;
+    private static OnItemClickListener itemListener;
 
-
-    public static class RequestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        // each data item is just a string in this case
-        public ImageView logo;
-        public TextView title;
-        public TextView description;
-        public TextView type;
-        public Button seeMoreBtn;
-
-        public RequestViewHolder(View itemView) {
-            super(itemView);
-            title = itemView.findViewById(R.id.titleTv);
-            description = itemView.findViewById(R.id.requestDescriptionTv);
-            type = itemView.findViewById(R.id.typeTv);
-            seeMoreBtn = itemView.findViewById(R.id.seeMoreBtn);
-            logo = itemView.findViewById(R.id.serviceLogo);
-            seeMoreBtn.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            itemListener.recyclerViewListClicked(view, this.getLayoutPosition());
-        }
-    }
-
-    public RequestAdapter(Context context, Activity activity, List<Request> requestsList, RecyclerViewClickListener itemListener) {
+    public RequestAdapter(Context context, Activity activity, List<Request> requestsList, OnItemClickListener itemListener) {
         this.context = context;
         this.myActivity = activity;
         this.requestsList = requestsList;
@@ -66,14 +41,64 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     @Override
     public void onBindViewHolder(RequestViewHolder holder, int position) {
 
-        holder.title.setText(requestsList.get(position).getTitle());
-        holder.description.setText(requestsList.get(position).getDescription());
-        holder.type.setText("Type: " +requestsList.get(position).getType());
-        holder.logo.setImageResource(R.drawable.alcohol_service);
+        holder.bind(requestsList.get(position), itemListener);
+
     }
 
     @Override
     public int getItemCount() {
         return requestsList.size();
+    }
+
+    public static class RequestViewHolder extends RecyclerView.ViewHolder{
+        // each data item is just a string in this case
+        public ImageView logo;
+        public TextView title;
+        public TextView type;
+        //        public Button seeMoreBtn;
+        private TextView budget;
+
+        public RequestViewHolder(View itemView) {
+            super(itemView);
+            title = itemView.findViewById(R.id.titleTv);
+            type = itemView.findViewById(R.id.typeTv);
+            budget = itemView.findViewById(R.id.allRequestBudgetTv);
+            logo = itemView.findViewById(R.id.serviceLogo);
+        }
+
+        public void bind(final Request item, final OnItemClickListener listener) {
+            title.setText(item.getTitle());
+            budget.setText("Budget: "+item.getBudget());
+            type.setText("Type: " + item.getType());
+            getImageId(item);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
+        }
+        public void getImageId(Request request){
+            switch(request.getType()){
+                case "DANCE" : logo.setImageResource(R.drawable.dance_service);
+                break;
+                case "BAKER" : logo.setImageResource(R.drawable.cake_service);
+                    break;
+                case "CAR" : logo.setImageResource(R.drawable.car_service);
+                    break;
+                case "RECEPTION" : logo.setImageResource(R.drawable.reception_service);
+                    break;
+                case "ALCOHOL" : logo.setImageResource(R.drawable.alcohol_service);
+                    break;
+                case "CATERING" : logo.setImageResource(R.drawable.catering_service);
+                    break;
+                case "MUSIC" : logo.setImageResource(R.drawable.music_service);
+                    break;
+                case "FLORIST" : logo.setImageResource(R.drawable.flower_service);
+                    break;
+                case "PHOTOGRAPHER" : logo.setImageResource(R.drawable.photographer_service);
+                    break;
+
+            }
+        }
     }
 }

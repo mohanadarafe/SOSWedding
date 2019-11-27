@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,7 @@ public class RequestFragment extends Fragment {
     public TextView titleTv;
     public Button bidBtn;
     public EditText bidAmountEt;
+    private ImageView requestServiceImage;
     private LinearLayout providerBid;
 
     private RequestViewModel mViewModel;
@@ -64,6 +66,7 @@ public class RequestFragment extends Fragment {
         bidAmountEt = root.findViewById(R.id.bidAmountEt);
         titleTv = root.findViewById(R.id.requestTitle);
         providerBid = root.findViewById(R.id.providerBid);
+        requestServiceImage = root.findViewById(R.id.requestServiceImage);
         fillComponent();
     }
     public void fillComponent(){
@@ -90,6 +93,27 @@ public class RequestFragment extends Fragment {
             }
         });
 
+        switch(request.getType()){
+            case "DANCE" : requestServiceImage.setImageResource(R.drawable.dance_service);
+                break;
+            case "BAKER" : requestServiceImage.setImageResource(R.drawable.cake_service);
+                break;
+            case "CAR" : requestServiceImage.setImageResource(R.drawable.car_service);
+                break;
+            case "RECEPTION" : requestServiceImage.setImageResource(R.drawable.reception_service);
+                break;
+            case "ALCOHOL" : requestServiceImage.setImageResource(R.drawable.alcohol_service);
+                break;
+            case "CATERING" : requestServiceImage.setImageResource(R.drawable.catering_service);
+                break;
+            case "MUSIC" : requestServiceImage.setImageResource(R.drawable.music_service);
+                break;
+            case "FLORIST" : requestServiceImage.setImageResource(R.drawable.flower_service);
+                break;
+            case "PHOTOGRAPHER" : requestServiceImage.setImageResource(R.drawable.photographer_service);
+                break;
+
+        }
 
 
     }

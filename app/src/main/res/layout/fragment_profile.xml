@@ -4,93 +4,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#434343">
+    android:background="@android:color/white">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="40dp"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/descriptionTv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="45px"
-            android:text="Welcome"
-            android:textColor="@android:color/white"
-            android:textSize="36sp" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/welcomeTv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="45px"
+                android:gravity="center_horizontal"
+                android:text="Welcome,"
+                android:textColor="@android:color/black"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/profileNameTv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dip"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/user_name"
+                android:textColor="@android:color/black"
+                android:textSize="36sp" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/profileImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="30dip"
                 android:layout_weight="1"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:adjustViewBounds="true"
+                android:background="@drawable/button_border"
+                android:maxWidth="200dip"
+                android:maxHeight="200dip"
+                tools:srcCompat="@drawable/couple_profile_two" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView4"
+                <Button
+                    android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Age:"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/button_smooth_border"
+                    android:text="Update Profile"
                     android:textColor="@android:color/white" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/EmailTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
                     android:layout_weight="1"
-                    android:text="User Name:"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
                     android:text="Date Joined"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/black"
+                    android:textSize="15dip"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/phoneNumberTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
                     android:layout_weight="1"
+                    android:gravity="center_horizontal"
                     android:text="Requests made:"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/black"
+                    android:textSize="15dip"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/providerTypeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dip"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Type of service offered:"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dip"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/profileCompanyTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:gravity="center_horizontal"
+                    android:text="Company:"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dip"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="40dip"
+                android:paddingTop="10dip"
+                android:paddingRight="40dip"
+                android:text="Only your name and profile photo will be displayed on your public profile." />
+
         </LinearLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="45px"
-            android:layout_weight="1"
-            android:text="News for you:"
-            android:textColor="@android:color/white"
-            android:textSize="36sp" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

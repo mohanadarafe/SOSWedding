@@ -4,4 +4,5 @@
     <string name="title_profile">My Profile</string>
     <string name="title_all_offers">My Offers</string>
     <string name="title_all_requests">All Requests</string>
+    <string name="user_name">User Name:</string>
 </resources>
