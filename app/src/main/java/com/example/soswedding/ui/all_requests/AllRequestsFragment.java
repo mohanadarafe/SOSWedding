@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.soswedding.Interface.OnRequestItemClickListener;
+import com.example.soswedding.Interface.RecyclerViewClickListener;
 import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
@@ -23,7 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class AllRequestsFragment extends Fragment implements OnRequestItemClickListener {
+public class AllRequestsFragment extends Fragment implements OnRequestItemClickListener{
 
     private AllRequestsViewModel allRequestViewModel;
     private RecyclerView requestsRv;
@@ -60,7 +61,7 @@ public class AllRequestsFragment extends Fragment implements OnRequestItemClickL
             @Override
             public void onClick(View view) {
                 Fragment fragment = new CreateRequestFragment();
-                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
+                getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
             }
         });
     }
@@ -96,6 +97,6 @@ public class AllRequestsFragment extends Fragment implements OnRequestItemClickL
         Fragment fragment = new RequestFragment();
         fragment.setArguments(bundle);
         RequestFragment.newInstance(item);
-        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
     }
 }

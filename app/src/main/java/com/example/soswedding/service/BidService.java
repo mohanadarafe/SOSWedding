@@ -12,8 +12,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.soswedding.Interface.VolleyCallback;
-import com.example.soswedding.model.Offer;
-import com.example.soswedding.model.Singleton;
 import com.example.soswedding.model.User;
 
 import org.json.JSONException;
@@ -23,18 +21,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BidService {
-    public static void postBid(Context context, final String amount, final com.example.soswedding.model.Request request, final User user, final VolleyCallback callback) {
+    public static void postBid(Context context, JSONObject jsonBody ,final VolleyCallback callback) {
         String url = "https://soswedding.herokuapp.com/bid";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
-        try {
-            JSONObject jsonBody = new JSONObject();
-            jsonBody.put("amount", Double.parseDouble(amount));
-            jsonBody.put("message", "Hello WORLD REMIND HAMPIC TO CHANG THIS");
-            jsonBody.put("status", "PENDING");
-            jsonBody.put("providerUuid", user.getUuid());
-            jsonBody.put("coupleUuid",request.getuID());
-            jsonBody.put("requestId", request.getId());
-
             JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url,jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -59,11 +48,8 @@ public class BidService {
 
             requestQueue.add(stringRequest);
         }
-     catch( JSONException e)
-    {
-        e.printStackTrace();
-    }
-}
+
+
 
     public static void acceptBid(Context context, final long requestID, final long bidId, final VolleyCallback callback) {
         String url = "https://soswedding.herokuapp.com/request/"+ requestID+"/bid/"+bidId+"/accept";

@@ -6,9 +6,9 @@ import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.model.Singleton;
 import static com.example.soswedding.service.BidService.acceptBid;
 import static com.example.soswedding.service.BidService.declineBid;
-public class OfferViewModel extends ViewModel {
+public class OffersViewModel extends ViewModel {
     // TODO: Implement the ViewModel
-    public OfferViewModel() {
+    public OffersViewModel() {
     }
     public void acceptBidModel(Context context,long requestID, long bidId) {
         acceptBid(context, requestID, bidId, new VolleyCallback() {

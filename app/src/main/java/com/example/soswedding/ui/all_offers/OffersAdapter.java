@@ -5,7 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.example.soswedding.model.Singleton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,7 +46,7 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
             title.setText(item.getRequestTitle());
             currentBid.setText("Current Bid: $ "+String.valueOf(item.getAmount()));
             status.setText("Bid Status: "+item.getStatus());
-                auctionLogo.setImageResource(R.drawable.auction);
+
             this.setStatusLabelStyle(this, item.getStatus());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
@@ -60,12 +60,21 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
             switch (status){
                 case "PENDING":
                     holder.status.setTextAppearance(R.style.statusPending);
+                    if(Singleton.getInstance().getType().equalsIgnoreCase("COUPLE")) {
+                    holder.auctionLogo.setImageResource(R.drawable.speech_bubble);
+                    }
+                    else{
+                        holder.auctionLogo.setImageResource(R.drawable.wall_clock);
+                    }
                     break;
                 case "DECLINED":
                     holder.status.setTextAppearance(R.style.statusDeclined);
+                    auctionLogo.setImageResource(R.drawable.cancel);
+
                     break;
                 case "ACCEPTED":
                     holder.status.setTextAppearance(R.style.statusAccepted);
+                    auctionLogo.setImageResource(R.drawable.accept);
                     break;
             }
         }

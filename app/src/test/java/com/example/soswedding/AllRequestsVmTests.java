@@ -50,6 +50,15 @@ public class AllRequestsVmTests {
         assertTrue(requests.isEmpty());
     }
     @Test
+    public void getDisplayableRequestsTestCoupleOneRequests(){
+
+        Singleton.getInstance().setType("COUPLE");
+        Singleton.getInstance().setUuid("1");
+        ArrayList<Request> requests;
+        requests = (ArrayList<Request>) viewModel.getDisplayableRequests(mockJsonRequest());
+        assertFalse(requests.isEmpty());
+    }
+    @Test
     public void getDisplayableRequestsTestProviderOneRequests(){
         Singleton.getInstance().setType("PROVIDER");
         Singleton.getInstance().setUuid("2");
