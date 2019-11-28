@@ -113,7 +113,12 @@ public class OffersFragment extends Fragment {
                 statusDetailTv.setTextAppearance(R.style.statusAccepted);
                 break;
             case "PENDING":
-                offerServiceImage.setImageResource(R.drawable.speech_bubble);
+                if(Singleton.getInstance().getType().equalsIgnoreCase("COUPLE")) {
+                    offerServiceImage.setImageResource(R.drawable.speech_bubble);
+                }
+                else{
+                    offerServiceImage.setImageResource(R.drawable.wall_clock);
+                }
                 statusDetailTv.setTextAppearance(R.style.statusPending);
                 break;
         }

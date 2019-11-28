@@ -5,7 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.example.soswedding.model.Singleton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -60,7 +60,12 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
             switch (status){
                 case "PENDING":
                     holder.status.setTextAppearance(R.style.statusPending);
+                    if(Singleton.getInstance().getType().equalsIgnoreCase("COUPLE")) {
                     holder.auctionLogo.setImageResource(R.drawable.speech_bubble);
+                    }
+                    else{
+                        holder.auctionLogo.setImageResource(R.drawable.wall_clock);
+                    }
                     break;
                 case "DECLINED":
                     holder.status.setTextAppearance(R.style.statusDeclined);
