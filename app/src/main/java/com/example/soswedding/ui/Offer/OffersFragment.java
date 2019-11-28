@@ -66,8 +66,8 @@ public class OffersFragment extends Fragment {
         descriptionTv.setText("Description: " + offer.getMessage());
         bidAmountEt.setText("Bid Amount: " +offer.getAmount());
         status.setText("Status: " + offer.getStatus());
-        providerName.setText("Provider's Name: TEST");
-        titleTv.setText("Request Name: TEST");
+        providerName.setText("Provider's Name:"+offer.getCompanyName());
+        titleTv.setText("Request Name:"+offer.getRequestTitle());
         if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER")))
             coupleBidResponse.setVisibility(View.GONE);
         else {

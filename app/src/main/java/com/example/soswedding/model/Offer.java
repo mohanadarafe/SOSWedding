@@ -11,20 +11,10 @@ public class Offer implements Serializable {
     private String providerUuid;
     private String coupleUuid;
     private long requestId;
-    //private String companyName;
-    // private String title;
+    private String companyName;
+    private String requestTitle;
 
-    public Offer(Double amount, String message, String status, String providerUuid, String coupleUuid, Long requestId) {
-        this.amount = amount;
-        this.message = message;
-        this.status = status;
-        this.providerUuid = providerUuid;
-        this.coupleUuid = coupleUuid;
-        this.requestId = requestId;
-    }
-
-
-    public Offer(long id, Double amount, String message, String status, String providerUuid, String coupleUuid, Long requestId) {
+    public Offer(long id, double amount, String message, String status, String providerUuid, String coupleUuid, long requestId, String companyName, String requestTitle) {
         this.id = id;
         this.amount = amount;
         this.message = message;
@@ -32,9 +22,42 @@ public class Offer implements Serializable {
         this.providerUuid = providerUuid;
         this.coupleUuid = coupleUuid;
         this.requestId = requestId;
+        this.companyName = companyName;
+        this.requestTitle = requestTitle;
     }
 
-//    public String getTitle() {
+    public Offer(double amount, String message, String status, String providerUuid, String coupleUuid, long requestId, String companyName, String requestTitle) {
+        this.amount = amount;
+        this.message = message;
+        this.status = status;
+        this.providerUuid = providerUuid;
+        this.coupleUuid = coupleUuid;
+        this.requestId = requestId;
+        this.companyName = companyName;
+        this.requestTitle = requestTitle;
+    }
+
+    public Offer(long id) {
+        this.id = id;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getRequestTitle() {
+        return requestTitle;
+    }
+
+    public void setRequestTitle(String requestTitle) {
+        this.requestTitle = requestTitle;
+    }
+
+    //    public String getTitle() {
 //        return title;
 //    }
 //

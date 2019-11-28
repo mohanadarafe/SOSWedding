@@ -51,7 +51,10 @@ public class AllOffersViewModel extends ViewModel {
                     String providerUuid = obj.getString("providerUuid");
                     String coupleUuid = obj.getString("coupleUuid");
                     long requestId = obj.getLong("requestId");
-                    Offer of = new Offer(id,amount,message,status,providerUuid, coupleUuid, requestId);
+                    String companyName = obj.getString("companyName");
+                    String requestTitle = obj.getString("requestTitle");
+
+                    Offer of = new Offer(id,amount,message,status,providerUuid, coupleUuid, requestId,companyName, requestTitle);
                     offers.add(of);
                 }
 
@@ -65,26 +68,30 @@ public class AllOffersViewModel extends ViewModel {
     }
 
     public List<Offer> getOffersObjectForCouple(String result){
-         try {
-        ArrayList<Offer> offers = new ArrayList<>();
-        JSONArray offerObjectArr = new JSONArray(result);
-        String userUuid = Singleton.getInstance().getUuid();
-        for(int i = 0; i < offerObjectArr.length(); i++){
-            JSONObject obj = offerObjectArr.getJSONObject(i);
-            if( userUuid.equalsIgnoreCase(obj.getString("coupleUuid"))){
-            double amount = obj.getDouble("amount");
-            String message = obj.getString("message");
-            String status = obj.getString("status");
-            String providerUuid = obj.getString("providerUuid");
-            String coupleUuid = obj.getString("coupleUuid");
-            long requestId = obj.getLong("requestId");
-            Offer of = new Offer(amount,message,status,providerUuid, coupleUuid, requestId);
-            offers.add(of);
-        }}
-        return offers;
-    } catch (Throwable t) {
-        Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
-    }
+        try {
+            ArrayList<Offer> offers = new ArrayList<>();
+            JSONArray offerObjectArr = new JSONArray(result);
+            String userUuid = Singleton.getInstance().getUuid();
+            for(int i = 0; i < offerObjectArr.length(); i++){
+                JSONObject obj = offerObjectArr.getJSONObject(i);
+                if( userUuid.equalsIgnoreCase(obj.getString("coupleUuid"))){
+                    long id = obj.getLong("id");
+                    double amount = obj.getDouble("amount");
+                    String message = obj.getString("message");
+                    String status = obj.getString("status");
+                    String providerUuid = obj.getString("providerUuid");
+                    String coupleUuid = obj.getString("coupleUuid");
+                    long requestId = obj.getLong("requestId");
+                    String companyName = obj.getString("companyName");
+                    String requestTitle = obj.getString("requestTitle");
+
+                    Offer of = new Offer(id,amount,message,status,providerUuid, coupleUuid, requestId,companyName, requestTitle);
+                    offers.add(of);
+                }}
+            return offers;
+        } catch (Throwable t) {
+            Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
+        }
         return null;
-}
+    }
 }
