@@ -14,7 +14,9 @@
         android:outlineAmbientShadowColor="@android:color/darker_gray"
         android:outlineSpotShadowColor="@android:color/darker_gray"
         android:paddingLeft="20dp"
+        android:paddingTop="10dip"
         android:paddingRight="20dp"
+        android:paddingBottom="10dip"
         app:layout_constraintBottom_toTopOf="@+id/offersRv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
+            android:textColor="@android:color/black"
             android:text="Search" />
 
         <Button
@@ -48,33 +51,24 @@
 
     </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/offersRv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBarL2" />
+
+    <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/offersRv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:paddingTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/searchBarL2" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/requestsRv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBarLl" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/requestsRv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchBarL2" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/createRequestBtn"
@@ -91,7 +85,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="@color/red"
         app:srcCompat="@android:drawable/ic_menu_add" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
