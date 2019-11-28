@@ -84,6 +84,9 @@ public class CreateRequestFragment extends Fragment {
                 budget > 0){
             Request request = new Request(title, description, type, address, budget, Singleton.getInstance().getUuid());
             mViewModel.createRequest(getContext(), request);
+            getFragmentManager().popBackStack();
+            Toast toast = Toast.makeText(getActivity().getApplicationContext(),"Your request has been successfully posted!",Toast.LENGTH_SHORT);
+            toast.show();
         }
         else {
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"Please fill all fields and try again!",Toast.LENGTH_SHORT);

@@ -60,7 +60,8 @@ public class AllRequestsViewModel extends ViewModel {
         double budget = Double.parseDouble(requestJSONObject.getString("budget"));
         String title = requestJSONObject.getString("title");
         long id       = requestJSONObject.getLong("id");
-        return new Request(id, title, description, type, address, budget,Singleton.getInstance().getUuid());
+        String coupleUuid = requestJSONObject.getString("coupleUuid");
+        return new Request(id, title, description, type, address, budget,coupleUuid);
     }
 
 
