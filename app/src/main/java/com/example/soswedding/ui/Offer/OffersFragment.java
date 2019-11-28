@@ -62,6 +62,7 @@ public class OffersFragment extends Fragment {
         offerServiceImage = root.findViewById(R.id.offerServiceImage);
         statusDetailTv = root.findViewById(R.id.statusDetailTv);
         fillComponent();
+
     }
 
     public void fillComponent(){
@@ -70,7 +71,11 @@ public class OffersFragment extends Fragment {
         bidAmountEt.setText("Bid Amount: " +offer.getAmount());
         status.setText("Status: " + offer.getStatus());
         providerName.setText("Provider's Name: "+offer.getCompanyName());
-        titleTv.setText(offer.getRequestTitle());
+        titleTv.setText("Bid for "+offer.getRequestTitle());
+
+        if(!offer.getStatus().equalsIgnoreCase("PENDING"))
+            coupleBidResponse.setVisibility(View.GONE);
+
         if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER")))
             coupleBidResponse.setVisibility(View.GONE);
         else {
@@ -80,8 +85,7 @@ public class OffersFragment extends Fragment {
                 public void onClick(View view) {
                         mViewModel.acceptBidModel(getContext(), offer.getRequestId(),offer.getId());
                         popUp(offer.getStatus());
-                        if(!offer.getStatus().equalsIgnoreCase("PENDING"))
-                        coupleBidResponse.setVisibility(View.GONE);
+
 
                 }
             });
@@ -91,14 +95,12 @@ public class OffersFragment extends Fragment {
                 public void onClick(View view) {
                         mViewModel.declineBidModel(getContext(), offer.getId());
                         popUp(offer.getStatus());
-                        if(offer.getStatus().equalsIgnoreCase("PENDING"))
-                        coupleBidResponse.setVisibility(View.GONE);
 
                 }
             });
 
-           setImageDetailView(offer.getStatus());
         }
+        setImageDetailView(offer.getStatus());
 
 
     }

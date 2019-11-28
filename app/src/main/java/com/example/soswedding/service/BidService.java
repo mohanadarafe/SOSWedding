@@ -29,7 +29,7 @@ public class BidService {
         try {
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("amount", Double.parseDouble(amount));
-            jsonBody.put("message", "Hello WORLD REMIND HAMPIC TO CHANG THIS");
+            jsonBody.put("message", request.getDescription());
             jsonBody.put("status", "PENDING");
             jsonBody.put("providerUuid", user.getUuid());
             jsonBody.put("coupleUuid",request.getuID());
