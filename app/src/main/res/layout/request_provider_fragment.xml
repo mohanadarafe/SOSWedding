@@ -47,7 +47,7 @@
             android:background="@drawable/button_smooth_border"
             android:padding="10dp"
             android:text="Place a bid"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
