@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.soswedding.Interface.OnItemClickListener;
+import com.example.soswedding.Interface.OnRequestItemClickListener;
 import com.example.soswedding.Interface.RecyclerViewClickListener;
 import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
@@ -24,7 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class AllRequestsFragment extends Fragment implements OnItemClickListener {
+public class AllRequestsFragment extends Fragment implements OnRequestItemClickListener{
 
     private AllRequestsViewModel allRequestViewModel;
     private RecyclerView requestsRv;

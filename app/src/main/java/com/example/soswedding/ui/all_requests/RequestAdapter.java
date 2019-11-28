@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.soswedding.Interface.OnItemClickListener;
+import com.example.soswedding.Interface.OnRequestItemClickListener;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
 
@@ -21,9 +21,9 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     public static  Context context;
     public static Activity myActivity;
     private List<Request> requestsList;
-    private static OnItemClickListener itemListener;
+    private static OnRequestItemClickListener itemListener;
 
-    public RequestAdapter(Context context, Activity activity, List<Request> requestsList, OnItemClickListener itemListener) {
+    public RequestAdapter(Context context, Activity activity, List<Request> requestsList, OnRequestItemClickListener itemListener) {
         this.context = context;
         this.myActivity = activity;
         this.requestsList = requestsList;
@@ -70,7 +70,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
             miniDescription = itemView.findViewById(R.id.miniDescriptionTv);
         }
 
-        public void bind(final Request item, final OnItemClickListener listener) {
+        public void bind(final Request item, final OnRequestItemClickListener listener) {
             title.setText(item.getTitle());
             budget.setText(item.getBudget()+" $");
             type.setText(item.getType()+" needed.");

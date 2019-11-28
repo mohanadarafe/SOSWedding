@@ -12,9 +12,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class AllRequestsViewModel extends ViewModel {
@@ -73,6 +70,7 @@ public class AllRequestsViewModel extends ViewModel {
         }
         return null;
     }
+
     public List<Request> getRequestListFromCoupleOnlyFromJSONResponse(String result) throws JSONException {
         ArrayList<Request> requests = new ArrayList<>();
         JSONArray requestsObjectArr = new JSONArray(result);
