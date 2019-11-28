@@ -82,7 +82,7 @@
         android:focusable="true"
         android:outlineAmbientShadowColor="#81d4fa"
         android:backgroundTint="#81d4fa"
-        android:tint="#000000"
+        android:tint="#fff59d"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
