@@ -1,8 +1,12 @@
 package com.example.soswedding;
+<<<<<<< Updated upstream
 import android.util.Log;
 
 import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
+=======
+import com.example.soswedding.model.Request;
+>>>>>>> Stashed changes
 import com.example.soswedding.ui.all_requests.AllRequestsViewModel;
 
 import org.json.JSONArray;
@@ -15,8 +19,11 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+<<<<<<< Updated upstream
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+=======
+>>>>>>> Stashed changes
 
 public class AllRequestsVmTests {
 
@@ -37,6 +44,7 @@ public class AllRequestsVmTests {
         assertEquals(rq.get(0).getTitle(), "test");
         assertEquals(rq.get(0).getDescription(), "test");
 
+<<<<<<< Updated upstream
 
     }
     @Test
@@ -101,6 +109,10 @@ public class AllRequestsVmTests {
         }
 
     }
+=======
+    }
+
+>>>>>>> Stashed changes
     public String mockJsonRequest(){
         JSONArray array = new JSONArray();
         JSONObject item = new JSONObject();
@@ -110,8 +122,11 @@ public class AllRequestsVmTests {
             item.put("serviceType", "DANCER");
             item.put("budget", "1.0");
             item.put("title", "test");
+<<<<<<< Updated upstream
             item.put("coupleUuid", "1");
             item.put("id", "10");
+=======
+>>>>>>> Stashed changes
             array.put(item);
 
         } catch (JSONException e) {

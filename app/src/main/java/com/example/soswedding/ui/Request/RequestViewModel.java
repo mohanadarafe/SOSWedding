@@ -16,7 +16,7 @@ public class RequestViewModel extends ViewModel {
 
     public boolean postBidModel(Context context, String amount, Request request, User user){
         postedSuccessfully = false;
-        if(user.getType().equalsIgnoreCase("PROVIDER")){
+        if(!verifyCoupleUserType(user)){
             sendPostBidRequest(context,amount,request,user);
             postedSuccessfully = true;
         }
@@ -31,4 +31,18 @@ public class RequestViewModel extends ViewModel {
             }
         });
     }
+
+
+
+    public boolean verifyCoupleUserType(User user){
+        return user.getType().equalsIgnoreCase(("COUPLE"));
+    }
+
+
+    public boolean userInputValidation(String str){
+        return str.length()>0;
+    }
+
+
+
 }

@@ -59,15 +59,15 @@ public class RequestFragment extends Fragment {
     }
 
     public void initComponent(View root){
-        typeTv        = root.findViewById(R.id.requestPageTypeTv);
-        descriptionTv = root.findViewById(R.id.requestPageDescriptionTv);
-        budgetTv = root.findViewById(R.id.budgetTv);
-        addressTv = root.findViewById(R.id.addressTv);
-        coupleNameTv = root.findViewById(R.id.coupleNameTv);
-        bidBtn = root.findViewById(R.id.bidBtn);
-        bidAmountEt = root.findViewById(R.id.bidAmountEt);
-        titleTv = root.findViewById(R.id.requestTitle);
-        providerBid = root.findViewById(R.id.providerBid);
+        typeTv              = root.findViewById(R.id.requestPageTypeTv);
+        descriptionTv       = root.findViewById(R.id.requestPageDescriptionTv);
+        budgetTv            = root.findViewById(R.id.budgetTv);
+        addressTv           = root.findViewById(R.id.addressTv);
+        coupleNameTv        = root.findViewById(R.id.coupleNameTv);
+        bidBtn              = root.findViewById(R.id.bidBtn);
+        bidAmountEt         = root.findViewById(R.id.bidAmountEt);
+        titleTv             = root.findViewById(R.id.requestTitle);
+        providerBid         = root.findViewById(R.id.providerBid);
         requestServiceImage = root.findViewById(R.id.requestServiceImage);
         fillComponent();
     }
@@ -79,12 +79,14 @@ public class RequestFragment extends Fragment {
         budgetTv.setText("Budget: " +request.getBudget());
         addressTv.setText("Address:  "+request.getAddress());
         titleTv.setText(request.getTitle());
-        if(verifyCoupleUserType(Singleton.getInstance()))
+
+        if(mViewModel.verifyCoupleUserType(Singleton.getInstance()))
             providerBid.setVisibility(View.GONE);
         else
         bidBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< Updated upstream
 //                String str = bidAmountEt.getText().toString();
 //                if(str.length()>0)
 ////                mViewModel.postBidModel(getContext(),str, request.getId());
@@ -92,9 +94,46 @@ public class RequestFragment extends Fragment {
 //                    Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You did not enter anything",Toast.LENGTH_SHORT);
 //                    toast.show();
 //                }
+=======
+                String str = bidAmountEt.getText().toString();
+                if(mViewModel.userInputValidation(str)){
+                    mViewModel.postBidModel(getContext(),str, request,Singleton.getInstance());
+                }
+                else {
+                    Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You did not enter anything",Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+>>>>>>> Stashed changes
             }
         });
+        chooseImage();
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mViewModel = ViewModelProviders.of(this).get(RequestViewModel.class);
+    }
+
+    public void postBid(String str){
+        boolean success = mViewModel.postBidModel(getContext(),str, request,Singleton.getInstance());
+        postBidStateAfterSubmission(success);
+    }
+
+    public void postBidStateAfterSubmission(boolean state){
+        if(state){
+            Toast toast = Toast.makeText(getActivity().getApplicationContext(),"Your bid has successfully been posted",Toast.LENGTH_SHORT);
+            toast.show();
+            // Fragment fragment = new AllRequestsFragment();
+            // getFragmentManager();
+        }
+        else {
+            Toast toast = Toast.makeText(getActivity().getApplicationContext(),"There's a problem with posting a bid",Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
+    public void chooseImage(){
         switch(request.getType()){
             case "DANCE" : requestServiceImage.setImageResource(R.drawable.dance_service);
                 break;
@@ -114,36 +153,6 @@ public class RequestFragment extends Fragment {
                 break;
             case "PHOTOGRAPHER" : requestServiceImage.setImageResource(R.drawable.photographer_service);
                 break;
-
-        }
-
-
-    }
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(RequestViewModel.class);
-    }
-
-    public boolean verifyCoupleUserType (User user){
-        return user.getType().equalsIgnoreCase(("COUPLE"));
-    }
-
-    public boolean userInputValidation(String str){
-        return str.length()>0;
-    }
-
-    public void postBid(String str){
-        boolean success = mViewModel.postBidModel(getContext(),str, request,Singleton.getInstance());
-        if(success){
-            Toast toast = Toast.makeText(getActivity().getApplicationContext(),"Your bid has successfully been posted",Toast.LENGTH_SHORT);
-            toast.show();
-           // Fragment fragment = new AllRequestsFragment();
-           // getFragmentManager();
-        }
-        else {
-            Toast toast = Toast.makeText(getActivity().getApplicationContext(),"There's a problem with posting a bid",Toast.LENGTH_SHORT);
-            toast.show();
         }
     }
 
