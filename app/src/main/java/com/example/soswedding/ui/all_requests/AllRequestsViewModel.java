@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
+import com.example.soswedding.model.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,13 +21,17 @@ public class AllRequestsViewModel extends ViewModel {
 
 
     public List<Request> getDisplayableRequests(String result){
-        String userType = Singleton.getInstance().getType();
-        if(userType.equalsIgnoreCase("COUPLE")) {
+        if(isUserACouple(Singleton.getInstance().getType())) {
             return getListOfRequestsForCoupleUserOnly(result);
         }
         else {
             return getListOfAllRequests(result);
         }
+    }
+
+    public boolean isUserACouple(String type){
+
+        return type.equalsIgnoreCase("COUPLE");
     }
 
     public List<Request> getListOfAllRequests(String result) {

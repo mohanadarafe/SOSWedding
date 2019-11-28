@@ -2,6 +2,7 @@ package com.example.soswedding.ui.all_requests;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         public ImageView logo;
         public TextView title;
         public TextView type;
-        //        public Button seeMoreBtn;
+
+        public TextView miniDescription;
         private TextView budget;
 
 
@@ -65,12 +67,20 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
             type = itemView.findViewById(R.id.typeTv);
             budget = itemView.findViewById(R.id.allRequestBudgetTv);
             logo = itemView.findViewById(R.id.serviceLogo);
+            miniDescription = itemView.findViewById(R.id.miniDescriptionTv);
         }
 
         public void bind(final Request item, final OnItemClickListener listener) {
             title.setText(item.getTitle());
-            budget.setText("Budget: "+item.getBudget());
-            type.setText("Type: " + item.getType());
+            budget.setText(item.getBudget()+" $");
+            type.setText(item.getType()+" needed.");
+            Typeface face = Typeface.createFromAsset(context.getAssets(), "fonts/allan_regular.ttf");
+            Typeface boldFace = Typeface.createFromAsset(context.getAssets(), "fonts/allan_bold.ttf");
+            miniDescription.setText(item.getDescription());
+            miniDescription.setTypeface(face);
+            title.setTypeface(boldFace);
+            budget.setTypeface(face);
+            type.setTypeface(face);
             getImageId(item);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
