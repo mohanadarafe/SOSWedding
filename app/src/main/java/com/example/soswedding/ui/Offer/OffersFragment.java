@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ public class OffersFragment extends Fragment {
     public Button declineOfferBtn;
     public TextView bidAmountEt;
     private LinearLayout coupleBidResponse;
+    private ImageView offerServiceImage;
     private OffersViewModel mViewModel;
 
     //We need the singleton that carries the user information
@@ -58,6 +60,7 @@ public class OffersFragment extends Fragment {
         bidAmountEt = root.findViewById(R.id.bidAmountTv);
         titleTv = root.findViewById(R.id.offerTitle);
         coupleBidResponse = root.findViewById(R.id.coupleBidResponseTv);
+        offerServiceImage = root.findViewById(R.id.offerServiceImage);
         fillComponent();
     }
 
@@ -67,7 +70,7 @@ public class OffersFragment extends Fragment {
         bidAmountEt.setText("Bid Amount: " +offer.getAmount());
         status.setText("Status: " + offer.getStatus());
         providerName.setText("Provider's Name:"+offer.getCompanyName());
-        titleTv.setText("Request Name:"+offer.getRequestTitle());
+        titleTv.setText(offer.getRequestTitle());
         if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER")))
             coupleBidResponse.setVisibility(View.GONE);
         else {
@@ -75,25 +78,37 @@ public class OffersFragment extends Fragment {
             acceptOfferBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                        mViewModel.acceptBidModel(getContext(), offer.getRequestId(),offer.getId());
-                        //TODO: On success, display Message or update Bid Status on page
+                    mViewModel.acceptBidModel(getContext(), offer.getRequestId(),offer.getId());
+                    //TODO: On success, display Message or update Bid Status on page
                 }
             });
 
             declineOfferBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                        mViewModel.declineBidModel(getContext(), offer.getId());
+                    mViewModel.declineBidModel(getContext(), offer.getId());
                     //TODO: On success, display Message or update Bid Status on page
 
                 }
             });
 
-
-            // from the backend, See Above
+           setImageDetailView(offer.getStatus());
         }
 
 
+    }
+    public void setImageDetailView(String statusLabel){
+        switch(statusLabel) {
+            case "DECLINED":
+                offerServiceImage.setImageResource(R.drawable.no_entry);
+                break;
+            case "ACCEPTED":
+                offerServiceImage.setImageResource(R.drawable.accept);
+                break;
+            case "PENDING":
+                offerServiceImage.setImageResource(R.drawable.email);
+                break;
+        }
     }
 
     @Override

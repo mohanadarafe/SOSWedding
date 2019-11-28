@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    tools:context=".ui.Request.RequestFragment">
+    tools:context=".ui.Offer.OffersFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,11 +16,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dip"
+            android:layout_marginTop="40dip"
             android:layout_marginRight="10dip"
             android:layout_marginBottom="10dip"
             android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:paddingRight="5dip">
+            android:orientation="vertical">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,6 +29,15 @@
                 android:layout_margin="20dp"
                 android:gravity="center|left"
                 android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/offerServiceImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="200dip"
+                    android:src="@drawable/alcohol_service" />
 
                 <TextView
                     android:id="@+id/offerTitle"
@@ -119,20 +129,19 @@
                         android:padding="20dp"
                         android:text="Accept Offer"
                         android:textColor="#FFFFFF"
-                        tools:background="#4CAF50"
-                        tools:textStyle="bold" />
+                        android:background="#4CAF50"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/DenyOfferBtn"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_margin="10dp"
-                        android:padding="10dp"
-                        android:text="Deny Offer"
-                        android:textColor="@android:color/white"
-                        android:textSize="10sp"
-                        tools:background="#9E1616"
-                        tools:textStyle="bold" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:padding="20dp"
+                        android:text="Decline Offer"
+                        android:textColor="#FFFFFF"
+                        android:background="#9E1616"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
