@@ -14,6 +14,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.model.Offer;
 import com.example.soswedding.model.Singleton;
+import com.example.soswedding.model.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,16 +23,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BidService {
-    public static void postBid(Context context, final String amount, final long requestID, final VolleyCallback callback) {
-        String url = "https://soswedding.herokuapp.com/request/"+ requestID+"/bid";
+    public static void postBid(Context context, final String amount, final com.example.soswedding.model.Request request, final User user, final VolleyCallback callback) {
+        String url = "https://soswedding.herokuapp.com/bid";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         try {
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("amount", Double.parseDouble(amount));
-            jsonBody.put("Message", "Hello WORLD REMIND HAMPIC TO CHANG THIS");
+            jsonBody.put("message", "Hello WORLD REMIND HAMPIC TO CHANG THIS");
             jsonBody.put("status", "PENDING");
-            jsonBody.put("userId", Singleton.getInstance().getId());
-            jsonBody.put("requestId", requestID);
+            jsonBody.put("providerUuid", user.getUuid());
+            jsonBody.put("coupleUuid",request.getuID());
+            jsonBody.put("requestId", request.getId());
 
             JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url,jsonBody, new Response.Listener<JSONObject>() {
                 @Override

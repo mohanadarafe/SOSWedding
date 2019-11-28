@@ -3,42 +3,13 @@ package com.example.soswedding.model;
  public class User {
      private long id;
      private String uuid;
-
      private String firstName;
      private String lastName;
      private String email;
      private String phoneNumber;
-
-     public String getServiceProvided() {
-         return serviceProvided;
-     }
-
-     public void setServiceProvided(String serviceProvided) {
-         this.serviceProvided = serviceProvided;
-     }
-
      private String serviceProvided;
-
-     public String getCompanyName() {
-         return companyName;
-     }
-
-     public void setCompanyName(String companyName) {
-         this.companyName = companyName;
-     }
-
      private String companyName;
-
-     public String getType() {
-         return type;
-     }
-
-     public void setType(String type) {
-         this.type = type;
-     }
-
      private String type;
-
 
      public User() {
          firstName   = "";
@@ -51,22 +22,39 @@ package com.example.soswedding.model;
          companyName = "";
      }
 
-
-
      public User(long id, String uuid, String firstName, String lastName, String email, String phoneNumber) {
-         this.id = id;
-         this.uuid = uuid;
-         this.firstName = firstName;
-         this.lastName = lastName;
-         this.email = email;
+         this.id          = id;
+         this.uuid        = uuid;
+         this.firstName   = firstName;
+         this.lastName    = lastName;
+         this.email       = email;
          this.phoneNumber = phoneNumber;
-         this.type  ="";
-         companyName = " ;";
+         this.type        = "";
+         companyName      = " ;";
      }
+
+     public String getServiceProvided() {
+         return serviceProvided;
+     }
+     public void setServiceProvided(String serviceProvided) { this.serviceProvided = serviceProvided; }
+
+     public String getCompanyName() {
+         return companyName;
+     }
+     public void setCompanyName(String companyName) {
+         this.companyName = companyName;
+     }
+
+     public String getType() {
+         return type;
+     }
+     public void setType(String type) {
+         this.type = type;
+     }
+
      public long getId() {
          return id;
      }
-
      public void setId(long id) {
          this.id = id;
      }
@@ -74,7 +62,6 @@ package com.example.soswedding.model;
      public String getUuid() {
          return uuid;
      }
-
      public void setUuid(String uuid) {
          this.uuid = uuid;
      }
@@ -82,7 +69,6 @@ package com.example.soswedding.model;
      public String getFirstName() {
          return firstName;
      }
-
      public void setFirstName(String firstName) {
          this.firstName = firstName;
      }
@@ -90,7 +76,6 @@ package com.example.soswedding.model;
      public String getLastName() {
          return lastName;
      }
-
      public void setLastName(String lastName) {
          this.lastName = lastName;
      }
@@ -98,7 +83,6 @@ package com.example.soswedding.model;
      public String getEmail() {
          return email;
      }
-
      public void setEmail(String email) {
          this.email = email;
      }
@@ -106,7 +90,6 @@ package com.example.soswedding.model;
      public String getPhoneNumber() {
          return phoneNumber;
      }
-
      public void setPhoneNumber(String phoneNumber) {
          this.phoneNumber = phoneNumber;
      }

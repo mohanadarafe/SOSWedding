@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.soswedding.MainMenu;
 import com.example.soswedding.R;
+import com.example.soswedding.model.User;
 import com.example.soswedding.ui.SignIn.SignInFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

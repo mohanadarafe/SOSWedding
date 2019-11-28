@@ -8,12 +8,16 @@
 
     <LinearLayout
         android:id="@+id/searchBarLl"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#C70000"
+        android:background="@android:color/transparent"
         android:orientation="horizontal"
+        android:outlineAmbientShadowColor="@android:color/darker_gray"
+        android:outlineSpotShadowColor="@android:color/darker_gray"
         android:paddingLeft="20dp"
+        android:paddingTop="10dip"
         android:paddingRight="20dp"
+        android:paddingBottom="10dip"
         app:layout_constraintBottom_toTopOf="@id/requestsRv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +50,17 @@
             android:text="Refine"
             android:textColor="@android:color/darker_gray" />
 
+
     </LinearLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/requestsRv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBarLl" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/requestsRv"
