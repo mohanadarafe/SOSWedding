@@ -9,19 +9,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
 
             <LinearLayout
                 android:id="@+id/requestItemLl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:background="@drawable/button_border"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <LinearLayout
                     android:layout_width="0dip"
@@ -57,7 +59,18 @@
                         android:text="Title"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@android:color/black"
-                        android:textSize="20dp" />
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/miniDescriptionTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/allRequestBudgetTv"
@@ -65,6 +78,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="TextView"
+                        android:textSize="12sp"
                         tools:text="Budget:" />
 
                     <TextView
@@ -72,18 +86,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:text="Type: " />
+                        android:text="Type: "
+                        android:textSize="12sp" />
 
                 </LinearLayout>
             </LinearLayout>
 
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
 
     </RelativeLayout>

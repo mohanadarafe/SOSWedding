@@ -61,15 +61,6 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
-                    android:background="@drawable/button_smooth_border"
-                    android:text="Update Profile"
-                    android:textColor="@android:color/white" />
-
                 <TextView
                     android:id="@+id/EmailTv"
                     android:layout_width="match_parent"
@@ -117,6 +108,15 @@
                     android:textColor="@android:color/black"
                     android:textSize="15dip"
                     android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/button_smooth_border"
+                    android:text="Update Profile"
+                    android:textColor="@android:color/black" />
 
             </LinearLayout>
 

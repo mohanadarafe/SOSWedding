@@ -85,13 +85,13 @@ public class RequestFragment extends Fragment {
         bidBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String str = bidAmountEt.getText().toString();
-                if(str.length()>0)
-                mViewModel.postBidModel(getContext(),str, request, Singleton.getInstance());
-                else {
-                    Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You did not enter anything",Toast.LENGTH_SHORT);
-                    toast.show();
-                }
+//                String str = bidAmountEt.getText().toString();
+//                if(str.length()>0)
+////                mViewModel.postBidModel(getContext(),str, request.getId());
+//                else {
+//                    Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You did not enter anything",Toast.LENGTH_SHORT);
+//                    toast.show();
+//                }
             }
         });
 

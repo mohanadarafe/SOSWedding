@@ -64,7 +64,7 @@ public class RequestsService {
         }
 
     }
-    public static String getAllRequests(Context context,final VolleyCallback callback){
+    public static void getAllRequests(Context context,final VolleyCallback callback){
         String url = "https://soswedding.herokuapp.com/request";
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -72,7 +72,6 @@ public class RequestsService {
                     @Override
                     public void onResponse(String response) {
                         callback.onSuccess(response);
-                        getAllRequestsResult = response;
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -81,7 +80,6 @@ public class RequestsService {
             }
         });
         queue.add(stringRequest);
-        return getAllRequestsResult;
     }
 
     public static void getRequestsOfUser(Context context, String userUuid, final VolleyCallback callback){
