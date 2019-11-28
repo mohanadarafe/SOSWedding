@@ -30,7 +30,7 @@ package com.example.soswedding.model;
          this.email       = email;
          this.phoneNumber = phoneNumber;
          this.type        = type;
-         companyName      = " ;";
+         companyName      = "SOSWedding";
      }
 
      public String getServiceProvided() {

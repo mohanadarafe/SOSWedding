@@ -1,4 +1,6 @@
 package com.example.soswedding;
+import com.example.soswedding.model.Offer;
+import com.example.soswedding.model.Request;
 import com.example.soswedding.model.User;
 import com.example.soswedding.ui.Request.RequestViewModel;
 
@@ -9,6 +11,7 @@ import org.junit.Test;
 import org.junit.Before;
 import org.mockito.MockitoAnnotations;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -51,28 +54,35 @@ public class RequestVmTest {
         assertFalse(result);
     }
 
+  //  @Test
+//    public void createOfferObject(){
+//        String amount = "220";
+//        User userProvider = new User(2,"UUID","Hampic","Baboyan","hampic.baboyan@hotmail.com","PROVIDER","514514514");
+//        Request request = new Request(1,"Wedding Cake Urgent","I want a chocolate cake for my wedding by tmr morning","BAKER","hampic.baboyan@hotmail.com",220,"CoupleUUID");
+//        JSONObject jsonObject  = viewModel.createBidObject(amount,request,userProvider);
+//        Offer offer = new Offer();
+//        try{
+//            offer.setAmount(jsonObject.getDouble("amount"));
+//            offer.setMessage(jsonObject.getString("message"));
+//            offer.setCoupleUuid(jsonObject.getString("coupleUuid"));
+//            offer.setProviderUuid(jsonObject.getString("providerUuid"));
+//            offer.setStatus(jsonObject.getString("status"));
+//            offer.setRequestId(jsonObject.getLong("requestId"));
+//            offer.setRequestTitle(jsonObject.getString("requestTitle"));
+//            offer.setCompanyName(jsonObject.getString("companyName"));
+//        } catch( JSONException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        assertEquals(String.valueOf(offer.getAmount()), "220.0");
+//        assertEquals(offer.getMessage(), "Hello WORLD");
+//        assertEquals(offer.getCompanyName(), "SOSWedding");
+//        assertEquals(offer.getCoupleUuid(),"CoupleUUID");
+//        assertEquals(offer.getProviderUuid(),"ProviderUUID");
+//        assertEquals(String.valueOf(offer.getRequestId()),"1");
+//        assertEquals(offer.getRequestTitle(),"Wedding Cake Urgent");
+//        assertEquals(offer.getStatus(),"PENDING");
+//    }
 
 
-
-    //I dont think i need this
-    public String mockJsonBid(){
-        JSONArray array = new JSONArray();
-        JSONObject jsonBody = new JSONObject();
-        try {
-            jsonBody.put("amount", 400);
-            jsonBody.put("message", "Hello WORLD");
-            jsonBody.put("status", "PENDING");
-            jsonBody.put("providerUuid", "ProviderUUID");
-            jsonBody.put("coupleUuid","CoupleUUID");
-            jsonBody.put("requestId", 1);
-            jsonBody.put("requestTitle","Baking Cake");
-            jsonBody.put("companyName","SOSWedding");
-            array.put(jsonBody);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String jsonArray = array.toString();
-        return jsonArray;
-    }
 }
