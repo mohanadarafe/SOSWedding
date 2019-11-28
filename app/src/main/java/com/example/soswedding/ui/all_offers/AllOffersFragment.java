@@ -70,7 +70,7 @@ public class AllOffersFragment extends Fragment implements OnOfferItemClickListe
             offersList = allOffersViewModel.getOffersObjectForCouple(result);
         }
         else {
-            offersList = allOffersViewModel.getOffersObject(result);
+            offersList = allOffersViewModel.getListOfAllOffers(result);
         }
         initRecyclerView();
     }

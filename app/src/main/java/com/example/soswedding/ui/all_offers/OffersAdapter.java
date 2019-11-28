@@ -33,7 +33,6 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
         public TextView status;
         public TextView currentBid;
         public ImageView auctionLogo;
-        public TextView requestTitle;
 
         public OffersViewHolder(View itemView) {
             super(itemView);
@@ -47,7 +46,7 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
             title.setText(item.getRequestTitle());
             currentBid.setText("Current Bid: $ "+String.valueOf(item.getAmount()));
             status.setText("Bid Status: "+item.getStatus());
-            auctionLogo.setImageResource(R.drawable.auction);
+                auctionLogo.setImageResource(R.drawable.auction);
             this.setStatusLabelStyle(this, item.getStatus());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {

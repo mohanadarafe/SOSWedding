@@ -3,6 +3,7 @@ package com.example.soswedding.ui.all_offers;
 import android.util.Log;
 
 import com.example.soswedding.model.Offer;
+import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
 
 import org.json.JSONArray;
@@ -29,15 +30,16 @@ public class AllOffersViewModel extends ViewModel {
         return mText;
     }
 
-//    public List<Offer> getMockupList() {
-//        Offer of = new Offer(1000.0, "I offer dj services", "PENDING","","",);
-//        List<Offer> list = new ArrayList<>();
-//        for(int i =0; i < 15; i++)
-//            list.add(of);
-//        return list;
-//    }
+    public List<Offer> getListOfAllOffers(String result) {
+        try{
+            return getOfferListFromJSONResponse(result);
+        } catch (Throwable t) {
+            Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
+        }
+        return null;
+    }
 
-    public List<Offer> getOffersObject(String result) {
+    public List<Offer> getOfferListFromJSONResponse(String result) {
         try {
             ArrayList<Offer> offers = new ArrayList<>();
             JSONArray offersObjectArr = new JSONArray(result);
