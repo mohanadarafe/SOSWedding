@@ -31,6 +31,7 @@ public class AllRequestsVmTests {
         assertEquals(String.valueOf(rq.get(0).getBudget()), "1.0");
         assertEquals(rq.get(0).getTitle(), "test");
         assertEquals(rq.get(0).getDescription(), "test");
+        assertEquals(rq.get(0).getId(), 1); //Added
     }
 
     public String mockJsonRequest(){
@@ -42,6 +43,7 @@ public class AllRequestsVmTests {
             item.put("serviceType", "DANCER");
             item.put("budget", "1.0");
             item.put("title", "test");
+            item.put("id", "1"); //Added
             array.put(item);
 
         } catch (JSONException e) {

@@ -36,7 +36,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:adjustViewBounds="true"
-                            android:maxHeight="90dip"
+                            android:maxHeight="50dip"
                             app:srcCompat="@drawable/auction" />
                     </LinearLayout>
 

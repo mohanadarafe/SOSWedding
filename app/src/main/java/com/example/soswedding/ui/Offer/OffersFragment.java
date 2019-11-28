@@ -33,6 +33,7 @@ public class OffersFragment extends Fragment {
     private LinearLayout coupleBidResponse;
     private OffersViewModel mViewModel;
     private ImageView offerServiceImage;
+    private TextView statusDetailTv;
 
 
     //We need the singleton that carries the user information
@@ -59,6 +60,7 @@ public class OffersFragment extends Fragment {
         titleTv = root.findViewById(R.id.offerTitle);
         coupleBidResponse = root.findViewById(R.id.coupleBidResponseTv);
         offerServiceImage = root.findViewById(R.id.offerServiceImage);
+        statusDetailTv = root.findViewById(R.id.statusDetailTv);
         fillComponent();
     }
 
@@ -78,7 +80,8 @@ public class OffersFragment extends Fragment {
                 public void onClick(View view) {
                         mViewModel.acceptBidModel(getContext(), offer.getRequestId(),offer.getId());
                         popUp(offer.getStatus());
-                        acceptOfferBtn.setVisibility(View.GONE);
+                        if(!offer.getStatus().equalsIgnoreCase("PENDING"))
+                        coupleBidResponse.setVisibility(View.GONE);
 
                 }
             });
@@ -88,7 +91,8 @@ public class OffersFragment extends Fragment {
                 public void onClick(View view) {
                         mViewModel.declineBidModel(getContext(), offer.getId());
                         popUp(offer.getStatus());
-                        acceptOfferBtn.setVisibility(View.GONE);
+                        if(offer.getStatus().equalsIgnoreCase("PENDING"))
+                        coupleBidResponse.setVisibility(View.GONE);
 
                 }
             });
@@ -101,16 +105,20 @@ public class OffersFragment extends Fragment {
     public void setImageDetailView(String statusLabel){
         switch(statusLabel) {
             case "DECLINED":
-                offerServiceImage.setImageResource(R.drawable.no_entry);
+                offerServiceImage.setImageResource(R.drawable.cancel);
+                statusDetailTv.setTextAppearance(R.style.statusDeclined);
                 break;
             case "ACCEPTED":
                 offerServiceImage.setImageResource(R.drawable.accept);
+                statusDetailTv.setTextAppearance(R.style.statusAccepted);
                 break;
             case "PENDING":
-                offerServiceImage.setImageResource(R.drawable.wall_clock);
+                offerServiceImage.setImageResource(R.drawable.speech_bubble);
+                statusDetailTv.setTextAppearance(R.style.statusPending);
                 break;
         }
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
