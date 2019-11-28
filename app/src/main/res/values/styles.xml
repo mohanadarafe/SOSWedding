@@ -6,4 +6,19 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="statusAccepted" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">#00B200</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="statusDeclined" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">#B20000</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="statusPending" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">#c0c0c0</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
 </resources>
