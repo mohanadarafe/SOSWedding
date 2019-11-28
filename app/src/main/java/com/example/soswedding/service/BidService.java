@@ -31,6 +31,8 @@ public class BidService {
             jsonBody.put("providerUuid", user.getUuid());
             jsonBody.put("coupleUuid",request.getuID());
             jsonBody.put("requestId", request.getId());
+            jsonBody.put("requestTitle",request.getTitle());
+            jsonBody.put("companyName",user.getCompanyName());
 
             JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url,jsonBody, new Response.Listener<JSONObject>() {
                 @Override

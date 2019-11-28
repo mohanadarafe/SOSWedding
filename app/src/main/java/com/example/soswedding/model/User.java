@@ -22,14 +22,14 @@ package com.example.soswedding.model;
          companyName = "";
      }
 
-     public User(long id, String uuid, String firstName, String lastName, String email, String phoneNumber) {
+     public User(long id, String uuid, String firstName, String lastName, String email,String type, String phoneNumber) {
          this.id          = id;
          this.uuid        = uuid;
          this.firstName   = firstName;
          this.lastName    = lastName;
          this.email       = email;
          this.phoneNumber = phoneNumber;
-         this.type        = "";
+         this.type        = type;
          companyName      = " ;";
      }
 

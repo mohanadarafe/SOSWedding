@@ -12,15 +12,13 @@ import androidx.lifecycle.ViewModel;
 import static com.example.soswedding.service.BidService.postBid;
 
 public class RequestViewModel extends ViewModel {
-    boolean postedSuccessfully;
+    public RequestViewModel(){
+    }
 
-    public boolean postBidModel(Context context, String amount, Request request, User user){
-        postedSuccessfully = false;
-        if(user.getType().equalsIgnoreCase("PROVIDER")){
+    public void postBidModel(Context context, String amount, Request request, User user){
+        if(!verifyCoupleUserType(user) && userInputValidation(amount)){
             sendPostBidRequest(context,amount,request,user);
-            postedSuccessfully = true;
         }
-        return postedSuccessfully;
     }
 
     public void sendPostBidRequest(Context context,String amount,Request request, User user){
@@ -30,5 +28,13 @@ public class RequestViewModel extends ViewModel {
                 Log.e(result,"Successfully posted bid");
             }
         });
+    }
+
+    public boolean verifyCoupleUserType (User user){
+        return user.getType().equalsIgnoreCase(("COUPLE"));
+    }
+
+    public boolean userInputValidation(String str){
+        return str.length()>0;
     }
 }
