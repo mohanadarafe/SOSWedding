@@ -1,5 +1,8 @@
 package com.example.soswedding;
+import android.util.Log;
+
 import com.example.soswedding.model.Request;
+import com.example.soswedding.model.Singleton;
 import com.example.soswedding.ui.all_requests.AllRequestsViewModel;
 
 import org.json.JSONArray;
@@ -34,14 +37,33 @@ public class AllRequestsVmTests {
         assertEquals(rq.get(0).getTitle(), "test");
         assertEquals(rq.get(0).getDescription(), "test");
 
-    }
-    @Test
-    public void getDisplayableRequestsTestCouple(){
 
     }
     @Test
-    public void getDisplayableRequestsTestProvider(){
+    public void getDisplayableRequestsTestCoupleNoRequests(){
 
+        Singleton.getInstance().setType("COUPLE");
+        Singleton.getInstance().setUuid("0");
+        ArrayList<Request> requests = new ArrayList<>();
+        requests = (ArrayList<Request>) viewModel.getDisplayableRequests(mockJsonRequest());
+        assertTrue(requests.isEmpty());
+    }
+    @Test
+    public void getDisplayableRequestsTestCoupleOneRequests(){
+
+        Singleton.getInstance().setType("COUPLE");
+        Singleton.getInstance().setUuid("1");
+        ArrayList<Request> requests;
+        requests = (ArrayList<Request>) viewModel.getDisplayableRequests(mockJsonRequest());
+        assertFalse(requests.isEmpty());
+    }
+    @Test
+    public void getDisplayableRequestsTestProviderOneRequests(){
+        Singleton.getInstance().setType("PROVIDER");
+        Singleton.getInstance().setUuid("2");
+        ArrayList<Request> requests;
+        requests = (ArrayList<Request>) viewModel.getDisplayableRequests(mockJsonRequest());
+        assertFalse(requests.isEmpty());
     }
     @Test
     public void isUserACoupleFalse(){
@@ -53,6 +75,32 @@ public class AllRequestsVmTests {
         Boolean result = viewModel.isUserACouple("COUPLE");
         assertTrue(result);
     }
+    @Test
+    public void isRequestFromUserTrue(){
+        Singleton.getInstance().setType("COUPLE");
+        Singleton.getInstance().setUuid("0");
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject = new JSONObject(mockJsonRequest());
+            assertFalse(viewModel.isRequestFromUser(jsonObject));
+        }catch (JSONException err){
+            Log.d("Error", err.toString());
+        }
+
+    }
+    @Test
+    public void isRequestFromUserFalse(){
+        Singleton.getInstance().setType("COUPLE");
+        Singleton.getInstance().setUuid("1");
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject = new JSONObject(mockJsonRequest());
+            assertFalse(viewModel.isRequestFromUser(jsonObject));
+        }catch (JSONException err){
+            Log.d("Error", err.toString());
+        }
+
+    }
     public String mockJsonRequest(){
         JSONArray array = new JSONArray();
         JSONObject item = new JSONObject();
@@ -62,6 +110,8 @@ public class AllRequestsVmTests {
             item.put("serviceType", "DANCER");
             item.put("budget", "1.0");
             item.put("title", "test");
+            item.put("coupleUuid", "1");
+            item.put("id", "10");
             array.put(item);
 
         } catch (JSONException e) {
