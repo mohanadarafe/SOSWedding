@@ -80,10 +80,12 @@
         android:layout_marginBottom="20dp"
         android:clickable="true"
         android:focusable="true"
-        android:outlineAmbientShadowColor="@color/red"
+        android:outlineAmbientShadowColor="#81d4fa"
+        android:backgroundTint="#81d4fa"
+        android:tint="#000000"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="@color/red"
+        app:rippleColor="#81d4fa"
         app:srcCompat="@android:drawable/ic_menu_add" />
 </androidx.constraintlayout.widget.ConstraintLayout>
