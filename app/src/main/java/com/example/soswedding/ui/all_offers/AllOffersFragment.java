@@ -51,7 +51,7 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
     private void initComponents(View root) {
         offersRv = root.findViewById(R.id.offersRv);
         if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER"))){
-            BidService.getOffersOfUser(getContext(), Singleton.getInstance().getUuid(),
+            BidService.getOffersOfProvider(getContext(), Singleton.getInstance().getUuid(),
             new VolleyCallback(){
                 @Override
                 public void onSuccess(String result){
@@ -59,7 +59,14 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
                 }
             });
         }
-        else{}
+        else{
+            BidService.getAllBidsForCouples(getContext(),Singleton.getInstance().getUuid(),new VolleyCallback(){
+                @Override
+                public void onSuccess(String result){
+                    onSuccessReceivedList(result);
+                }
+            });
+        }
     }
 
     private void onSuccessReceivedList(String result) {
@@ -72,9 +79,6 @@ public class AllOffersFragment extends Fragment implements RecyclerViewClickList
         else {
             //TODO: Call the method to retrieve a list of offers - Providers perspective
             offersList = allOffersViewModel.getOffersObject(result);
-           // offersList = allOffersViewModel.getMockupList();
-
-
         }
         initRecyclerView();
     }

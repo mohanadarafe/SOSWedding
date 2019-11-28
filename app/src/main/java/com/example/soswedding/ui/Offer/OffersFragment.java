@@ -66,8 +66,8 @@ public class OffersFragment extends Fragment {
         descriptionTv.setText("Description: " + offer.getMessage());
         bidAmountEt.setText("Bid Amount: " +offer.getAmount());
         status.setText("Status: " + offer.getStatus());
-        providerName.setText("Provider's Name: TEST");
-        titleTv.setText("Request Name: TEST");
+        providerName.setText("Provider's Name:"+offer.getCompanyName());
+        titleTv.setText("Request Name:"+offer.getRequestTitle());
         if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER")))
             coupleBidResponse.setVisibility(View.GONE);
         else {
@@ -75,28 +75,17 @@ public class OffersFragment extends Fragment {
             acceptOfferBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String acceptedAmount = String.valueOf(offer.getAmount());
-                    if (acceptedAmount != null)
-                        mViewModel.acceptBidModel(getContext(), acceptedAmount, offer.getRequestId(),offer.getId());
+                        mViewModel.acceptBidModel(getContext(), offer.getRequestId(),offer.getId());
                         //TODO: On success, display Message or update Bid Status on page
-                    else {
-                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "You did not enter anything", Toast.LENGTH_SHORT);
-                        toast.show(); //TODO: is this method displaying the error?
-                    }
                 }
             });
 
-            acceptOfferBtn.setOnClickListener(new View.OnClickListener() {
+            declineOfferBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String acceptedAmount = String.valueOf(offer.getAmount());
-                    if (acceptedAmount != null)
-                        mViewModel.declineBidModel(getContext(), acceptedAmount, offer.getId());
-                        //TODO: On success, display Message or update Bid Status on page
-                    else {
-                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "You did not enter anything", Toast.LENGTH_SHORT);
-                        toast.show(); //TODO: is this method displaying the error?
-                    }
+                        mViewModel.declineBidModel(getContext(), offer.getId());
+                    //TODO: On success, display Message or update Bid Status on page
+
                 }
             });
 
