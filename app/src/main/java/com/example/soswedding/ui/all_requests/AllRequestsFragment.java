@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.soswedding.Interface.OnItemClickListener;
 import com.example.soswedding.Interface.RecyclerViewClickListener;
 import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
@@ -23,7 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class AllRequestsFragment extends Fragment implements RecyclerViewClickListener {
+public class AllRequestsFragment extends Fragment implements OnItemClickListener {
 
     private AllRequestsViewModel allRequestViewModel;
     private RecyclerView requestsRv;
@@ -46,7 +47,7 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
         createRequestBtn = root.findViewById(R.id.createRequestBtn);
         if(Singleton.getInstance().getType().equalsIgnoreCase(("COUPLE"))){
             createRequestBtn.setVisibility(View.VISIBLE);
-            RequestsService.getRequestsOfUser(getContext(),Singleton.getInstance().getId(),
+            RequestsService.getRequestsOfUser(getContext(),Singleton.getInstance().getUuid(),
                     new VolleyCallback() {
                         @Override
                         public void onSuccess(String result) {
@@ -91,17 +92,6 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
         requestsRv.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         initRequestRvAdapter();
     }
-    @Override
-    public void recyclerViewListClicked(View v, int position){
-
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("request", requestsList.get(position));
-        Fragment fragment = new RequestFragment();
-        fragment.setArguments(bundle);
-        RequestFragment.newInstance(requestsList.get(position));
-        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
-//just to pus
-    }
 
     private void initRequestRvAdapter() {
         mAdapter = new RequestAdapter(getActivity().getApplicationContext(),getActivity(), requestsList, this);
@@ -109,4 +99,13 @@ public class AllRequestsFragment extends Fragment implements RecyclerViewClickLi
     }
 
 
+    @Override
+    public void onItemClick(Request item) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("request", item);
+        Fragment fragment = new RequestFragment();
+        fragment.setArguments(bundle);
+        RequestFragment.newInstance(item);
+        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
+    }
 }

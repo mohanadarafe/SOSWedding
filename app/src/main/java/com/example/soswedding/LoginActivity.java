@@ -1,5 +1,7 @@
 package com.example.soswedding;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -16,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.signUpContainer, SignInFragment.newInstance())
                     .commitNow();
+
         }
     }
 
