@@ -21,11 +21,6 @@ public class AllOffersViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public AllOffersViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is all offer fragment");
-    }
-
     public LiveData<String> getText() {
         return mText;
     }
