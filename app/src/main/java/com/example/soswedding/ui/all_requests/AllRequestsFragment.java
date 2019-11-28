@@ -44,23 +44,16 @@ public class AllRequestsFragment extends Fragment implements OnItemClickListener
 
     private void initComponents(View root) {
         requestsRv = root.findViewById(R.id.requestsRv);
+
         createRequestBtn = root.findViewById(R.id.createRequestBtn);
+        RequestsService.getAllRequests(getContext(), new VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+                onSuccessReceivedList(result);
+            }
+        });
         if(Singleton.getInstance().getType().equalsIgnoreCase(("COUPLE"))){
             createRequestBtn.setVisibility(View.VISIBLE);
-            RequestsService.getRequestsOfUser(getContext(),Singleton.getInstance().getUuid(),
-                    new VolleyCallback() {
-                        @Override
-                        public void onSuccess(String result) {
-                            onSuccessReceivedList(result);
-                        }
-            });
-        }else {
-            RequestsService.getAllRequests(getContext(), new VolleyCallback() {
-                @Override
-                public void onSuccess(String result) {
-                    onSuccessReceivedList(result);
-                }
-            });
         }
 
         createRequestBtn = root.findViewById(R.id.createRequestBtn);
