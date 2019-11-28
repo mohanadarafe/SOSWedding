@@ -5,11 +5,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.soswedding.Interface.RecyclerViewClickListener;
+import com.example.soswedding.Interface.OnOfferItemClickListener;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
 
@@ -18,9 +18,6 @@ import com.example.soswedding.model.Offer;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -28,37 +25,56 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     public static Context context;
     public static Activity myActivity;
     private List<Offer> offersList;
-    private static RecyclerViewClickListener itemListener;
+    private static OnOfferItemClickListener itemListener;
 
-    public static class OffersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class OffersViewHolder extends RecyclerView.ViewHolder{
         // each data item is just a string in this case
         public TextView title;
         public TextView status;
-        public TextView description;
-        public TextView type;
         public TextView currentBid;
-        public Button seeMoreBtn;
+        public ImageView auctionLogo;
         public TextView requestTitle;
 
         public OffersViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.titleTv);
-            description = itemView.findViewById(R.id.descriptionTv);
             currentBid = itemView.findViewById(R.id.currentBidTv);
-            type = itemView.findViewById(R.id.typeTv);
             status = itemView.findViewById(R.id.statusTv);
-            seeMoreBtn = itemView.findViewById(R.id.seeMoreBtn);
-
-            seeMoreBtn.setOnClickListener(this);
+            auctionLogo = itemView.findViewById(R.id.auctionLogoTv);
         }
 
-        @Override
-        public void onClick(View view) {
-            itemListener.recyclerViewListClicked(view, this.getLayoutPosition());
+        public void bind(final Offer item, final OnOfferItemClickListener listener) {
+            title.setText(item.getRequestTitle());
+            currentBid.setText("Current Bid: $ "+String.valueOf(item.getAmount()));
+            status.setText("Bid Status: "+item.getStatus());
+            auctionLogo.setImageResource(R.drawable.auction);
+            this.setStatusLabelStyle(this, item.getStatus());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
         }
+
+        public void setStatusLabelStyle(OffersViewHolder holder, String status) {
+
+            switch (status){
+                case "PENDING":
+                    holder.status.setTextAppearance(R.style.statusPending);
+                    break;
+                case "DECLINED":
+                    holder.status.setTextAppearance(R.style.statusDeclined);
+                    break;
+                case "ACCEPTED":
+                    holder.status.setTextAppearance(R.style.statusAccepted);
+                    break;
+            }
+        }
+
+
     }
 
-    public OffersAdapter(Context context, Activity activity, List<Offer> offersList, RecyclerViewClickListener itemListener) {
+    public OffersAdapter(Context context, Activity activity, List<Offer> offersList, OnOfferItemClickListener itemListener) {
         this.context = context;
         this.myActivity = activity;
         this.offersList = offersList;
@@ -77,12 +93,10 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     @Override
     public void onBindViewHolder(OffersViewHolder holder, int position) {
 
-        // needs to be changed to be appropriate
-        holder.title.setText(offersList.get(position).getRequestTitle());
-        holder.description.setText("Description: " + offersList.get(position).getMessage());
-        holder.currentBid.setText("Current Bid: $ "+String.valueOf(offersList.get(position).getAmount()));
-        holder.status.setText("Bid Status: "+offersList.get(position).getStatus());
+        holder.bind(offersList.get(position), itemListener);
     }
+
+
 
     @Override
     public int getItemCount() {

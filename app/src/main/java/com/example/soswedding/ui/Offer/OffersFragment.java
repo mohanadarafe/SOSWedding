@@ -89,11 +89,7 @@ public class OffersFragment extends Fragment {
                 }
             });
 
-
-            // from the backend, See Above
         }
-
-
     }
 
     @Override
