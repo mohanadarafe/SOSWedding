@@ -31,7 +31,6 @@ public class AllRequestsVmTests {
         assertEquals(String.valueOf(rq.get(0).getBudget()), "1.0");
         assertEquals(rq.get(0).getTitle(), "test");
         assertEquals(rq.get(0).getDescription(), "test");
-
     }
 
     public String mockJsonRequest(){

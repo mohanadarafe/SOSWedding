@@ -67,6 +67,7 @@ public class AllRequestsViewModel extends ViewModel {
         }
         return null;
     }
+
     public List<Request> getRequestListFromCoupleOnlyFromJSONResponse(String result) throws JSONException {
         ArrayList<Request> requests = new ArrayList<>();
         JSONArray requestsObjectArr = new JSONArray(result);
