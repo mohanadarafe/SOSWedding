@@ -1,5 +1,6 @@
 package com.example.soswedding.ui.Request;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -71,32 +72,6 @@ public class RequestFragment extends Fragment {
         requestServiceImage = root.findViewById(R.id.requestServiceImage);
         fillComponent();
     }
-    public void fillComponent(){
-        Log.e("My App", "Request: " + request.getAddress() + "\"");
-
-        typeTv.setText("Type: "+request.getType());
-        descriptionTv.setText("Description: " + request.getDescription());
-        budgetTv.setText("Budget: " +request.getBudget());
-        addressTv.setText("Address:  "+request.getAddress());
-        titleTv.setText(request.getTitle());
-
-        if(mViewModel.verifyCoupleUserType(Singleton.getInstance()))
-            providerBid.setVisibility(View.GONE);
-        else
-        bidBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                String str = bidAmountEt.getText().toString();
-//                if(str.length()>0)
-////                mViewModel.postBidModel(getContext(),str, request.getId());
-//                else {
-//                    Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You did not enter anything",Toast.LENGTH_SHORT);
-//                    toast.show();
-//                }
-            }
-        });
-        chooseImage();
-    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -104,22 +79,37 @@ public class RequestFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(RequestViewModel.class);
     }
 
-    public void postBid(String str){
-        boolean success = mViewModel.postBidModel(getContext(),str, request,Singleton.getInstance());
-        postBidStateAfterSubmission(success);
+    public void fillComponent(){
+        Log.e("My App", "Request: " + request.getAddress() + "\"");
+        typeTv.setText("Type: "+request.getType());
+        descriptionTv.setText("Description: " + request.getDescription());
+        budgetTv.setText("Budget: " +request.getBudget());
+        addressTv.setText("Address:  "+request.getAddress());
+        titleTv.setText(request.getTitle());
+        if(Singleton.getInstance().getType().equalsIgnoreCase("COUPLE"))
+            providerBid.setVisibility(View.GONE);
+        else
+        bidBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String str = bidAmountEt.getText().toString();
+                if(str.length()>0){
+                    postBid(str);
+                }
+                else {
+                    Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You did not enter anything",Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }
+        });
+        chooseImage();
     }
 
-    public void postBidStateAfterSubmission(boolean state){
-        if(state){
-            Toast toast = Toast.makeText(getActivity().getApplicationContext(),"Your bid has successfully been posted",Toast.LENGTH_SHORT);
-            toast.show();
-            // Fragment fragment = new AllRequestsFragment();
-            // getFragmentManager();
-        }
-        else {
-            Toast toast = Toast.makeText(getActivity().getApplicationContext(),"There's a problem with posting a bid",Toast.LENGTH_SHORT);
-            toast.show();
-        }
+    public void postBid(String str){
+        mViewModel.postBidModel(getContext(),str, request,Singleton.getInstance());
+        Toast toast = Toast.makeText(getActivity().getApplicationContext(),"Your bid has successfully been posted",Toast.LENGTH_SHORT);
+        toast.show();
+        getFragmentManager().popBackStackImmediate();
     }
 
     public void chooseImage(){
