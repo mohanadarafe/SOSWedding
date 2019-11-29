@@ -100,7 +100,7 @@ public class AllOffersFragment extends Fragment implements OnOfferItemClickListe
         Fragment fragment = new OffersFragment();
         fragment.setArguments(bundle);
         OffersFragment.newInstance(item);
-        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
     }
 
 
