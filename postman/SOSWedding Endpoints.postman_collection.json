@@ -1,0 +1,577 @@
+{
+	"info": {
+		"_postman_id": "39082772-295a-4c4b-a6df-97b6805353ae",
+		"name": "SOSWedding Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Add A user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/user",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by UUID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/user/:uuid",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "j5wrx0HNFEYeARGJPkSTCWjgNF62"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search User by FirstName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/user/firstname/:fistname",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"firstname",
+								":fistname"
+							],
+							"variable": [
+								{
+									"key": "fistname",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/user",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}"
+						},
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/user",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Request",
+			"item": [
+				{
+					"name": "Get All Requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/request",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Request by UserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/request/user/:userId",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"request",
+								"user",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "j5wrx0HNFEYeARGJPkSTCWjgNF62"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Requests by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/request/:id",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"request",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create A Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id\": 1,\r\n        \"address\": \"Montreal\",\r\n        \"title\": \"Only the Best\",\r\n        \"description\": \"I am hungry.!\",\r\n        \"serviceType\": \"BAKER\",\r\n        \"budget\": 24.0,\r\n        \"coupleUuid\": \"j5wrx0HNFEYeARGJPkSTCWjgNF62\"\r\n    }"
+						},
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/request",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"request"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\n}"
+						},
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/request",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"request"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Bid",
+			"item": [
+				{
+					"name": "Get Bid by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/bid/:UUID",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bid",
+								":UUID"
+							],
+							"variable": [
+								{
+									"key": "UUID",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Bids by RequestId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/request/:requestUUID/bid",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"request",
+								":requestUUID",
+								"bid"
+							],
+							"variable": [
+								{
+									"key": "requestUUID",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Bids by ProviderId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/bid/provider/:providerUUID",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bid",
+								"provider",
+								":providerUUID"
+							],
+							"variable": [
+								{
+									"key": "providerUUID",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Bids By CoupleId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/bid/couple/:UUID",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bid",
+								"couple",
+								":UUID"
+							],
+							"variable": [
+								{
+									"key": "UUID",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Bids By ProviderId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/bid/provider/:UUID",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bid",
+								"provider",
+								":UUID"
+							],
+							"variable": [
+								{
+									"key": "UUID",
+									"value": "XgzKBHQENXVf143p6aD4wwzx1zl2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept a Bid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/request/:requestId/bid/:bidId/accept",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"request",
+								":requestId",
+								"bid",
+								":bidId",
+								"accept"
+							],
+							"variable": [
+								{
+									"key": "requestId",
+									"value": ""
+								},
+								{
+									"key": "bidId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Decline a Bid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/bid/:bidId/decline",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bid",
+								":bidId",
+								"decline"
+							],
+							"variable": [
+								{
+									"key": "bidId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOffers",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Bid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n\t\"message\": \"First Bid my MAN\",\n\t\"status\" : \"PENDING\",\n\t\"requestId\": 1,\n\t\"coupleUuId\": \"j5wrx0HNFEYeARGJPkSTCWjgNF62\",\n\t\"providerUuId\": \"XgzKBHQENXVf143p6aD4wwzx1zl2\",\n\t\"amount\": 30.0\n\t\n}"
+						},
+						"url": {
+							"raw": "https://soswedding.herokuapp.com/bid",
+							"protocol": "https",
+							"host": [
+								"soswedding",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bid"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c52ce114-669a-4714-8682-9ee183639536",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5f9b1d46-b332-4cb3-a423-e1a5dc4d8601",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,7 +1,6 @@
-package com.example.soswedding.ui.Offer;
+package com.example.soswedding.ui.offer;
 
 import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
 import com.example.soswedding.model.Singleton;
@@ -139,7 +137,7 @@ public class OffersFragment extends Fragment {
         if(message.equalsIgnoreCase("ACCEPTED")){
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You have successfully accepted the bid",Toast.LENGTH_SHORT);
             toast.show();
-            getFragmentManager().popBackStackImmediate();
+
         }
         else if (message.equalsIgnoreCase("DECLINED")){
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You have successfully declined the bid",Toast.LENGTH_SHORT);

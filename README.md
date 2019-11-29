@@ -9,7 +9,7 @@ SOSWedding is an android application that allows couples to find various types o
 - allow couple to post a request
 - allow providers to see the requests made by a couple
 - allow a provider to bid on a request
-- allow a couple to accept/deny an offer taht a provider made on their requests
+- allow a couple to accept/deny an offer that a provider made on their requests
 
 ## Team 👥
 | Name          | Github        |
@@ -46,14 +46,14 @@ SOSWedding is an android application that allows couples to find various types o
 
 ## Quick Tutorial
 - Log in by using one of the provided credentials
-![SignIn](app/src/main/res/drawable/SOSWeddingAssets/Screenshot_1574962035.jpg)
+![SignIn](app/src/main/res/drawable/Screenshot_1574962035.jpg)
 - Once loged in you have access to your profile page
-![Profile](app/src/main/res/drawable/SOSWeddingAssets/profile.png)
+![Profile](app/src/main/res/drawable/profile.png)
 - You can access your requests via the all requests menu below
-![Requests](app/src/main/res/drawable/SOSWeddingAssets/all_requests.png)
+![Requests](app/src/main/res/drawable/all_requests.png)
 - You can click on the + button to create a new requests and post it
-![Profile](app/src/main/res/drawable/SOSWeddingAssets/creating_a_request_2.png)
+![Profile](app/src/main/res/drawable/creating_a_request_2.png)
 - The request is now added to your lists
-![RequestAdded](app/src/main/res/drawable/SOSWeddingAssets/request_added.png)
+![RequestAdded](app/src/main/res/drawable/request_added.png)
 - By logging as a provider you also have the option to bid on a request
-![RequestBid](app/src/main/res/drawable/SOSWeddingAssets/make_offer.png)
+![RequestBid](app/src/main/res/drawable/make_offer.png)

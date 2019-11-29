@@ -2,7 +2,6 @@ package com.example.soswedding.service;
 
 import android.content.Context;
 import android.util.Log;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -12,15 +11,12 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.soswedding.Interface.VolleyCallback;
-import com.example.soswedding.model.User;
-
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class BidService {
+
     public static void postBid(Context context, JSONObject jsonBody ,final VolleyCallback callback) {
         String url = "https://soswedding.herokuapp.com/bid";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
@@ -42,13 +38,9 @@ public class BidService {
                     headers.put("Content-Type", "application/json");
                     return headers;
                 }
-
-
             };
-
             requestQueue.add(stringRequest);
         }
-
 
 
     public static void acceptBid(Context context, final long requestID, final long bidId, final VolleyCallback callback) {
@@ -63,9 +55,7 @@ public class BidService {
                     }
                 }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
+            public void onErrorResponse(VolleyError error) { }
         });
         requestQueue.add(stringRequest);
     }
@@ -83,7 +73,6 @@ public class BidService {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
             }
         });
         requestQueue.add(stringRequest);
@@ -125,8 +114,4 @@ public class BidService {
     }
 
 }
-
-//TODO: Deny Offer function
-    //TODO: GetAllBidsProviders function
-    //TODO: GetAllBidsCouple function
 
