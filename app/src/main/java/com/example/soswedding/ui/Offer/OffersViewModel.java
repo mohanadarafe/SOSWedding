@@ -7,7 +7,7 @@ import com.example.soswedding.model.Singleton;
 import static com.example.soswedding.service.BidService.acceptBid;
 import static com.example.soswedding.service.BidService.declineBid;
 public class OffersViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+
     public OffersViewModel() {
     }
     public void acceptBidModel(Context context,long requestID, long bidId) {

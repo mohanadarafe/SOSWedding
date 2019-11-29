@@ -1,7 +1,6 @@
 package com.example.soswedding.ui.Offer;
 
 import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
 import com.example.soswedding.model.Singleton;
