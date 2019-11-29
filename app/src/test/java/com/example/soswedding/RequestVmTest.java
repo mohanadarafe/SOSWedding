@@ -2,7 +2,6 @@ package com.example.soswedding;
 import com.example.soswedding.model.Offer;
 import com.example.soswedding.model.Request;
 import com.example.soswedding.model.User;
-import com.example.soswedding.ui.Request.RequestViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,12 +15,12 @@ import static org.junit.Assert.assertTrue;
 
 public class RequestVmTest {
 
-    private RequestViewModel viewModel;
+    private com.example.soswedding.ui.request.RequestViewModel viewModel;
 
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
-        viewModel = new RequestViewModel();
+        viewModel = new com.example.soswedding.ui.request.RequestViewModel();
     }
 
 
