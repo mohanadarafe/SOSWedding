@@ -137,10 +137,14 @@ public class OffersFragment extends Fragment {
         if(message.equalsIgnoreCase("ACCEPTED")){
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You have successfully accepted the bid",Toast.LENGTH_SHORT);
             toast.show();
+            getFragmentManager().popBackStackImmediate();
+
+
         }
         else if (message.equalsIgnoreCase("DECLINED")){
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You have successfully declined the bid",Toast.LENGTH_SHORT);
             toast.show();
+            getFragmentManager().popBackStackImmediate();
         }
     }
 
