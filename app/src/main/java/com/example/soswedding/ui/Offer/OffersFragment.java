@@ -84,6 +84,7 @@ public class OffersFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                         mViewModel.acceptBidModel(getContext(), offer.getRequestId(),offer.getId());
+                        offer.setStatus("ACCEPTED");
                         popUp(offer.getStatus());
 
 
@@ -94,6 +95,7 @@ public class OffersFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                         mViewModel.declineBidModel(getContext(), offer.getId());
+                        offer.setStatus("DECLINED");
                         popUp(offer.getStatus());
 
                 }
@@ -137,8 +139,6 @@ public class OffersFragment extends Fragment {
         if(message.equalsIgnoreCase("ACCEPTED")){
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You have successfully accepted the bid",Toast.LENGTH_SHORT);
             toast.show();
-            getFragmentManager().popBackStackImmediate();
-
 
         }
         else if (message.equalsIgnoreCase("DECLINED")){
