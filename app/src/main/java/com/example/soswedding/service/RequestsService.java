@@ -59,8 +59,25 @@ public class RequestsService {
         {
             e.printStackTrace();
         }
-
     }
+    public static void getRequestById(Context context, final int requestId,final VolleyCallback callback){
+        String url = "https://soswedding.herokuapp.com/request/"+requestId;
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        callback.onSuccess(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        queue.add(stringRequest);
+    }
+
     public static void getAllRequests(Context context,final VolleyCallback callback){
         String url = "https://soswedding.herokuapp.com/request";
         RequestQueue queue = Volley.newRequestQueue(context);
