@@ -1,9 +1,9 @@
-package com.example.soswedding.ui.Offer;
+package com.example.soswedding.ui.offer;
 import android.content.Context;
 import android.util.Log;
 import androidx.lifecycle.ViewModel;
 import com.example.soswedding.Interface.VolleyCallback;
-import com.example.soswedding.model.Singleton;
+
 import static com.example.soswedding.service.BidService.acceptBid;
 import static com.example.soswedding.service.BidService.declineBid;
 public class OffersViewModel extends ViewModel {

@@ -1,12 +1,10 @@
 package com.example.soswedding;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.soswedding.ui.SignIn.SignInFragment;
+import com.example.soswedding.ui.signIn.SignInFragment;
 
 public class LoginActivity extends AppCompatActivity {
 

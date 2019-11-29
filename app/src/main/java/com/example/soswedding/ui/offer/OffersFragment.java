@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.Offer;
+package com.example.soswedding.ui.offer;
 
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;

@@ -1,9 +1,8 @@
 package com.example.soswedding;
 
 import com.example.soswedding.model.Offer;
-import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
-import com.example.soswedding.ui.all_offers.AllOffersViewModel;
+import com.example.soswedding.ui.allOffers.AllOffersViewModel;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

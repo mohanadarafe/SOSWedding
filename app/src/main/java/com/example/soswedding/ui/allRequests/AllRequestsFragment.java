@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.all_requests;
+package com.example.soswedding.ui.allRequests;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,8 +15,8 @@ import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
 import com.example.soswedding.service.RequestsService;
-import com.example.soswedding.ui.CreateRequest.CreateRequestFragment;
-import com.example.soswedding.ui.Request.RequestFragment;
+import com.example.soswedding.ui.createRequest.CreateRequestFragment;
+import com.example.soswedding.ui.request.RequestFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.all_requests;
+package com.example.soswedding.ui.allRequests;
 
 import android.app.Activity;
 import android.content.Context;

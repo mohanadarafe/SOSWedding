@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.all_offers;
+package com.example.soswedding.ui.allOffers;
 
 import android.app.Activity;
 import android.content.Context;

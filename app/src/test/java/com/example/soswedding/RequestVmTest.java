@@ -1,12 +1,7 @@
 package com.example.soswedding;
-import com.example.soswedding.model.Offer;
-import com.example.soswedding.model.Request;
 import com.example.soswedding.model.User;
-import com.example.soswedding.ui.Request.RequestViewModel;
+import com.example.soswedding.ui.request.RequestViewModel;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.Before;
 import org.mockito.MockitoAnnotations;

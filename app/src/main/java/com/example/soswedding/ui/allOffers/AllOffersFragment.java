@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.all_offers;
+package com.example.soswedding.ui.allOffers;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +15,7 @@ import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
 import com.example.soswedding.model.Singleton;
 import com.example.soswedding.service.BidService;
-import com.example.soswedding.ui.Offer.OffersFragment;
+import com.example.soswedding.ui.offer.OffersFragment;
 import java.util.List;
 
 public class AllOffersFragment extends Fragment implements OnOfferItemClickListener {

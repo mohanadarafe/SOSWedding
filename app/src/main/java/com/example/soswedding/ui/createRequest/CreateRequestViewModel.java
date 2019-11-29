@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.CreateRequest;
+package com.example.soswedding.ui.createRequest;
 
 import android.content.Context;
 

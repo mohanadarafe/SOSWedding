@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.all_requests;
+package com.example.soswedding.ui.allRequests;
 
 import android.util.Log;
 import com.example.soswedding.model.Request;

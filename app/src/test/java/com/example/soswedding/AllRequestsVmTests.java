@@ -3,7 +3,7 @@ package com.example.soswedding;
 import android.util.Log;
 import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
-import com.example.soswedding.ui.all_requests.AllRequestsViewModel;
+import com.example.soswedding.ui.allRequests.AllRequestsViewModel;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.all_offers;
+package com.example.soswedding.ui.allOffers;
 
 import android.util.Log;
 import com.example.soswedding.model.Offer;

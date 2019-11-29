@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.CreateRequest;
+package com.example.soswedding.ui.createRequest;
 
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProviders;
