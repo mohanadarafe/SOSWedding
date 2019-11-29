@@ -13,9 +13,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.android.volley.VolleyError;
+import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
 import com.example.soswedding.model.Singleton;
+import com.example.soswedding.service.RequestsService;
 
 
 public class OffersFragment extends Fragment {
@@ -84,6 +88,13 @@ public class OffersFragment extends Fragment {
                         mViewModel.acceptBidModel(getContext(), offer.getRequestId(),offer.getId());
                         offer.setStatus("ACCEPTED");
                         popUp(offer.getStatus());
+                    RequestsService.getRequestById(getContext(), Singleton.getInstance().getUuid(),
+                            new VolleyCallback() {
+                                @Override
+                                public void onSuccess(String result) {
+
+                                }
+                            }
 
 
                 }
@@ -143,6 +154,10 @@ public class OffersFragment extends Fragment {
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You have successfully declined the bid",Toast.LENGTH_SHORT);
             toast.show();
             getFragmentManager().popBackStackImmediate();
+        }
+
+        public void onSuccess(String result){
+            Request
         }
     }
 
