@@ -60,7 +60,7 @@ SOSWedding is an android application that allows couples to find various types o
 - By logging as a provider, you have the option to see all the bid made 
 ![OffersProvider](app/src/main/res/drawable/offers_provider.png)
 - By logging as a couple , you have the option to see the bids made by provider on your requests
-![OffersCouple](app/src/main/res/drawable/offer_couple.png)
+![OffersCouple](app/src/main/res/drawable/offers_couple.png)
 - As a couple, you will have the option to either accept or decline the offer made by the provider 
 ![OfferDetail](app/src/main/res/drawable/offer_detail.png)
 
