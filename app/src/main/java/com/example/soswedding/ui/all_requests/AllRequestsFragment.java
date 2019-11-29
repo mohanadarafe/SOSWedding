@@ -4,15 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.soswedding.Interface.OnRequestItemClickListener;
-import com.example.soswedding.Interface.RecyclerViewClickListener;
 import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
@@ -21,7 +18,6 @@ import com.example.soswedding.service.RequestsService;
 import com.example.soswedding.ui.CreateRequest.CreateRequestFragment;
 import com.example.soswedding.ui.Request.RequestFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.List;
 
 public class AllRequestsFragment extends Fragment implements OnRequestItemClickListener{
@@ -37,8 +33,6 @@ public class AllRequestsFragment extends Fragment implements OnRequestItemClickL
         View root = inflater.inflate(R.layout.fragment_all_requests, container, false);
         setUpViewModel();
         initComponents(root);
-
-
         return root;
     }
 
@@ -67,7 +61,7 @@ public class AllRequestsFragment extends Fragment implements OnRequestItemClickL
     }
 
     private void onSuccessReceivedList(String result) {
-        requestsList = allRequestViewModel.getDisplayableRequests(result);
+        requestsList = allRequestViewModel.getDisplayableOffers(result);
         initRecyclerView();
     }
 

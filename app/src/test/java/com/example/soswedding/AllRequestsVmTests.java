@@ -1,19 +1,16 @@
 package com.example.soswedding;
-import android.util.Log;
 
+import android.util.Log;
 import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
 import com.example.soswedding.ui.all_requests.AllRequestsViewModel;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.Before;
 import org.mockito.MockitoAnnotations;
-
 import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -30,7 +27,7 @@ public class AllRequestsVmTests {
     @Test
     public void getRequestsObjectForCoupleNullTest(){
         String json = mockJsonRequest();
-        ArrayList<Request> rq = (ArrayList<Request>) viewModel.getListOfAllRequests(json);
+        ArrayList<Request> rq = (ArrayList<Request>) viewModel.getListOfAllOffers(json);
         assertEquals(rq.get(0).getAddress(), "Montreal");
         assertEquals(rq.get(0).getType(), "DANCER");
         assertEquals(String.valueOf(rq.get(0).getBudget()), "1.0");
@@ -46,7 +43,7 @@ public class AllRequestsVmTests {
         Singleton.getInstance().setType("COUPLE");
         Singleton.getInstance().setUuid("0");
         ArrayList<Request> requests = new ArrayList<>();
-        requests = (ArrayList<Request>) viewModel.getDisplayableRequests(mockJsonRequest());
+        requests = (ArrayList<Request>) viewModel.getDisplayableOffers(mockJsonRequest());
         assertTrue(requests.isEmpty());
     }
     @Test
@@ -55,7 +52,7 @@ public class AllRequestsVmTests {
         Singleton.getInstance().setType("COUPLE");
         Singleton.getInstance().setUuid("1");
         ArrayList<Request> requests;
-        requests = (ArrayList<Request>) viewModel.getDisplayableRequests(mockJsonRequest());
+        requests = (ArrayList<Request>) viewModel.getDisplayableOffers(mockJsonRequest());
         assertFalse(requests.isEmpty());
     }
     @Test
@@ -63,7 +60,7 @@ public class AllRequestsVmTests {
         Singleton.getInstance().setType("PROVIDER");
         Singleton.getInstance().setUuid("2");
         ArrayList<Request> requests;
-        requests = (ArrayList<Request>) viewModel.getDisplayableRequests(mockJsonRequest());
+        requests = (ArrayList<Request>) viewModel.getDisplayableOffers(mockJsonRequest());
         assertFalse(requests.isEmpty());
     }
     @Test

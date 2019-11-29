@@ -10,14 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.soswedding.Interface.OnRequestItemClickListener;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
-
 import java.util.List;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestViewHolder> {
+
     public static  Context context;
     public static Activity myActivity;
     private List<Request> requestsList;

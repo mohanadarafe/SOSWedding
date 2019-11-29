@@ -57,14 +57,6 @@ public class Offer implements Serializable {
         this.requestTitle = requestTitle;
     }
 
-    //    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-
     public String getStatus() {
         return status;
     }
@@ -133,12 +125,5 @@ public class Offer implements Serializable {
         this.requestId = requestId;
     }
 
-    /*public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }*/
 
 }
