@@ -93,6 +93,9 @@ public class OffersFragment extends Fragment {
                         offer.setStatus("ACCEPTED");
                         GetInfoByrequestId(offer.getRequestId());
                         popUp(offer.getStatus());
+
+                    acceptOfferBtn.setVisibility(View.GONE);
+                    declineOfferBtn.setVisibility(View.GONE);
                 }
             });
 
