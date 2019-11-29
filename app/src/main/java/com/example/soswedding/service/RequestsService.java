@@ -108,7 +108,7 @@ public class RequestsService {
             jsonBody.put("title", rq.getTitle());
             jsonBody.put("description", rq.getDescription());
             jsonBody.put("serviceType", rq.getType());
-            jsonBody.put("coupleUuid", Singleton.getInstance().getUuid());
+            jsonBody.put("coupleUuid", rq.getuID());
             jsonBody.put("budget", rq.getBudget());
             jsonBody.put("address", rq.getAddress());
             jsonBody.put("status", "ACCEPTED");
