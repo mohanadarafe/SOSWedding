@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    tools:context=".ui.Request.RequestFragment">
+    tools:context=".ui.request.RequestFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,13 +16,15 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dip"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="40dip"
             android:layout_marginRight="10dip"
             android:layout_marginBottom="10dip"
             android:background="@drawable/button_border"
             android:gravity="center_vertical"
             android:orientation="vertical"
             android:padding="20dip">
+
+
 
             <ImageView
                 android:id="@+id/requestServiceImage"

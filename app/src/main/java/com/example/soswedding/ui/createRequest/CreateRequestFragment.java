@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.CreateRequest;
+package com.example.soswedding.ui.createRequest;
 
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProviders;
@@ -65,8 +65,6 @@ public class CreateRequestFragment extends Fragment {
         String[] items = new String[]{"BAKER", "CAR", "DANCE", "RECEPTION", "ALCOHOL", "CATERING", "MUSIC", "FLORIST", "PHOTOGRAPHER"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
         typeSpinner.setAdapter(adapter);
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -82,7 +80,7 @@ public class CreateRequestFragment extends Fragment {
                 address.length() > 0 &&
                 description.length() > 0 &&
                 budget > 0){
-            Request request = new Request(title, description, type, address, budget, Singleton.getInstance().getUuid());
+            Request request = new Request(title, description, type, address, budget, Singleton.getInstance().getUuid(),"PENDING");
             mViewModel.createRequest(getContext(), request);
             getFragmentManager().popBackStack();
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"Your request has been successfully posted!",Toast.LENGTH_SHORT);

@@ -1,31 +1,21 @@
-package com.example.soswedding.ui.all_offers;
+package com.example.soswedding.ui.allOffers;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.soswedding.Interface.OnOfferItemClickListener;
 import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
-import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
-import com.example.soswedding.model.User;
-import com.example.soswedding.service.RequestsService;
 import com.example.soswedding.service.BidService;
-import com.example.soswedding.ui.CreateRequest.CreateRequestFragment;
-import com.example.soswedding.ui.Offer.OffersFragment;
-import com.example.soswedding.ui.Request.RequestFragment;
-import com.example.soswedding.ui.all_offers.AllOffersViewModel;
-import com.example.soswedding.ui.all_offers.OffersAdapter;
-
+import com.example.soswedding.ui.offer.OffersFragment;
 import java.util.List;
 
 public class AllOffersFragment extends Fragment implements OnOfferItemClickListener {
@@ -100,7 +90,7 @@ public class AllOffersFragment extends Fragment implements OnOfferItemClickListe
         Fragment fragment = new OffersFragment();
         fragment.setArguments(bundle);
         OffersFragment.newInstance(item);
-        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
     }
 
 

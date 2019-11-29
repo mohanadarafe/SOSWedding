@@ -13,14 +13,14 @@
 
     <fragment
         android:id="@+id/navigation_all_requests"
-        android:name="com.example.soswedding.ui.all_requests.AllRequestsFragment"
+        android:name="com.example.soswedding.ui.allRequests.AllRequestsFragment"
 
         android:label="@string/title_all_requests"
         tools:layout="@layout/fragment_all_requests" />
 
     <fragment
         android:id="@+id/navigation_all_offers"
-        android:name="com.example.soswedding.ui.all_offers.AllOffersFragment"
+        android:name="com.example.soswedding.ui.allOffers.AllOffersFragment"
         android:label="@string/title_all_offers"
         tools:layout="@layout/fragment_all_offers" />
 </navigation>

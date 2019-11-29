@@ -1,32 +1,30 @@
-package com.example.soswedding.ui.all_offers;
+package com.example.soswedding.ui.allOffers;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.soswedding.model.Singleton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.soswedding.Interface.OnOfferItemClickListener;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
-
-
-
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersViewHolder> {
+
     public static Context context;
     public static Activity myActivity;
     private List<Offer> offersList;
     private static OnOfferItemClickListener itemListener;
 
+    //Inner RecyclerView Class
     public static class OffersViewHolder extends RecyclerView.ViewHolder{
         // each data item is just a string in this case
         public TextView title;
@@ -43,9 +41,15 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
         }
 
         public void bind(final Offer item, final OnOfferItemClickListener listener) {
+            Typeface face = Typeface.createFromAsset(context.getAssets(), "fonts/allan_regular.ttf");
+            Typeface boldFace = Typeface.createFromAsset(context.getAssets(),"fonts/allan_bold.ttf");
+            title.setTypeface(boldFace);
             title.setText(item.getRequestTitle());
+            currentBid.setTypeface(face);
             currentBid.setText("Current Bid: $ "+String.valueOf(item.getAmount()));
+            status.setTypeface(face);
             status.setText("Bid Status: "+item.getStatus());
+
 
             this.setStatusLabelStyle(this, item.getStatus());
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -103,9 +107,6 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
 
         holder.bind(offersList.get(position), itemListener);
     }
-
-
-
     @Override
     public int getItemCount() {
         return offersList.size();

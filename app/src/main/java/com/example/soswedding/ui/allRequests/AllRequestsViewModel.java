@@ -1,15 +1,11 @@
-package com.example.soswedding.ui.all_requests;
+package com.example.soswedding.ui.allRequests;
 
 import android.util.Log;
-
 import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
-import com.example.soswedding.model.User;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 import androidx.lifecycle.ViewModel;
@@ -17,12 +13,12 @@ import androidx.lifecycle.ViewModel;
 public class AllRequestsViewModel extends ViewModel {
 
 
-    public List<Request> getDisplayableRequests(String result){
+    public List<Request> getDisplayableOffers(String result){
         if(isUserACouple(Singleton.getInstance().getType())) {
-            return getListOfRequestsForCoupleUserOnly(result);
+            return getListOfOffersForCoupleUserOnly(result);
         }
         else {
-            return getListOfAllRequests(result);
+            return getListOfAllOffers(result);
         }
     }
 
@@ -31,7 +27,7 @@ public class AllRequestsViewModel extends ViewModel {
         return type.equalsIgnoreCase("COUPLE");
     }
 
-    public List<Request> getListOfAllRequests(String result) {
+    public List<Request> getListOfAllOffers(String result) {
         try{
             return getRequestListFromJSONResponse(result);
         } catch (Throwable t) {
@@ -58,11 +54,12 @@ public class AllRequestsViewModel extends ViewModel {
         String title = requestJSONObject.getString("title");
         long id       = requestJSONObject.getLong("id");
         String coupleUuid = requestJSONObject.getString("coupleUuid");
-        return new Request(id, title, description, type, address, budget,coupleUuid);
+        String status     = requestJSONObject.getString("status");
+        return new Request(id, title, description, type, address, budget,coupleUuid,status);
     }
 
 
-    public List<Request> getListOfRequestsForCoupleUserOnly(String result) {
+    public List<Request> getListOfOffersForCoupleUserOnly(String result) {
         try {
             return getRequestListFromCoupleOnlyFromJSONResponse(result);
         } catch (Throwable t) {

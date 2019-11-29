@@ -1,14 +1,10 @@
-package com.example.soswedding.ui.SignIn;
+package com.example.soswedding.ui.signIn;
 
 import android.util.Log;
 
 import com.example.soswedding.model.Singleton;
-import com.example.soswedding.model.User;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 import androidx.lifecycle.ViewModel;
 

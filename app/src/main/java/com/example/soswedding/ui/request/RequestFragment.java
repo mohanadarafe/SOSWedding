@@ -1,7 +1,6 @@
-package com.example.soswedding.ui.Request;
+package com.example.soswedding.ui.request;
 
 import androidx.lifecycle.ViewModelProviders;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 
@@ -20,13 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
-import com.example.soswedding.model.User;
-import com.example.soswedding.service.RequestsService;
-import com.example.soswedding.ui.all_requests.AllRequestsFragment;
 
 public class RequestFragment extends Fragment {
     public Request request;
@@ -81,6 +76,8 @@ public class RequestFragment extends Fragment {
         addressTv.setText("Address:  "+request.getAddress());
         titleTv.setText(request.getTitle());
         if(Singleton.getInstance().getType().equalsIgnoreCase("COUPLE"))
+            providerBid.setVisibility(View.GONE);
+        if(request.getStatus().equalsIgnoreCase("ACCEPTED"))
             providerBid.setVisibility(View.GONE);
         else
         bidBtn.setOnClickListener(new View.OnClickListener() {

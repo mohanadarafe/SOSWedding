@@ -25,6 +25,9 @@ public class Offer implements Serializable {
         this.companyName = companyName;
         this.requestTitle = requestTitle;
     }
+    public Offer(){
+
+    }
 
     public Offer(double amount, String message, String status, String providerUuid, String coupleUuid, long requestId, String companyName, String requestTitle) {
         this.amount = amount;
@@ -56,14 +59,6 @@ public class Offer implements Serializable {
     public void setRequestTitle(String requestTitle) {
         this.requestTitle = requestTitle;
     }
-
-    //    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
 
     public String getStatus() {
         return status;
@@ -133,12 +128,5 @@ public class Offer implements Serializable {
         this.requestId = requestId;
     }
 
-    /*public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }*/
 
 }

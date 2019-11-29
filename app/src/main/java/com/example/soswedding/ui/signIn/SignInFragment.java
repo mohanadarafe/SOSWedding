@@ -1,4 +1,4 @@
-package com.example.soswedding.ui.SignIn;
+package com.example.soswedding.ui.signIn;
 
 import androidx.lifecycle.ViewModelProviders;
 
