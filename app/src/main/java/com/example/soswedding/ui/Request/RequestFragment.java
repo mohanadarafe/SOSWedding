@@ -82,6 +82,8 @@ public class RequestFragment extends Fragment {
         titleTv.setText(request.getTitle());
         if(Singleton.getInstance().getType().equalsIgnoreCase("COUPLE"))
             providerBid.setVisibility(View.GONE);
+        if(request.getStatus().equalsIgnoreCase("ACCEPTED"))
+            providerBid.setVisibility(View.GONE);
         else
         bidBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -61,7 +61,8 @@ public class AllRequestsViewModel extends ViewModel {
         String title = requestJSONObject.getString("title");
         long id       = requestJSONObject.getLong("id");
         String coupleUuid = requestJSONObject.getString("coupleUuid");
-        return new Request(id, title, description, type, address, budget,coupleUuid);
+        String status     = requestJSONObject.getString("status");
+        return new Request(id, title, description, type, address, budget,coupleUuid,status);
     }
 
 

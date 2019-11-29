@@ -11,8 +11,9 @@ public class Request implements Serializable {
     private long id;
     private double budget;
     private String uID;
+    private String status;
 
-    public Request(long id, String title, String description, String type, String address, double budget, String uID){
+    public Request(long id, String title, String description, String type, String address, double budget, String uID, String status){
         this.id          = id;
         this.title       = title;
         this.description = description;
@@ -20,14 +21,16 @@ public class Request implements Serializable {
         this.budget      = budget;
         this.address     = address;
         this.uID         = uID;
+        this.status      = status;
     }
-    public Request(String title, String description, String type, String address, double budget, String uID){
+    public Request(String title, String description, String type, String address, double budget, String uID, String status){
         this.title       = title;
         this.description = description;
         this.type        = type;
         this.budget      = budget;
         this.address     = address;
         this.uID         = uID;
+        this.status      = status;
     }
 
     public long getId() {
@@ -78,4 +81,8 @@ public class Request implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
+
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

@@ -36,6 +36,7 @@ public class RequestsService {
             jsonBody.put("coupleUuid", Singleton.getInstance().getUuid());
             jsonBody.put("budget", rq.getBudget());
             jsonBody.put("address", rq.getAddress());
+            jsonBody.put("status", "PENDING");
 
             JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url,jsonBody, new Response.Listener<JSONObject>() {
                 @Override
