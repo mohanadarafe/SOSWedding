@@ -100,4 +100,45 @@ public class RequestsService {
         queue.add(stringRequest);
     }
 
+    public static void editRequestStatus(Context context, com.example.soswedding.model.Request rq) {
+        String url = "https://soswedding.herokuapp.com/request";
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        try {
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("title", rq.getTitle());
+            jsonBody.put("description", rq.getDescription());
+            jsonBody.put("serviceType", rq.getType());
+            jsonBody.put("coupleUuid", Singleton.getInstance().getUuid());
+            jsonBody.put("budget", rq.getBudget());
+            jsonBody.put("address", rq.getAddress());
+            jsonBody.put("status", "ACCEPTED");
+
+            JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url,jsonBody, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.i("VOLLEY", response.toString());
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("VOLLEY", error.toString());
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String,String> headers = new HashMap<String,String>();
+                    headers.put("Content-Type", "application/json");
+                    return headers;
+                }
+            };
+
+            requestQueue.add(stringRequest);
+        }
+        catch( JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
 }
