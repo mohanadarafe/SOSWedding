@@ -126,7 +126,7 @@ public class RequestsService {
             jsonBody.put("address", rq.getAddress());
             jsonBody.put("status", "ACCEPTED");
 
-            JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url,jsonBody, new Response.Listener<JSONObject>() {
+            JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.PATCH, url,jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     Log.i("VOLLEY", response.toString());
