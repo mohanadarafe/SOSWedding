@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.widget.Toast;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +15,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
+import com.example.soswedding.model.Request;
 import com.example.soswedding.model.Singleton;
+import com.example.soswedding.service.RequestsService;
+
+import org.json.JSONException;
 
 
 public class OffersFragment extends Fragment {
@@ -83,9 +91,8 @@ public class OffersFragment extends Fragment {
                 public void onClick(View view) {
                         mViewModel.acceptBidModel(getContext(), offer.getRequestId(),offer.getId());
                         offer.setStatus("ACCEPTED");
+                        GetInfoByrequestId(offer.getRequestId());
                         popUp(offer.getStatus());
-
-
                 }
             });
 
@@ -95,7 +102,7 @@ public class OffersFragment extends Fragment {
                         mViewModel.declineBidModel(getContext(), offer.getId());
                         offer.setStatus("DECLINED");
                         popUp(offer.getStatus());
-
+                        getFragmentManager().popBackStackImmediate();
                 }
             });
 
@@ -104,6 +111,28 @@ public class OffersFragment extends Fragment {
 
 
     }
+
+    public void GetInfoByrequestId(long requestId){
+        RequestsService.getRequestById(getContext(),requestId,new VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+                Log.e("My App", "SUCCESS!");
+                try{
+                    Request request = mViewModel.getRequestObjectFromString(result);
+                    updateRequestStatus(request);
+
+                }catch( JSONException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void updateRequestStatus(Request rq){
+        RequestsService.editRequestStatus(getContext(),rq);
+    }
+
     public void setImageDetailView(String statusLabel){
         switch(statusLabel) {
             case "DECLINED":
@@ -137,12 +166,10 @@ public class OffersFragment extends Fragment {
         if(message.equalsIgnoreCase("ACCEPTED")){
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You have successfully accepted the bid",Toast.LENGTH_SHORT);
             toast.show();
-
         }
         else if (message.equalsIgnoreCase("DECLINED")){
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You have successfully declined the bid",Toast.LENGTH_SHORT);
             toast.show();
-            getFragmentManager().popBackStackImmediate();
         }
     }
 

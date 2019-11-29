@@ -60,8 +60,9 @@ public class RequestsService {
             e.printStackTrace();
         }
     }
-    public static void getRequestById(Context context, final int requestId,final VolleyCallback callback){
-        String url = "https://soswedding.herokuapp.com/request/"+requestId;
+    public static void getRequestById(Context context, final long requestId,final VolleyCallback callback){
+        int temp = (int)requestId;
+        String url = "https://soswedding.herokuapp.com/request/"+temp;
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -125,7 +126,7 @@ public class RequestsService {
             jsonBody.put("budget", rq.getBudget());
             jsonBody.put("address", rq.getAddress());
             jsonBody.put("status", "ACCEPTED");
-
+            jsonBody.put("id",rq.getId());
             JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.PATCH, url,jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {

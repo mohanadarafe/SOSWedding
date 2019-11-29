@@ -33,6 +33,7 @@ public class OffersViewModel extends ViewModel {
     }
 
 
+
     public Request getRequestObjectFromString(String result) throws  JSONException {
             JSONObject jsonBody = new JSONObject(result);
             String address      = jsonBody.getString("address");
