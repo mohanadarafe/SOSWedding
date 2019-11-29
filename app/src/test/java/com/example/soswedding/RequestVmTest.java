@@ -4,7 +4,6 @@ import com.example.soswedding.model.Request;
 import com.example.soswedding.model.User;
 import com.example.soswedding.ui.Request.RequestViewModel;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -27,62 +26,59 @@ public class RequestVmTest {
 
 
     @Test
-    public void isUserACoupleFalse(){
-        User user = new User(2,"UUID","Hampic","Baboyan","hampic.baboyan@hotmail.com","PROVIDER","514514514");
+    public void isUserACoupleFalse() {
+        User user = new User(2, "UUID", "Hampic", "Baboyan", "hampic.baboyan@hotmail.com", "PROVIDER", "514514514");
         Boolean result = viewModel.verifyCoupleUserType(user);
         assertFalse(result);
     }
 
     @Test
-    public void isUserACoupleTrue(){
-        User user = new User(2,"UUID","Hampic","Baboyan","hampic.baboyan@hotmail.com","COUPLE","514514514");
+    public void isUserACoupleTrue() {
+        User user = new User(2, "UUID", "Hampic", "Baboyan", "hampic.baboyan@hotmail.com", "COUPLE", "514514514");
         Boolean result = viewModel.verifyCoupleUserType(user);
         assertTrue(result);
     }
 
     @Test
-    public void isInputValidTrue(){
+    public void isInputValidTrue() {
         String input = "23";
         Boolean result = viewModel.userInputValidation(input);
         assertTrue(result);
     }
 
     @Test
-    public void isInputValidFalse(){
+    public void isInputValidFalse() {
         String input = "";
         Boolean result = viewModel.userInputValidation(input);
         assertFalse(result);
     }
 
-  //  @Test
-//    public void createOfferObject(){
-//        String amount = "220";
-//        User userProvider = new User(2,"UUID","Hampic","Baboyan","hampic.baboyan@hotmail.com","PROVIDER","514514514");
-//        Request request = new Request(1,"Wedding Cake Urgent","I want a chocolate cake for my wedding by tmr morning","BAKER","hampic.baboyan@hotmail.com",220,"CoupleUUID");
-//        JSONObject jsonObject  = viewModel.createBidObject(amount,request,userProvider);
-//        Offer offer = new Offer();
-//        try{
-//            offer.setAmount(jsonObject.getDouble("amount"));
-//            offer.setMessage(jsonObject.getString("message"));
-//            offer.setCoupleUuid(jsonObject.getString("coupleUuid"));
-//            offer.setProviderUuid(jsonObject.getString("providerUuid"));
-//            offer.setStatus(jsonObject.getString("status"));
-//            offer.setRequestId(jsonObject.getLong("requestId"));
-//            offer.setRequestTitle(jsonObject.getString("requestTitle"));
-//            offer.setCompanyName(jsonObject.getString("companyName"));
-//        } catch( JSONException e)
-//        {
-//            e.printStackTrace();
-//        }
-//        assertEquals(String.valueOf(offer.getAmount()), "220.0");
-//        assertEquals(offer.getMessage(), "Hello WORLD");
-//        assertEquals(offer.getCompanyName(), "SOSWedding");
-//        assertEquals(offer.getCoupleUuid(),"CoupleUUID");
-//        assertEquals(offer.getProviderUuid(),"ProviderUUID");
-//        assertEquals(String.valueOf(offer.getRequestId()),"1");
-//        assertEquals(offer.getRequestTitle(),"Wedding Cake Urgent");
-//        assertEquals(offer.getStatus(),"PENDING");
-//    }
-
-
+    @Test
+    public void createOfferObject() {
+        String amount = "220";
+        User userProvider = new User(2, "providerUuid", "Hampic", "Baboyan", "hampic.baboyan@hotmail.com", "PROVIDER", "514514514");
+        Request request = new Request(1, "Wedding Cake Urgent", "I want a chocolate cake for my wedding by tmr morning", "BAKER", "hampic.baboyan@hotmail.com", 200, "CoupleUuid", "PENDING");
+        JSONObject jsonObject = viewModel.createBidObject(amount, request, userProvider);
+        Offer offer = new Offer();
+        try {
+            offer.setAmount(jsonObject.getDouble("amount"));
+            offer.setMessage(jsonObject.getString("message"));
+            offer.setCoupleUuid(jsonObject.getString("coupleUuid"));
+            offer.setProviderUuid(jsonObject.getString("providerUuid"));
+            offer.setStatus(jsonObject.getString("status"));
+            offer.setRequestId(jsonObject.getLong("requestId"));
+            offer.setRequestTitle(jsonObject.getString("requestTitle"));
+            offer.setCompanyName(jsonObject.getString("companyName"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        assertEquals(String.valueOf(offer.getAmount()), "220.0");
+        assertEquals(offer.getMessage(), "Hello WORLD");
+        assertEquals(offer.getCompanyName(), "SOSWedding");
+        assertEquals(offer.getCoupleUuid(), "CoupleUuid");
+        assertEquals(offer.getProviderUuid(), "providerUuid");
+        assertEquals(String.valueOf(offer.getRequestId()), "1");
+        assertEquals(offer.getRequestTitle(), "Wedding Cake Urgent");
+        assertEquals(offer.getStatus(), "PENDING");
+    }
 }

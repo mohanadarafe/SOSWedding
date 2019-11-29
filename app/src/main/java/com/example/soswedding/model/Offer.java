@@ -25,6 +25,9 @@ public class Offer implements Serializable {
         this.companyName = companyName;
         this.requestTitle = requestTitle;
     }
+    public Offer(){
+
+    }
 
     public Offer(double amount, String message, String status, String providerUuid, String coupleUuid, long requestId, String companyName, String requestTitle) {
         this.amount = amount;
