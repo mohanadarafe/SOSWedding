@@ -2,6 +2,7 @@ package com.example.soswedding.ui.allOffers;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +41,15 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
         }
 
         public void bind(final Offer item, final OnOfferItemClickListener listener) {
+            Typeface face = Typeface.createFromAsset(context.getAssets(), "fonts/allan_regular.ttf");
+            Typeface boldFace = Typeface.createFromAsset(context.getAssets(),"fonts/allan_bold.ttf");
+            title.setTypeface(boldFace);
             title.setText(item.getRequestTitle());
+            currentBid.setTypeface(face);
             currentBid.setText("Current Bid: $ "+String.valueOf(item.getAmount()));
+            status.setTypeface(face);
             status.setText("Bid Status: "+item.getStatus());
+
 
             this.setStatusLabelStyle(this, item.getStatus());
             itemView.setOnClickListener(new View.OnClickListener() {
