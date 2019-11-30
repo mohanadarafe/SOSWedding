@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
+import com.android.volley.VolleyError;
+
 import com.example.soswedding.Interface.VolleyCallback;
 import com.example.soswedding.R;
 import com.example.soswedding.model.Offer;
@@ -89,10 +92,18 @@ public class OffersFragment extends Fragment {
             acceptOfferBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                        coupleBidResponse.setVisibility(View.GONE);
                         mViewModel.acceptBidModel(getContext(), offer.getRequestId(),offer.getId());
                         offer.setStatus("ACCEPTED");
                         GetInfoByrequestId(offer.getRequestId());
                         popUp(offer.getStatus());
+                        RequestsService.getRequestById(getContext(),offer.getRequestId(),
+                            new VolleyCallback() {
+                                @Override
+                                public void onSuccess(String result) {
+                                    onSuccessBidPosting(result);
+                                }
+                            });
 
                     acceptOfferBtn.setVisibility(View.GONE);
                     declineOfferBtn.setVisibility(View.GONE);
@@ -102,6 +113,7 @@ public class OffersFragment extends Fragment {
             declineOfferBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                        coupleBidResponse.setVisibility(View.GONE);
                         mViewModel.declineBidModel(getContext(), offer.getId());
                         offer.setStatus("DECLINED");
                         popUp(offer.getStatus());
@@ -165,15 +177,29 @@ public class OffersFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(OffersViewModel.class);
     }
 
-    public void popUp(String message){
-        if(message.equalsIgnoreCase("ACCEPTED")){
-            Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You have successfully accepted the bid",Toast.LENGTH_SHORT);
+    public void popUp(String message) {
+        if (message.equalsIgnoreCase("ACCEPTED")) {
+            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "You have successfully accepted the bid", Toast.LENGTH_SHORT);
             toast.show();
+
         }
         else if (message.equalsIgnoreCase("DECLINED")){
             Toast toast = Toast.makeText(getActivity().getApplicationContext(),"You have successfully declined the bid",Toast.LENGTH_SHORT);
             toast.show();
         }
     }
+        public void onSuccessBidPosting(String result){
+            OffersViewModel viewModel = new OffersViewModel();
+            try{
+                Request rq = viewModel.getRequestObjectFromString(result);
+                RequestsService.editRequestStatus(getContext(), rq);
+
+            }
+
+            catch(JSONException e){
+                e.printStackTrace();
+            }
+        }
+
 
 }
