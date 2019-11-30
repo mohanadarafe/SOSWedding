@@ -48,7 +48,7 @@ public class ProfileFragment extends Fragment {
     }
     private void setContent() {
         User user = Singleton.getInstance();
-        nameTv.setText(user.getFirstName()+", " + user.getLastName());
+        nameTv.setText(user.getFirstName()+ " " + user.getLastName());
         if(!user.getType().equals("COUPLE")){
             typeServiceTv.setText("Services provided: "+user.getServiceProvided());
             companyNameTv.setText("Company: "+ user.getCompanyName());

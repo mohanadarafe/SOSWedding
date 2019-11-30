@@ -89,6 +89,14 @@
                         android:text="Type: "
                         android:textSize="12sp" />
 
+                    <TextView
+                        android:id="@+id/statusRequestListTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Status: "
+                        android:textSize="12sp" />
+
                 </LinearLayout>
             </LinearLayout>
 

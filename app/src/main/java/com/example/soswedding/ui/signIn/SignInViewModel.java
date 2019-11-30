@@ -19,6 +19,7 @@ public class SignInViewModel extends ViewModel {
             Singleton.getInstance().setLastName(obj.getString("lastName"));
             Singleton.getInstance().setPhoneNumber(obj.getString("phoneNumber"));
             Singleton.getInstance().setType(obj.getString("type"));
+            Singleton.getInstance().setEmail(obj.getString("emailAddress"));
             Singleton.getInstance().setCompanyName(obj.getString("companyName"));
             Singleton.getInstance().setServiceProvided(obj.getString("serviceType"));
         } catch (Throwable t) {

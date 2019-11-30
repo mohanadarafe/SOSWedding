@@ -90,7 +90,6 @@ public class AllRequestsFragment extends Fragment implements OnRequestItemClickL
         bundle.putSerializable("request", item);
         Fragment fragment = new RequestFragment();
         fragment.setArguments(bundle);
-        RequestFragment.newInstance(item);
         getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
     }
 }

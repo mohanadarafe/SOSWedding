@@ -55,7 +55,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         public ImageView logo;
         public TextView title;
         public TextView type;
-
+        public TextView status;
         public TextView miniDescription;
         private TextView budget;
 
@@ -67,6 +67,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
             budget = itemView.findViewById(R.id.allRequestBudgetTv);
             logo = itemView.findViewById(R.id.serviceLogo);
             miniDescription = itemView.findViewById(R.id.miniDescriptionTv);
+            status =itemView.findViewById(R.id.statusRequestListTv);
         }
 
         public void bind(final Request item, final OnRequestItemClickListener listener) {
@@ -80,6 +81,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
             title.setTypeface(boldFace);
             budget.setTypeface(face);
             type.setTypeface(face);
+            status.setText("Status: " + item.getStatus().toLowerCase());
             getImageId(item);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {

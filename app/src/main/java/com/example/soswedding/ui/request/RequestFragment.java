@@ -39,10 +39,6 @@ public class RequestFragment extends Fragment {
 
     private RequestViewModel mViewModel;
 
-    public static RequestFragment newInstance(Request rq) {
-        return new RequestFragment();
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
