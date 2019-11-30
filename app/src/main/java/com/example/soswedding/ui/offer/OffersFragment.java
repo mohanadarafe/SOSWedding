@@ -82,12 +82,13 @@ public class OffersFragment extends Fragment {
         providerName.setText("Provider's Name: "+offer.getCompanyName());
         titleTv.setText("Bid for "+offer.getRequestTitle());
 
-        if(!offer.getStatus().equalsIgnoreCase("PENDING"))
-            coupleBidResponse.setVisibility(View.GONE);
 
         if(Singleton.getInstance().getType().equalsIgnoreCase(("PROVIDER")))
             coupleBidResponse.setVisibility(View.GONE);
         else {
+
+            if(!offer.getStatus().equalsIgnoreCase("PENDING"))
+                coupleBidResponse.setVisibility(View.GONE);
 
             acceptOfferBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,6 +96,7 @@ public class OffersFragment extends Fragment {
                         coupleBidResponse.setVisibility(View.GONE);
                         mViewModel.acceptBidModel(getContext(), offer.getRequestId(),offer.getId());
                         offer.setStatus("ACCEPTED");
+                        setImageDetailView(offer.getStatus());
                         GetInfoByrequestId(offer.getRequestId());
                         popUp(offer.getStatus());
                         RequestsService.getRequestById(getContext(),offer.getRequestId(),
@@ -104,9 +106,6 @@ public class OffersFragment extends Fragment {
                                     onSuccessBidPosting(result);
                                 }
                             });
-
-                    acceptOfferBtn.setVisibility(View.GONE);
-                    declineOfferBtn.setVisibility(View.GONE);
                 }
             });
 
@@ -115,6 +114,7 @@ public class OffersFragment extends Fragment {
                 public void onClick(View view) {
                         coupleBidResponse.setVisibility(View.GONE);
                         mViewModel.declineBidModel(getContext(), offer.getId());
+                        setImageDetailView(offer.getStatus());
                         offer.setStatus("DECLINED");
                         popUp(offer.getStatus());
                         getFragmentManager().popBackStackImmediate();
