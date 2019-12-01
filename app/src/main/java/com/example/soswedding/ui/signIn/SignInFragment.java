@@ -130,7 +130,7 @@ public class SignInFragment extends Fragment {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uuid = user.getUid();
-        String userInfo = UserServiceImpl.getByUuid(getContext(),uuid,new VolleyCallback() {
+        UserServiceImpl.getByUuid(getContext(),uuid,new VolleyCallback() {
             @Override
             public void onSuccess(String result) {
                 createUser(result);
@@ -142,9 +142,7 @@ public class SignInFragment extends Fragment {
     }
     public void createUser(String user)
     {
-        Singleton.getInstance();
         mViewModel.getUserInfo(user);
-        popUp(Singleton.getInstance().getFirstName());
     }
 
     public void popUp(String message){

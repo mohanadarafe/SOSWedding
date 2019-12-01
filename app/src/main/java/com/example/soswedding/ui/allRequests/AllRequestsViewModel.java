@@ -41,7 +41,8 @@ public class AllRequestsViewModel extends ViewModel {
         for(int i = 0; i < requestsObjectArr.length(); i++){
             JSONObject requestJSONObject = requestsObjectArr.getJSONObject(i);
             Request requestFromJSONObject = getRequestObjectFromJSONObject(requestJSONObject);
-            requests.add(requestFromJSONObject);
+            if(requestFromJSONObject.getStatus().equals("PENDING") )
+                requests.add(requestFromJSONObject);
         }
         return requests;
     }
