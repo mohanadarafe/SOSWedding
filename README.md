@@ -38,6 +38,8 @@ SOSWedding is an android application that allows couples to find various types o
   - An emulator can be downloaded through the AVD Manager of Android studio, OS above Lollipop shoudl be chosen in this case.
 ## Using the app:
 - Clone the repo on your machine
+- It is required to include the "google-services" in the app folder  of the project before running it:
+  (app/)
 - Open the folder with android studio
 - make sure you sync the gradle files, to do this, go in files -> sync projects with gradle files.
  - if a pop up appear, pres Ok.
